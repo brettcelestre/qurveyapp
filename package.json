@@ -1,0 +1,28 @@
+{
+  "name": "qurvey",
+  "version": "1.0.0",
+  "description": "questions asked and answered",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FinishingTouchEmpire/qurvey.git"
+  },
+  "keywords": [
+    "graph",
+    "survey"
+  ],
+  "author": "Mario Roaf-Esparza, Brett Celestre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FinishingTouchEmpire/qurvey/issues"
+  },
+  "homepage": "https://github.com/FinishingTouchEmpire/qurvey#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.72.0"
+  }
+}
