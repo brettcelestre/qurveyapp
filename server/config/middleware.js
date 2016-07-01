@@ -6,7 +6,7 @@ var request = require('request');
 
 module.exports = function (app, express) {
   
-  //route for client
+  //routes for client
   var userRouter = express.Router();
   var questionRouter = express.Router();
 
