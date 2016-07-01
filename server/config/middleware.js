@@ -1,4 +1,4 @@
-//var routes = require('./routes.js');
+var routes = require('./routes.js');
 var bodyParser = require('body-parser');
 var request = require('request');
 
