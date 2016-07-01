@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+var routes = require('./routes.js');
+=======
 //var routes = require('./routes.js');
+>>>>>>> 791726039fb1c3c1a4bea0ca1c2b00969de60499
 var bodyParser = require('body-parser');
 var request = require('request');
 
