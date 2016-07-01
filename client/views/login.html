@@ -1,0 +1,31 @@
+<div class='login'>
+
+  <h1>Qurvey</h1>
+  
+  <form name="login" novalidate>
+    
+    <h3>Username</h3>
+    <div class="username-input">
+      <fieldset>
+        <input type="text" id="login" name="login" placeholder="Username" ng-model="username" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+      </fieldset>
+    </div>
+    
+    <h3>Password</h3>
+    <div class="password-input">
+      <fieldset>
+        <input type="text" id="login" name="login" placeholder="Password" ng-model="password" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+      </fieldset>
+    </div>
+    
+    <div class="alert-container">
+      <span class="alert alert-invalid" ng-show="validPassword===true">Your password must be at least 6 characters long.</span>
+      <!-- <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$error.required">Query is required.</span>
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && (twitterCheckShow == false && instagramCheckShow == false)">At least one authorized social media account is required.</span>
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$invalid">Query is invalid (no special characters).</span> -->
+    </div>
+    
+    <button type="submit" class="btn btn-primary" ui-sref="login" ng-click="login(username, password)" ng-disabled="search.query.$pristine || search.query.$invalid || (search.query.$invalid && search.query.$error.required) && (twitterCheckShow == false && instagramCheckShow == false)">Fuse Feeds</button>
+  </form>
+  
+</div>
