@@ -7,8 +7,16 @@ var request = require('request');
 module.exports = function (app, express) {
   
   //routes for client
-  var userRouter = express.Router();
-  var questionRouter = express.Router();
+  var usersRouter = express.Router();
+  var questionsRouter = express.Router();
+  var answersRouter = express.Router();
+  var authRouter = express.Router();
+
+  app.use('/api/users', usersRouter);
+  app.use('/api/questions', questionsRouter);
+  app.use('/api/answers', answersRouter);
+  app.use('/auth', authRouter);
+
 
 
   //parse json
@@ -17,4 +25,10 @@ module.exports = function (app, express) {
 
   //serve index
   app.use(express.static(__dirname + '/../../client'));
+
+  // inject routes
+  require('../users/usersRoutes.js')(usersRouter);
+  require('../questions/questionsRoutes.js')(questionsRouter);
+  require('../answers/answersRoutes.js')(answersRouter);
+  require('../auth/authRoutes.js')(authRouter);
 };
