@@ -1,0 +1,26 @@
+{
+  "name": "Qurvey",
+  "description": "questions asked and answered",
+  "main": "index.js",
+  "authors": [
+    "Mario Roaf-Esparza",
+    "Brett Celestre"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "graph",
+    "survey"
+  ],
+  "homepage": "https://github.com/FinishingTouchEmpire/qurvey.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.3.1",
+    "angular": "^1.5.7"
+  }
+}
