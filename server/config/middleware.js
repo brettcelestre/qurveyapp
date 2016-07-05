@@ -6,6 +6,13 @@ var request = require('request');
 
 module.exports = function (app, express) {
   
+  //parse json
+  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
+
+  //serve index
+  app.use(express.static(__dirname + '/../../client'));
+  
   //routes for client
   var usersRouter = express.Router();
   var questionsRouter = express.Router();
@@ -18,17 +25,11 @@ module.exports = function (app, express) {
   app.use('/auth', authRouter);
 
 
-
-  //parse json
-  app.use(bodyParser.urlencoded({extended: true}));
-  app.use(bodyParser.json());
-
-  //serve index
-  app.use(express.static(__dirname + '/../../client'));
-
   // inject routes
   require('../users/usersRoutes.js')(usersRouter);
   require('../questions/questionsRoutes.js')(questionsRouter);
   require('../answers/answersRoutes.js')(answersRouter);
   require('../auth/authRoutes.js')(authRouter);
+
+
 };
