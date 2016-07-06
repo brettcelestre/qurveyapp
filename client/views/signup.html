@@ -15,7 +15,8 @@
         <input type="text" class="login-input" name="login" placeholder="Password" ng-model="password" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
     </div>
     
-    <h3>Personality Traits</h3>  
+    <h3>Personality Traits</h3>
+    <h5>Choose 4-6</h5>  
     
     <div id='trait-box'>
       <div class='trait-row'>
@@ -24,24 +25,25 @@
         <button id='splendid' class='trait-item' ng-model='trait' ng-click='addTrait("splendid")'>Splendid</button>
       </div>
       <div class='trait-row'>
-        <button class='trait-item' ng-click='addTrait("Spontaneous")'>Spontaneous</button>
-        <button class='trait-item' ng-click='addTrait("Introverted")'>Introverted</button>
-        <button class='trait-item' ng-click='addTrait("Extroverted")'>Extroverted</button>
+        <button id='spontaneous' class='trait-item' ng-click='addTrait("spontaneous")'>Spontaneous</button>
+        <button id='introverted' class='trait-item' ng-click='addTrait("introverted")'>Introverted</button>
+        <button id='extroverted' class='trait-item' ng-click='addTrait("extroverted")'>Extroverted</button>
       </div>
       <div class='trait-row'>
-        <button class='trait-item' ng-click='addTrait("Guarded")'>Guarded</button>
-        <button class='trait-item' ng-click='addTrait("Warm")'>Warm</button>
-        <button class='trait-item' ng-click='addTrait("Anxious")'>Anxious</button>
+        <button id='guarded' class='trait-item' ng-click='addTrait("guarded")'>Guarded</button>
+        <button id='warm' class='trait-item' ng-click='addTrait("warm")'>Warm</button>
+        <button id='anxious' class='trait-item' ng-click='addTrait("anxious")'>Anxious</button>
       </div>
       <div class='trait-row'>
-        <button class='trait-item' ng-click='addTrait("Relaxed")'>Relaxed</button>
-        <button class='trait-item' ng-click='addTrait("Sad")'>Sad</button>
-        <button class='trait-item' ng-click='addTrait("Confused")'>Confused</button>
+        <button id='relaxed' class='trait-item' ng-click='addTrait("relaxed")'>Relaxed</button>
+        <button id='sad' class='trait-item' ng-click='addTrait("sad")'>Sad</button>
+        <button id='confused' class='trait-item' ng-click='addTrait("confused")'>Confused</button>
       </div>
     </div>
     
     <br>
-    <button type='button' class='create-account' ng-click='createAccount()'>Create Account</button>
+    <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
+    <button id='createAcccount' type='button' class='create-account' ng-click='createAccount()' disabled>Create Account</button>
     <br>
     <br>
     <button type="button" class="btn btn-primary" ng-click='loginView()'>Login Page</button>
