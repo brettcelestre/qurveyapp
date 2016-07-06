@@ -1,7 +1,8 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
 // schema for question
-var QuestionSchema = new mongoose.Schema({
+var QuestionSchema = new Schema({
 
   // question string
   question: {
@@ -11,9 +12,19 @@ var QuestionSchema = new mongoose.Schema({
   },
 
   // user who asked the question
-  // user: [UserSchema],
+  _user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
 
   // response options (answers)
+  answer1: String,
+  answer2: String,
+  answer3: String,
+  answer4: String,
+  answer5: String
+
+
   
 });
 
