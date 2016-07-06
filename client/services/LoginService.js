@@ -3,8 +3,8 @@ angular.module('qurvey.services')
 
 .service('Login', function($http) {
   
+  // Sends POST req to /auth/login with username and password
   var login = function(data) {
-    console.log('Login service: login = ', data)
     return $http({
       method: 'POST',
       url: '/auth/login/',

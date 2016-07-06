@@ -7,12 +7,12 @@
     
     <div class="username-input">
       <h3>Username</h3>
-        <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+        <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
     </div>
     
     <div class="password-input">
       <h3>Password</h3>
-        <input type="text" class="login-input" name="login" placeholder="Password" ng-model="password" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+        <input type="text" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
     </div>
     
     <h3>Personality Traits</h3>
@@ -43,7 +43,7 @@
     
     <br>
     <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
-    <button id='createAcccount' type='button' class='create-account' ng-click='createAccount()' disabled>Create Account</button>
+    <button id='createAcccount' type='button' class='create-account' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</button>
     <br>
     <br>
     <button type="button" class="btn btn-primary" ng-click='loginView()'>Login Page</button>
