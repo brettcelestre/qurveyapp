@@ -1,0 +1,1 @@
+angular.module('qurvey.services', []);

@@ -1,8 +1,8 @@
 
 var qurvey = angular.module('Qurvey', [
   'qurvey.controllers',
+  'qurvey.services',
   // 'qurvey.directives',
-  // 'qurvey.services',
   'ui.router'
 ]);
 

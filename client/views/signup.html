@@ -1,1 +1,51 @@
-<h1>Sign Up View</h4>
+<div class='login'>
+
+  <h1>Qurvey</h1>
+  <h3>Sign Up</h3>
+  
+  <form name="login" novalidate>
+    
+    <div class="username-input">
+      <h3>Username</h3>
+        <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    </div>
+    
+    <div class="password-input">
+      <h3>Password</h3>
+        <input type="text" class="login-input" name="login" placeholder="Password" ng-model="password" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    </div>
+    
+    <h3>Personality Traits</h3>  
+    
+    <div id='trait-box'>
+      <div class='trait-row'>
+        <button id='traditional' class='trait-item' ng-click='addTrait("traditional")'>Traditional</button>
+        <button id='unconventional' class='trait-item' ng-model='trait' ng-click='addTrait("unconventional")'>Unconventional</button>
+        <button id='splendid' class='trait-item' ng-model='trait' ng-click='addTrait("splendid")'>Splendid</button>
+      </div>
+      <div class='trait-row'>
+        <button class='trait-item' ng-click='addTrait("Spontaneous")'>Spontaneous</button>
+        <button class='trait-item' ng-click='addTrait("Introverted")'>Introverted</button>
+        <button class='trait-item' ng-click='addTrait("Extroverted")'>Extroverted</button>
+      </div>
+      <div class='trait-row'>
+        <button class='trait-item' ng-click='addTrait("Guarded")'>Guarded</button>
+        <button class='trait-item' ng-click='addTrait("Warm")'>Warm</button>
+        <button class='trait-item' ng-click='addTrait("Anxious")'>Anxious</button>
+      </div>
+      <div class='trait-row'>
+        <button class='trait-item' ng-click='addTrait("Relaxed")'>Relaxed</button>
+        <button class='trait-item' ng-click='addTrait("Sad")'>Sad</button>
+        <button class='trait-item' ng-click='addTrait("Confused")'>Confused</button>
+      </div>
+    </div>
+    
+    <br>
+    <button type='button' class='create-account' ng-click='createAccount()'>Create Account</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" ng-click='loginView()'>Login Page</button>
+  </form>
+  
+  
+</div>

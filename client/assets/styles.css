@@ -14,7 +14,28 @@ body {
   background-color: #d1d1d1;
   justify-content: center;
   width: 385px;
-  height: 300px;
-  border-radius: 5px;
-  padding: 2px;
+  /*height: 300px;*/
+  border-radius: 3px;
+  padding: 5px 5px 10px 5px;
+  /*margin: 5px 5px 5px 5px;*/
+}
+
+.trait-box {
+   width: 300px;
+}
+
+.trait-item {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: #eee;
+  margin: 3px;
+}
+
+.trait-item:focus {
+  outline: none;
+}
+
+.selected {
+  background-color: #fff;
 }

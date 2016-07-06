@@ -1,13 +1,13 @@
 
 angular.module('qurvey.services')
 
-.service('Login', function($http) {
+.service('SignUp', function($http) {
   
-  var login = function(data) {
-    console.log('Login service: login = ', data)
+  var signUp = function(data) {
+    console.log('SignUp service: login = ', data)
     return $http({
       method: 'POST',
-      url: '/auth/login/',
+      url: '/auth/singup/',
       data: JSON.stringify(data)
       // data: data
     }).then(function(data) {
@@ -18,7 +18,7 @@ angular.module('qurvey.services')
   };
 
   return {
-    login: login
+    signUp: signUp
   };
   
 });
