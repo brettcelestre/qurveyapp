@@ -1,14 +1,23 @@
 var Question = require('./questionsModel.js');
-var User = require('../users/usersModel.js').model;
+var User = require('../users/usersModel.js');
+
 module.exports = {
   allQuestions: function(req, res) {
-    res.send('allQuestions');
+    User.find({username: 'Second'}, function(err, User) {
+      console.log(User);
+      Question.find({user: User._id}, function(err, Question) {
+        console.log(Question);
+        res.send(Question); 
+      });
+    });
   },
   newQuestion: function(req, res) {
-    console.log(req.body);
-    User.findOne({}, function(err, User) {
+
+    // TODO CONNECT SESSION TO GET USER INFO FOR NEW QUESTION
+    User.findOne({username: 'Second'}, function(err, User) {
       console.log(User);
-      req.body._user = User._id;
+      req.body.user = User._id;
+    // END TODO
       var newQuestion = new Question(req.body);
       newQuestion.save(function(err, newQuestion) {
         if (err) {
@@ -21,4 +30,4 @@ module.exports = {
       
     });
   }
-}
+};

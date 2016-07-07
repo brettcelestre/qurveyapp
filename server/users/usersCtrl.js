@@ -1,4 +1,4 @@
-var User = require('./usersModel.js').model;
+var User = require('./usersModel.js');
 
 module.exports = {
   allUsers: function(req, res) {
@@ -20,4 +20,4 @@ module.exports = {
       res.send(newUser);
     });
   }
-}
+};

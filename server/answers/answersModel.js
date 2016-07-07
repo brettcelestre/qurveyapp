@@ -1,17 +1,37 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
 // schema for answer
-var AnswerSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+var AnswerSchema = new Schema({
 
-  // answer
+  // answer to question
   answer: {
-    type: String,
-    required: true,
-    unique: true
+    // test of answer
+    text: {
+      type: String,
+      required: true
+    },
+    // index of response [a-e]
+    responseIndex: {
+      type: String,
+      required: true
+    }
   },
 
-  user: [UserSchema],
+  // user who answered question
+  user: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
 
-  
-  
+  // question that was answered by user
+  question: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Question'
+  }
+
 });
+
+module.exports = mongoose.model('Answer', AnswerSchema);
