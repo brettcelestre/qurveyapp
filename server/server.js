@@ -1,6 +1,8 @@
 var express = require('express');
 var middleware = require('./config/middleware.js');
 var mongoose = require('mongoose');
+// make mongoose use q promises
+mongoose.Promise = require('q').Promise;
 
 
 
