@@ -1,7 +1,7 @@
 
 angular.module('qurvey.services')
 
-.service('Login', function($http) {
+.service('Login', ['$http', function($http) {
   
   // Sends POST req to /auth/login with username and password
   var login = function(data) {
@@ -18,7 +18,7 @@ angular.module('qurvey.services')
   };
 
   return {
-    login: login
+    login: login,
   };
   
-});
+}]);

@@ -1,4 +1,4 @@
-<div class='login'>
+<div class='login center-div'>
 
   <h1>Qurvey</h1>
   <h3>Sign Up</h3>
@@ -12,7 +12,7 @@
     
     <div class="password-input">
       <h3>Password</h3>
-        <input type="text" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+        <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required><img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' />
     </div>
     
     <h3>Personality Traits</h3>
@@ -43,10 +43,10 @@
     
     <br>
     <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
-    <button id='createAcccount' type='button' class='create-account' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</button>
+    <button id='createAcccount' type='button' class='login-button create-account' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</button>
     <br>
     <br>
-    <button type="button" class="btn btn-primary" ng-click='loginView()'>Login Page</button>
+    <button type="button" class="login-button link" ng-click='loginView()'>Login Page</button>
   </form>
   
   

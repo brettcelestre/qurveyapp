@@ -1,10 +1,13 @@
 
-angular.module('qurvey.controllers').controller('MainController', function($scope, $state) {
+angular.module('qurvey.controllers')
+
+.controller('MainController', function($scope, $state) {
   
-  $scope.username = 'Username';
-  $scope.password = 'Password';
+  $scope.searchTerm = '';
   
-  $scope.validPassword = false;
+  $scope.search = function(){
+    // Invoke Search service
+  };
 
 
 });
