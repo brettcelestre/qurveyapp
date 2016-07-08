@@ -6,18 +6,16 @@ var User = require('../users/usersModel.js');
 var Schema = mongoose.Schema;
 var AnswerSchema = new Schema({
 
-  // answer to question
-  answer: {
-    // test of answer
-    text: {
-      type: String,
-      required: true
-    },
-    // index of response [a-e]
-    responseIndex: {
-      type: String,
-      required: true
-    }
+  // text of answer
+  text: {
+    type: String,
+    required: true
+  },
+
+  // index of response [a-e]
+  responseIndex: {
+    type: String,
+    required: true
   },
 
   // user who answered question
@@ -40,7 +38,7 @@ var AnswerSchema = new Schema({
 AnswerSchema.pre('save', function(next) {
 
   // update question
-  Question.update({_id: this.question}, {$inc: {["responses." + this.answer.responseIndex]: 1}, $push: {answerObjs: this._id}})
+  Question.update({_id: this.question}, {$inc: {["responses." + this.responseIndex]: 1}, $push: {answerObjs: this._id}})
   .exec(function() {
     next();
   });

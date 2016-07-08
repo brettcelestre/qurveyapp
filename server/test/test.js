@@ -333,10 +333,8 @@ describe("server", function() {
     it("should return newAnswer object", function(done) {
 
       var newAnswer = {
-        answer: {
-          text: 'Yes',
-          responseIndex: 'a'
-        },
+        text: 'Yes',
+        responseIndex: 'a',
         question: questionId,
         user: userId
       };
@@ -344,8 +342,8 @@ describe("server", function() {
         .post('/api/answers')
         .send(newAnswer)
         .expect(function(res) {
-          res.body.answer.text = 'Yes';
-          res.body.answer.responseIndex = 'a';
+          res.body.text = 'Yes';
+          res.body.responseIndex = 'a';
           res.body.question._id = questionId;
           res.body.user._id = userId;
         })
