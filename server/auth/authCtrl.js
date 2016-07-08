@@ -31,6 +31,7 @@ module.exports = {
                 req.session.user = user;
                 res.send(user);
               });
+
             }
           });
         }
