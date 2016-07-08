@@ -349,5 +349,20 @@ describe("server", function() {
         })
         .expect(201, done);
     });
+
+    it("should increment response counter of question", function(done) {
+      var count = 0;
+      //get question
+      Question.findOne({_id: questionId})
+      .exec(function(err, q) {
+        if (err) {
+          console.error(err);
+        } else {
+          count = q.responses.a;
+          expect(count).to.equal(1);
+          done();
+        }
+      });
+    });
   });
 });

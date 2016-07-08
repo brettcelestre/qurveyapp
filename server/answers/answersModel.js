@@ -36,10 +36,13 @@ var AnswerSchema = new Schema({
 });
 
 // post save middleware to increment response total of question
-AnswerSchema.post('save', function(doc) {
+AnswerSchema.pre('save', function(next) {
 
   // update question
-  Question.update({_id: doc.question}, {$inc: {["responses." + doc.answer.responseIndex + ""]: 1}});
+  Question.update({_id: this.question}, {$inc: {["responses." + this.answer.responseIndex]: 1}})
+  .exec(function() {
+    next();
+  });
 });
 
 module.exports = mongoose.model('Answer', AnswerSchema);
