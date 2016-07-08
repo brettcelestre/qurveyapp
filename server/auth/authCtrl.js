@@ -10,8 +10,9 @@ module.exports = {
       if (err) {
         res.send(err);
         return console.error(err);
+      } else {  
+        res.status(201).send(newUser);
       }
-      res.send(newUser);
     });
   }
 };

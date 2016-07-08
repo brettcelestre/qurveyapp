@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Question = require('../questions/questionsModel.js');
 
 // schema for answer
 var Schema = mongoose.Schema;
@@ -32,6 +33,13 @@ var AnswerSchema = new Schema({
     ref: 'Question'
   }
 
+});
+
+// post save middleware to increment response total of question
+AnswerSchema.post('save', function(doc) {
+
+  // update question
+  Question.update({_id: doc.question}, {$inc: {["responses." + doc.answer.responseIndex + ""]: 1}});
 });
 
 module.exports = mongoose.model('Answer', AnswerSchema);

@@ -2,22 +2,27 @@ var User = require('./usersModel.js');
 
 module.exports = {
   allUsers: function(req, res) {
-    User.find({traits:'happy'}, function(err, Users) {
-
-      res.send(Users);
+    User.find({}, function(err, allUsers) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(allUsers);
+      }
     });
 
   },
-  newUser: function(req, res) {
-    console.log(req.body);
-    var newUser = new User(req.body);
-    newUser.save(function(err, newUser) {
+  findUser: function(req, res) {
+    User.findOne({username: req.body.username})
+    .exec(function(err, foundUser) {
       if (err) {
-        res.send(err);
-        return console.error(err);
+        console.error(err);
+        res.status(500).send(err);
+      } else if (!foundUser) {
+        res.status(404).send('user does not exist');
+      } else {
+        res.send(foundUser);
       }
-
-      res.send(newUser);
-    });
+    });    
   }
 };
