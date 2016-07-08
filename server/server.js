@@ -19,4 +19,4 @@ console.log('qurvey is listening on ' + PORT);
 
 
 
-module.exports.app = app;
+module.exports = app;

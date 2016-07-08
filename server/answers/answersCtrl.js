@@ -6,31 +6,26 @@ var User = require('../users/usersModel.js');
 module.exports = {
   allAnswers: function(req, res) {
     Answer.find({})
-    .populate('user')
-    .populate('question')
+    .populate('user', 'traits')
+    .populate('question', 'question')
     .exec(function(err, Answers) {
-      res.send(Answers);   
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.send(Answers);
+      }
     });
   },
   newAnswer: function(req, res) {
-    // TODO get question that has been aswered
-    Question.findOne({}, function (err, Question) {
-      req.body.question = Question._id;
-      // TODO get user that aswered question -- Session obj?
-      User.findOne({}, function(err, User) {
-        req.body.user = User._id;
-        // END TODOS
-        var newAnswer = new Answer(req.body);
-        newAnswer.save(function(err, newAnswer) {
-          if (err) {
-            res.send(err);
-            return console.error(err);
-          }
-
-          res.send(newAnswer);
-        });
-      });
+    var newAnswer = new Answer(req.body);
+    newAnswer.save(function(err, newAnswer) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.status(201).send(newAnswer);
+      }
     });
-    // res.send('newAnswer');
   }
 };

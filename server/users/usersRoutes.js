@@ -4,7 +4,7 @@ module.exports = function (app) {
 
   app.route('/')
     .get(usersCtrl.allUsers)
-    .post(usersCtrl.newUser)
+    .post(usersCtrl.findUser)
 
 
 };

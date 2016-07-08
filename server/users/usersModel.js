@@ -18,7 +18,13 @@ var UserSchema = new Schema({
   },
 
   // traits array
-  traits: [String]
+  traits: [String],
+
+  // array of questions ASKED by this user
+  questionsAsked: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+
+  // array of questions answered by this user
+  questionsAnswered: [{type: Schema.Types.ObjectId, ref: 'Question'}]
   
 });
 
