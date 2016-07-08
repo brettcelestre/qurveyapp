@@ -11,6 +11,11 @@ angular.module('qurvey.controllers')
   // State for disabling Create Account button
   $scope.submitCheck = true;
   
+  $scope.showPass = function(){
+    console.log('show password function');
+    
+  };
+  
   // Checks if we should disable create account button
   $scope.createAccountButton = function(){
     // Check if our inputs are filled and traits selected

@@ -1,0 +1,13 @@
+<div class='question-container center-div' ng-controller='QuestionController'>
+
+  <div class='question-tab' ng-click='questions()'>
+    <p>Questions</p>
+  </div>
+  
+  <div class='ask-tab' ng-click='ask()'>
+    <p>Ask</p>
+  </div>
+  
+  <div ui-view='feed'></div>
+
+</div>

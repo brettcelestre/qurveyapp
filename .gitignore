@@ -32,8 +32,12 @@ node_modules
 ### Bower ###
 **/bower_components/
 
+### Tests ###
+**/spec/
+**/SpecRunner.html
+
 ### PhPStorm ###
 .idea/
 
 ### Assets ###
-**assets/img/
+**/assets/img/
