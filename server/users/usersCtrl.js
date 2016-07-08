@@ -14,6 +14,8 @@ module.exports = {
   },
   findUser: function(req, res) {
     User.findOne({username: req.body.username})
+    .populate('questionsAsked')
+    .populate('questionsAnswered')
     .exec(function(err, foundUser) {
       if (err) {
         console.error(err);

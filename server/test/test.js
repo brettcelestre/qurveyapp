@@ -305,24 +305,26 @@ describe("server", function() {
 
     // delete test answer, test question, and test user after test
     after(function () {
-      Answer.findOneAndRemove({question: questionId}, function(err) {
+      Answer.findOneAndRemove({question: questionId}, function(err, answer) {
         if (err) {
           console.error(err);
         } else {
+          console.log(answer);
           console.log('test answer deleted');
         }
       });
-      Question.findOneAndRemove({question: 'test'}, function(err, q) {
+      Question.findOneAndRemove({question: 'test'}, function(err, question) {
         if (err) {
           console.error(err);
         } else {
-          console.log('test question deleted', q);
+          console.log('test question deleted', question);
         }
       });
-      User.findOneAndRemove({username: 'test'}, function(err) {
+      User.findOneAndRemove({username: 'test'}, function(err, user) {
         if (err) {
           console.error(err);
         } else {
+          console.log(user);
           console.log('test user deleted');
         }
       });

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var User = require('../users/usersModel.js');
 
 // schema for question
 var Schema = mongoose.Schema;
@@ -63,8 +64,21 @@ var QuestionSchema = new Schema({
       type: Number,
       default: 0
     }
-  }
+  },
 
+  // array of Answer._id
+  answerObjs: [{type: Schema.Types.ObjectId, ref: 'Answer'}]
+});
+
+// pre save middleware to add question to user's array of questions
+QuestionSchema.post('save', function(doc) {
+  console.log('in Q pre save');
+
+  // update question
+  User.update({_id: doc.user}, {$push: {questionsAsked: doc._id}})
+  .exec(function() {
+    return;
+  });
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);
