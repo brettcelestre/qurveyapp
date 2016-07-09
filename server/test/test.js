@@ -22,7 +22,7 @@ describe("server", function() {
 
   // auth routes
   describe("POST /auth/login", function() {
-    it("should return 'login'", function(done) {
+    it("should return user object", function(done) {
       var loginInfo = {
         username: 'Mario',
         password: '1234'
