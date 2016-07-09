@@ -70,9 +70,11 @@ body {
   margin: 5px;
 }
 
-.question-container {
+.content-container {
   width: 570px;
   margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tab-seleceted {
@@ -142,6 +144,10 @@ body {
 }
 
 .trait-item:hover {
+  cursor: pointer;
+}
+
+.pointer {
   cursor: pointer;
 }
 
