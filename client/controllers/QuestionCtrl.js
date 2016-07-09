@@ -18,6 +18,18 @@ angular.module('qurvey.controllers')
     // 
     $state.go('main.ask');
   };
+  
+  $scope.top = function(){
+    console.log('QuestionController -  top()');
+    // 
+    $state.go('main.questions.top');
+  };
+  
+  $scope.recent = function(){
+    console.log('QuestionController -  recent()');
+    // 
+    $state.go('main.questions.recent');
+  };
 
 // Closing Function Controller declaration
 });

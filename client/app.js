@@ -33,12 +33,6 @@ angular.module('Qurvey', [
       }
     })
     
-    // Account state config
-    .state('account', {
-      url: '/account',
-      templateUrl: 'views/account.html',
-      controller: 'AccountController'
-    })
     
     // Main Content Page after logging in
     .state('main', {
@@ -70,20 +64,60 @@ angular.module('Qurvey', [
       }
     })
     
+    // Main Question Filters
     .state('main.questions.filter', {
       parent: 'main.questions',
-      // url: '/questions',
+      params: { 
+        autoActivateChild: 'main.questions.top'
+      },
       views: {
         'feed': {
           templateUrl: 'views/question-filter.html',
-          controller: 'QuestionFilterController'
+          controller: 'QuestionController'
         }
       }
     })
     
+    // Main Questions
+    .state('main.questions.top', {
+      parent: 'main.questions.filter',
+      url: '/top',
+      views: {
+        'question-feed': {
+          templateUrl: 'views/main.questions.top.html',
+          controller: 'QuestionController'
+        }
+      }
+    })
+    
+    // Main Questions
+    .state('main.questions.recent', {
+      parent: 'main.questions.filter',
+      url: '/recent',
+      views: {
+        'question-feed': {
+          templateUrl: 'views/main.questions.recent.html',
+          controller: 'QuestionController'
+        }
+      }
+    })
+    
+    // Profile state config
+    .state('profile', {
+      parent: 'main',
+      url: '/profile',
+      views: {
+        'content': {
+          templateUrl: 'views/profile.html',
+          controller: 'ProfileController'
+        }
+      }
+    })
+    
+    // Main Ask config
     .state('main.ask', {
       parent: 'main.questions',
-      url: '/main/ask',
+      url: '/ask',
       views: {
         'feed': {
           templateUrl: 'views/main.ask.html',
@@ -105,7 +139,15 @@ angular.module('Qurvey', [
       if(aac = toState && toState.params && toState.params.autoActivateChild) {
         $state.go(aac);
       }
+        console.log('state just changed');
     });
+    
+    // $rootScope.$on('$stateChangeStart', 
+    //   function(event, toState, toParams, fromState, fromParams){ 
+    //     event.preventDefault(); 
+    //     // transitionTo() promise will be rejected with 
+    //     // a 'transition prevented' error
+    // });
     
 }]);
 
