@@ -30,6 +30,12 @@ var AnswerSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'Question'
+  },
+
+  // time answer was created
+  createdAt: {
+    type: Date,
+    default: new Date()
   }
 
 });

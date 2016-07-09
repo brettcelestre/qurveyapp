@@ -15,7 +15,8 @@ var QuestionSchema = new Schema({
   // user who asked the question
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
 
   // response options (answers)
@@ -63,16 +64,27 @@ var QuestionSchema = new Schema({
     e: {
       type: Number,
       default: 0
+    },
+
+    // neutral keeps track of people who elect not to choose one of the provided responses
+    neutral: {
+      type: Number,
+      default: 0
     }
   },
 
   // array of Answer._id
-  answerObjs: [{type: Schema.Types.ObjectId, ref: 'Answer'}]
+  answerObjs: [{type: Schema.Types.ObjectId, ref: 'Answer'}],
+
+  // timestamp when created
+  createdAt: {
+    type: Date,
+    default: new Date()
+  }
 });
 
 // pre save middleware to add question to user's array of questions
 QuestionSchema.post('save', function(doc) {
-  console.log('in Q pre save');
 
   // update question
   User.update({_id: doc.user}, {$push: {questionsAsked: doc._id}})

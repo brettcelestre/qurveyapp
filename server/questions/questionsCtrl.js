@@ -4,7 +4,7 @@ var User = require('../users/usersModel.js');
 module.exports = {
   allQuestions: function(req, res) {
     Question.find({})
-    .populate('user')
+    .populate('user', 'username')
     .exec(function(err, Questions) {
       if (err) {
         console.error(err);
@@ -16,9 +16,9 @@ module.exports = {
   },
   newQuestion: function(req, res) {
 
-    // TODO CONNECT SESSION TO GET USER INFO FOR NEW QUESTION
-    // END TODO
-    var newQuestion = new Question(req.body);
+    var qInfo = req.body;
+    qInfo.user = req.session.user._id;
+    var newQuestion = new Question(qInfo);
     newQuestion.save(function(err, newQuestion) {
       if (err) {
         console.error(err);
