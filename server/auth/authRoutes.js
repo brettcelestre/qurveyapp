@@ -6,6 +6,8 @@ module.exports = function (app) {
     .post(authCtrl.login)
   app.route('/signup')
     .post(authCtrl.signup)
+  app.route('/checkSession')
+    .get(authCtrl.checkSession)
 
 
 };

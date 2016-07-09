@@ -1,6 +1,17 @@
 var User = require('../users/usersModel.js');
 
 module.exports = {
+
+  // check if session exists
+  checkSession: function(res, req) {
+
+    if (req.session.user) {
+      res.send(req.session.user);
+    } else {
+      res.redirect('/');
+    }
+  },
+
   login: function(req, res) {
     // login info 
     var username = req.body.username;
@@ -17,12 +28,16 @@ module.exports = {
             if (!foundUser) {
               res.status(404).send({error: 'password does not match'});
             } else {
-              res.send(user);
+              req.session.regenerate(function() {
+                req.session.user = user;
+                res.send(user);
+              });
             }
           });
         }
       });
   },
+
   signup: function(req, res) {
     var newUser = new User(req.body);
     newUser.save(function(err, user) {
