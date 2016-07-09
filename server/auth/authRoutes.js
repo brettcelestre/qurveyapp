@@ -8,6 +8,8 @@ module.exports = function (app) {
     .post(authCtrl.signup)
   app.route('/checkSession')
     .get(authCtrl.checkSession)
+  app.route('/logout')
+    .get(authCtrl.logout)
 
 
 };
