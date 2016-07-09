@@ -31,7 +31,7 @@ var QuestionSchema = new Schema({
     },
     c: {
       type: String,
-      required: true
+      default: null
     },
     d: {
       type: String,
