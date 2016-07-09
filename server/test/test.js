@@ -23,9 +23,17 @@ describe("server", function() {
   // auth routes
   describe("POST /auth/login", function() {
     it("should return 'login'", function(done) {
+      var loginInfo = {
+        username: 'Mario',
+        password: '1234'
+      };
       request
         .post('/auth/login')
-        .expect(200, 'login', done);
+        .send(loginInfo)
+        .expect(function(res) {
+          res.username = 'Mario';
+        })
+        .expect(200, done);
     });
   });
 
