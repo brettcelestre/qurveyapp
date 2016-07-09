@@ -1,7 +1,32 @@
 <div class='ask-container' ng-controller='AskController'>
 
-  <h2>ask view</h2>
+  <h2 class='header'>Ask a qurvey:</h2>
   
-  <!-- <div ui-view></div> -->
-  
+  <!-- <h3>Question</h3> -->
+  <input type="text" class="ask-input" name="ask-input" placeholder="Question" ng-model="question" required>
+  <br>
+  <br>
+  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option1" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+  <br>
+  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option2" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+  <br>
+  <p class='add-option' ng-hide='addOptionButtonThree' ng-click="addOptionButtonThree = true; hideThree = false">Add Another Option</p>
+  <div id='option3' ng-hide='hideThree'>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option3" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <br>
+    <p class='add-option' ng-hide='addOptionButtonFour' ng-click="addOptionButtonFour = true; hideFour = false">Add Another Option</p>
+  </div>
+  <div id='option4' ng-hide='hideFour'>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option4" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <br>
+    <p class='add-option' ng-hide='addOptionButtonFive' ng-click="addOptionButtonFive = true; hideFive = false">Add Another Option</p>
+  </div>
+  <div id='option5' ng-hide='hideFive'>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option5" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <br>
+    <br>
+  </div>
+  <button type='button' class='ask-button center-button' ng-click='askQuestion()'>Create Question</button>
+  <br>
+
 </div>
