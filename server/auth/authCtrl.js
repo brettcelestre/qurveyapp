@@ -44,9 +44,22 @@ module.exports = {
       if (err) {
         res.send(err);
         return console.error(err);
-      } else {  
+      } else {
+        req.session.regenerate(function() {
+          req.session.user = user;
+          res.send(user);
+        });  
         res.status(201).send(user);
       }
     });
+  },
+
+  // logout, destroy session
+  logout: function(req, res) {
+
+    req.session.destroy(function() {
+      res.redirect('/');
+    });
+
   }
 };
