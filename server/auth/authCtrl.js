@@ -4,7 +4,6 @@ module.exports = {
 
   // check if session exists
   checkSession: function(res, req) {
-
     if (req.session.user) {
       res.send(req.session.user);
     } else {
@@ -47,19 +46,16 @@ module.exports = {
       } else {
         req.session.regenerate(function() {
           req.session.user = user;
-          res.send(user);
+          res.status(201).send(user);
         });  
-        res.status(201).send(user);
       }
     });
   },
 
   // logout, destroy session
   logout: function(req, res) {
-
     req.session.destroy(function() {
       res.redirect('/');
     });
-
   }
 };
