@@ -5,7 +5,6 @@ angular.module('qurvey.services')
   
   // Sends POST req to /api/questions/ask with new question data
   var ask = function(data) {
-    console.log('Ask Service ask function ran: ');
     return $http({
       method: 'POST',
       url: '/api/questions/ask',
