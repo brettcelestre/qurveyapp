@@ -8,25 +8,25 @@ angular.module('qurvey.controllers')
 .controller('QuestionController', function($scope, $state) {
 
   $scope.questions = function(){
-    console.log('QuestionController -  questions()');
+    // console.log('QuestionController -  questions()');
     //
     $state.go('main.questions.filter');
   };
   
   $scope.ask = function(){
-    console.log('QuestionController -  ask()');
+    // console.log('QuestionController -  ask()');
     // 
     $state.go('main.ask');
   };
   
   $scope.top = function(){
-    console.log('QuestionController -  top()');
+    // console.log('QuestionController -  top()');
     // 
     $state.go('main.questions.top');
   };
   
   $scope.recent = function(){
-    console.log('QuestionController -  recent()');
+    // console.log('QuestionController -  recent()');
     // 
     $state.go('main.questions.recent');
   };

@@ -6,23 +6,23 @@
   <input type="text" class="ask-input" name="ask-input" placeholder="Question" ng-model="question" required>
   <br>
   <br>
-  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option1" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option1"  required>
   <br>
-  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option2" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+  <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option2" required>
   <br>
   <p class='add-option' ng-hide='addOptionButtonThree' ng-click="addOptionButtonThree = true; hideThree = false">Add Another Option</p>
   <div id='option3' ng-hide='hideThree'>
-    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option3" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option3" required>
     <br>
     <p class='add-option' ng-hide='addOptionButtonFour' ng-click="addOptionButtonFour = true; hideFour = false">Add Another Option</p>
   </div>
   <div id='option4' ng-hide='hideFour'>
-    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option4" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option4" required>
     <br>
     <p class='add-option' ng-hide='addOptionButtonFive' ng-click="addOptionButtonFive = true; hideFive = false">Add Another Option</p>
   </div>
   <div id='option5' ng-hide='hideFive'>
-    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option5" ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    <input type="text" class="ask-input" name="ask-input" placeholder="Option" ng-model="option5" required>
     <br>
     <br>
   </div>

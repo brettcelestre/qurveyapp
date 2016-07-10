@@ -1,6 +1,71 @@
-<div class='content-container center-div' ng-controller='QuestionController'>
+<div class='content-container center-div' ng-controller='RecentController'>
+
+  <div ng-repeat='data in recentData' class='question-div'>
+    <h1>{{ data.question }}</h1>
+    <h5>{{ data.user.username }} | {{ data.createdAt }}</h5>
+    
+    <div class='chart'>
+      <h2>GRAPH</h2>
+    </div>
+    
+    <!-- If 2  -->
+    <div ng-if='(questionCount(data.answers) === 2)' class='option-two-div center-div'>
+      <div class='option-two-button'>
+        {{ data.answers.a }}
+      </div>
+      <div class='option-two-button'>
+        {{ data.answers.b }}
+      </div>
+    </div>
+    
+    <!-- If 3 -->
+    <div ng-if='(questionCount(data.answers) === 3)' class='option-three-div'>
+      <div class='option-three'>
+        {{ data.answers.a }}
+      </div>
+      <div class='option-three'>
+        {{ data.answers.b }}
+      </div>
+      <div class='option-three'>
+        {{ data.answers.c }}
+      </div>
+    </div>
+    
+    <!-- If 4 -->
+    <div ng-if='(questionCount(data.answers) === 4)' class='option-four-div'>
+      <div class='option-four'>
+        {{ data.answers.a }}
+      </div>
+      <div class='option-four'>
+        {{ data.answers.b }}
+      </div>
+      <div class='option-four'>
+        {{ data.answers.c }}
+      </div>
+      <div class='option-four'>
+        {{ data.answers.d }}
+      </div>
+    </div>
+      
+    <!-- If 5 -->
+    <div ng-if='(questionCount(data.answers) === 5)' class='option-five-div'>
+      <div class='option-five'>
+        {{ data.answers.a }}
+      </div>
+      <div class='option-five'>
+        {{ data.answers.b }}
+      </div>
+      <div class='option-five'>
+        {{ data.answers.c }}
+      </div>
+      <div class='option-five'>
+        {{ data.answers.d }}
+      </div>
+      <div class='option-five'>
+        {{ data.answers.e }}
+      </div>
+    </div>
   
-  <h1>RECENT Questions display here</h1>
-  <!-- <div ui-view='question-feed'></div> -->
+  </div>
 
 </div>

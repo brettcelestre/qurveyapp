@@ -139,7 +139,7 @@ angular.module('Qurvey', [
       if(aac = toState && toState.params && toState.params.autoActivateChild) {
         $state.go(aac);
       }
-        console.log('state just changed');
+        // console.log('state just changed');
     });
     
     // $rootScope.$on('$stateChangeStart', 

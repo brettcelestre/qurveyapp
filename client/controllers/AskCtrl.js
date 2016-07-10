@@ -32,6 +32,10 @@ angular.module('qurvey.controllers')
     if ( $scope.option2.length >= 1 ) {
       option2 = true;
     }
+    
+    // Check if more options were entered, add those validations to our return
+    
+    console.log('Form val: ', [ question, option1, option2 ]);
     // Returns array with boolean for all three inputs
     return [ question, option1, option2 ];
   };

@@ -265,3 +265,19 @@ body {
   padding-top: 20px;
   text-align: center;
 }
+
+.question-div {
+}
+
+.option-two-div {
+  
+}
+
+.option-two-button {
+  display: inline-block;
+  width: 200px;
+  height: 30px;
+  background-color: #e6e6e6;
+}
+
+
