@@ -17,7 +17,8 @@ var graphCtrl = {
         console.error(err);
         res.status(500).send(err);
       } else {
-        // var graph = graphMaker(answers);
+        var graph = graphCtrl.graphMaker(answers, 'text', 'question');
+        res.send(graph);
       }
     });
   },
@@ -29,6 +30,7 @@ var graphCtrl = {
     var graph = new Graph();
     // list to pass to cytoscape
     var list = [];
+    console.log(data);
 
     //iterate through data - should be array of objects
     for (var i = 0; i < data.length; i++) {

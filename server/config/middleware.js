@@ -18,11 +18,15 @@ module.exports = function (app, express) {
   var questionsRouter = express.Router();
   var answersRouter = express.Router();
   var authRouter = express.Router();
+  var graphRouter = express.Router();
+  var seedRouter = express.Router();
 
   app.use('/api/users', usersRouter);
   app.use('/api/questions', questionsRouter);
   app.use('/api/answers', answersRouter);
   app.use('/auth', authRouter);
+  app.use('/api/graph', graphRouter);
+  app.use('/api/seed', seedRouter);
 
 
   // inject routes
@@ -30,6 +34,8 @@ module.exports = function (app, express) {
   require('../questions/questionsRoutes.js')(questionsRouter);
   require('../answers/answersRoutes.js')(answersRouter);
   require('../auth/authRoutes.js')(authRouter);
+  require('../graph/graphRoutes.js')(graphRouter);
+  require('../seed/seedRoutes.js')(seedRouter);
 
 
 };
