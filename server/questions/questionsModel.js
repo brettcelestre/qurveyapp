@@ -31,15 +31,15 @@ var QuestionSchema = new Schema({
     },
     c: {
       type: String,
-      default: null
+      default: ''
     },
     d: {
       type: String,
-      default: null
+      default: ''
     },
     e: {
       type: String,
-      default: null
+      default: ''
     }
   },
 
