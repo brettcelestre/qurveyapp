@@ -3,7 +3,6 @@ var User = require('../users/usersModel.js');
 
 module.exports = {
   allQuestions: function(req, res) {
-    console.log('allQuetsions ran');
     Question.find({})
     .populate('user', 'username')
     .exec(function(err, Questions) {

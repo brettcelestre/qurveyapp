@@ -40,7 +40,8 @@ angular.module('qurvey.controllers')
       .then(function(data){
         // If vaildUser is true, change state to questions
         if ( data.status === 200) {
-          console.log('Successful Login. User data = ', data);
+          // console.log('Successful Login. User data = ', data);
+          // Login.currentUser.username = data.username;
           // Change state to questions
           $state.go('main');
         // Else

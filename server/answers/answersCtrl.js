@@ -4,8 +4,8 @@ var User = require('../users/usersModel.js');
 
 
 module.exports = {
+  
   allAnswers: function(req, res) {
-
     // check if admin user
     if (req.session.user.username !== 'admin') {
       res.status(403).redirect('/');
@@ -24,6 +24,7 @@ module.exports = {
       });
     }
   },
+  
   newAnswer: function(req, res) {
     var aInfo = req.body;
     aInfo.user = req.session.user._id;
@@ -37,4 +38,5 @@ module.exports = {
       }
     });
   }
+  
 };

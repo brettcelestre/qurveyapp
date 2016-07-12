@@ -1,71 +1,119 @@
-<div class='content-container center-div' ng-controller='RecentController'>
+<div class='center-div' ng-controller='RecentController'>
 
-  <div ng-repeat='data in recentData' class='question-div'>
-    <h1>{{ data.question }}</h1>
-    <h5>{{ data.user.username }} | {{ data.createdAt }}</h5>
-    
-    <div class='chart'>
-      <h2>GRAPH</h2>
+  
+  <!-- Sets up Infinite Scrolling -->
+  <!-- <md-virtual-repeat-container id="vertical-container"> -->
+      <!-- <div md-virtual-repeat="data in ctrl.infiniteItems | orderBy: '-createdAt' " md-on-demand flex> -->
+      
+  <div ng-repeat='data in recentData | orderBy: "-createdAt" ' class='question-div'>
+    <div class='question-header'>
+      <h1 class='question-title'>{{ data.question }}</h1>
+      <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
     </div>
     
+    <!-- <div class='chart'>
+      <h2>GRAPH</h2>
+    </div> -->
+    
     <!-- If 2  -->
-    <div ng-if='(questionCount(data.answers) === 2)' class='option-two-div center-div'>
-      <div class='option-two-button'>
-        {{ data.answers.a }}
-      </div>
-      <div class='option-two-button'>
-        {{ data.answers.b }}
-      </div>
+    <div ng-if='(questionCount(data.answers) === 2)' class='option-two-div center-div voting-options' id='{{data._id}}'>
+      <!-- <div class='option-two-button'> -->
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <md-button class="md-raised" ng-click='answer(data.question, "a", data._id)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "b", data._id)'>{{ data.answers.b }}</md-button>
+          </section>
+        </section>
+      </md-content>
     </div>
     
     <!-- If 3 -->
-    <div ng-if='(questionCount(data.answers) === 3)' class='option-three-div'>
-      <div class='option-three'>
-        {{ data.answers.a }}
-      </div>
-      <div class='option-three'>
-        {{ data.answers.b }}
-      </div>
-      <div class='option-three'>
-        {{ data.answers.c }}
-      </div>
+    <div ng-if='(questionCount(data.answers) === 3)' class='option-three-div voting-options' id='{{data._id}}'>
+      <!-- <div class='option-three'>   -->
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <md-button class="md-raised" ng-click='answer(data.question, "a", data._id)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "b", data._id)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "c", data._id)'>{{ data.answers.c }}</md-button>
+          </section>
+        </section>
+      </md-content>
     </div>
     
     <!-- If 4 -->
-    <div ng-if='(questionCount(data.answers) === 4)' class='option-four-div'>
-      <div class='option-four'>
-        {{ data.answers.a }}
-      </div>
-      <div class='option-four'>
-        {{ data.answers.b }}
-      </div>
-      <div class='option-four'>
-        {{ data.answers.c }}
-      </div>
-      <div class='option-four'>
-        {{ data.answers.d }}
-      </div>
+    <div ng-if='(questionCount(data.answers) === 4)' class='option-four-div voting-options' id='{{data._id}}'>
+      <!-- <div class='option-four'> -->
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <md-button class="md-raised" ng-click='answer(data.question, "a", data._id)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "b", data._id)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "c", data._id)'>{{ data.answers.c }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.d }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "d", data._id)'>{{ data.answers.d }}</md-button>
+          </section>
+        </section>
+      </md-content>
     </div>
       
     <!-- If 5 -->
-    <div ng-if='(questionCount(data.answers) === 5)' class='option-five-div'>
-      <div class='option-five'>
-        {{ data.answers.a }}
-      </div>
-      <div class='option-five'>
-        {{ data.answers.b }}
-      </div>
-      <div class='option-five'>
-        {{ data.answers.c }}
-      </div>
-      <div class='option-five'>
-        {{ data.answers.d }}
-      </div>
-      <div class='option-five'>
-        {{ data.answers.e }}
-      </div>
+    <div ng-if='(questionCount(data.answers) === 5)' class='option-five-div voting-options' id='{{data._id}}'>
+      <!-- <div class='option-five'> -->
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <md-button class="md-raised" ng-click='answer(data.question, "a", data._id)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "b", data._id)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "c", data._id)'>{{ data.answers.c }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.d }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "d", data._id)'>{{ data.answers.d }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number'>{{ data.responses.e }}</h1>
+            <md-button class='md-raised' ng-click='answer(data.question, "e", data._id)'>{{ data.answers.e }}</md-button>
+          </section>
+        </section>
+      </md-content>
     </div>
+
+    <md-content>
+      <md-divider ng-if="!$last" class='question-divider'></md-divider>
+    </md-content>
   
   </div>
+  <!-- </md-virtual-repeat-container> -->
+  <br>
+  <br>
 
 </div>

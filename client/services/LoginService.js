@@ -18,7 +18,7 @@ angular.module('qurvey.services')
   };
 
   return {
-    login: login,
+    login: login
   };
   
 }]);

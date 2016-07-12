@@ -2,8 +2,9 @@
 angular.module('Qurvey', [
   'qurvey.controllers',
   'qurvey.services',
-  // // 'qurvey.directives',
+  // 'ngMaterial',
   'ui.router'
+  // // 'qurvey.directives',
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -102,6 +103,18 @@ angular.module('Qurvey', [
       }
     })
     
+    // Main Ask config
+    .state('main.ask', {
+      parent: 'main.questions',
+      url: '/ask',
+      views: {
+        'feed': {
+          templateUrl: 'views/main.ask.html',
+          controller: 'AskController'
+        }
+      }
+    })
+    
     // Profile state config
     .state('profile', {
       parent: 'main',
@@ -114,19 +127,18 @@ angular.module('Qurvey', [
       }
     })
     
-    // Main Ask config
-    .state('main.ask', {
-      parent: 'main.questions',
-      url: '/ask',
+    // Setting state config
+    .state('settings', {
+      parent: 'main',
+      url: '/settings',
       views: {
-        'feed': {
-          templateUrl: 'views/main.ask.html',
-          controller: 'AskController'
+        'content': {
+          templateUrl: 'views/settings.html',
+          controller: 'ProfileController'
         }
       }
     });
-
-  
+    
 }])
 
 .run(['$rootScope', '$state', '$stateParams',

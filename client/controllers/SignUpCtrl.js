@@ -67,9 +67,15 @@ angular.module('qurvey.controllers')
     SignUp.signUp(accountInfo)
       .then(function(data) {
         // Success message
+        if ( data.statusText == 'Created' ) {
           // Change State to Questions / or quick tour slides
+          $state.go('main.questions.top');
         // Failure message
+        } else {
           // Display 'Username already taken'
+          alert('sorry something went wrong');
+        }
+          
       })
       .catch(function(data) {
         console.error('Error with login: ', data)
