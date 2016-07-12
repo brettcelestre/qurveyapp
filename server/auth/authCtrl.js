@@ -19,6 +19,8 @@ module.exports = {
 
     // query db for user
     User.findOne({username: username})
+    .populate('questionsAnswered')
+    .populate('questionsAsked')
       .exec(function(err, user) {
         if (!user) {
           res.status(404).send({error: 'user not found'});

@@ -29,8 +29,8 @@ var UserSchema = new Schema({
   // array of questions ASKED by this user
   questionsAsked: [{type: Schema.Types.ObjectId, ref: 'Question'}],
 
-  // array of questions answered by this user
-  questionsAnswered: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+  // array of answers to questions answered by this user
+  questionsAnswered: [{type: Schema.Types.ObjectId, ref: 'Answer'}],
 
   // date created
   createdAt: {
