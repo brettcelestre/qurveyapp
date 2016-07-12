@@ -6,7 +6,15 @@ module.exports = {
   checkSession: function(req, res) {
     console.log('checkSession ran | req.session: ', req.session);
     if (req.session.user) {
-      res.send(req.session.user);
+      User.findOne({username: req.session.user.username})
+        .exec(function(err, user) {
+          if (err) {
+            console.error(err);
+          } else {
+            req.session.user = user;
+            res.send(req.session.user);
+          }
+        });
     } else {
       res.redirect('/');
     }
