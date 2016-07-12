@@ -7,6 +7,8 @@ module.exports = {
     console.log('checkSession ran | req.session: ', req.session);
     if (req.session.user) {
       User.findOne({username: req.session.user.username})
+        .populate('questionsAnswered')
+        .populate('questionsAsked')
         .exec(function(err, user) {
           if (err) {
             console.error(err);
