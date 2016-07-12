@@ -53,7 +53,7 @@ AnswerSchema.pre('save', function(next) {
 AnswerSchema.pre('save', function(next) {
 
   // update question
-  User.update({_id: this.user}, {$push: {questionsAnswered: this.question}})
+  User.update({_id: this.user}, {$push: {questionsAnswered: this._id}})
   .exec(function() {
     next();
   });
