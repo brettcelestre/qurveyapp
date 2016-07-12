@@ -26,71 +26,115 @@ angular.module('qurvey.controllers')
     
     return count;
   };
-  
-  
-  // TODO -------------------------------------------- ***
-  // Disable a user to vote on a single question more than once
-  
 
+  // GET's all questions from /api/questions
   $scope.loadRecent = function(){
     // GET req to /api/questions
     Recent.recent()
       .then(function(data) {
-        console.log('data.data: ', data.data);
-        // Pushes data into recentData array
-        data.data.forEach(function(val){
-          $scope.recentData.push(val);
+        // Iterates over our questions data
+        data.data.forEach(function(dataVal){
+          // Set userAnswered to false
+          dataVal.userAnswered = false;  
+          dataVal.classes = {
+            a: 'md-raised',
+            b: 'md-raised',
+            c: 'md-raised',
+            d: 'md-raised',
+            e: 'md-raised'
+          }
+          // Hides 'already voted' warning
+          dataVal.alreadyVoted = false;
+          // Iterate over this users previous answers
+          Main.userObject.questionsAnswered.forEach(function(userVal) {
+            // Check if this user has answered this question
+            if ( userVal.question === dataVal._id ) {
+              // If the user has answered this question, set userAnswered to true
+              dataVal.userAnswered = true;
+              // Store responseIndex in userAnswer
+              dataVal.userAnswer = userVal.responseIndex;
+              dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
+            }
+          });
+          // Push this question into recentData
+          $scope.recentData.push(dataVal);
         });
+        
+        console.log('data.data: ', data.data);
       })
       .catch(function(data){
         console.error('Error with login: ', data)
       });
   }();
   
-  // Submits single answer to DB
-  $scope.answer = function(text, z, questionID ) {
+  // Submits single answer to database
+  $scope.answer = function(text, z, questionID, userAnswer, dataID ) {
     
-    // Gets current user
-    Main.currentUser()
-      .then(function(data){
-        // Saves username
-        var user = data.data.username;
-        // Creates answerData object for Recent.submitAnswer
-        var answerData = {
-          text: text,
-          responseIndex: z,
-          user: user,
-          question: questionID,
-          createdAt: new Date(),
-        };
-        console.log('answerData: ', answerData);
-        // Sends POST req to /api/answers
-        Recent.submitAnswer(answerData)
-          .then(function(data){
-            console.log('Recent.submitAnswer: ', data);
-            
-            // TODO -------------------------------------------- ***
-            // Update DOM immediately to reflect vote
-              // I added the question ID to the parent div of all of
-              // the options. I've passed this question ID into this
-              // function. I need to then find that div, and find the
-              // child div with the matching responseIndex, then 
-              // increment that number up by 1
-            
-            // TODO -------------------------------------------- ***
-            // Update button to indicate user voted that option
-              // add css class md-primary
-            
-          })
-          .catch(function(data){
-            console.error('Error with login: ', data)
-          });
-      })
-      .catch(function(data){
-        console.error('Error with login: ', data)
-      });
-  }
-  
+    // Check to see if the user has already answered this question
+    // This disables a user to vote on a single question more than once
+    if ( userAnswer ) {
+      
+      console.log('This user has already answered this question');
+      
+      // Iterates over recentData
+      // $scope.recentData.forEach(function(val) {
+        // Finds exact question
+        // if ( val._id === questionID ) {
+          // console.log('val.alreadyVoted: ', val.alreadyVoted);
+          // Shows 'Already voted' message
+          // $scope.$apply(function(){
+          //   val.alreadyVoted = true;
+          // });
+          // console.log('val.alreadyVoted after: ', val.alreadyVoted);
+        // }
+      // });
+      
+      // TODO -------------------------------------------- ***
+      // Notify user they've already voted on this question
+      
+    // If the user has not answered this question
+    } else if ( !userAnswer ) {
+      // Gets current user
+      Main.currentUser()
+        .then(function(data){
+          // Saves username
+          var user = data.data.username;
+          // Creates answerData object for Recent.submitAnswer
+          var answerData = {
+            text: text,
+            responseIndex: z,
+            user: user,
+            question: questionID,
+            createdAt: new Date(),
+          };
+          console.log('answerData: ', answerData);
+          // Sends POST req to /api/answers
+          Recent.submitAnswer(answerData)
+            .then(function(data){
+              // Updates the counter after submitting vote
+              // Iterates over recentData
+              $scope.recentData.forEach(function(val) {
+                // Finds exact question
+                if ( val._id === questionID ) {
+                  // Increments chosen response by 1
+                  val.responses[z] += 1;
+                  // Marks question as answered, disabled users ability to vote twice
+                  val.userAnswered = true;
+                  // Update button to indicate user voted that option
+                  val.classes[z] = 'md-raised md-primary';
+                }
+              });
+            })
+            .catch(function(data){
+              console.error('Error with login: ', data)
+            });
+        })
+        .catch(function(data){
+          console.error('Error with login: ', data)
+        });
+    }
+  };
+
   
   // TODO -------------------------------------------- ***
   // Sets up Infinite Scrolling

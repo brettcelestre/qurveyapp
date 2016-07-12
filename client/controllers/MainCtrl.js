@@ -41,8 +41,9 @@ angular.module('qurvey.controllers')
     // Calls /auth/checkSession
     Main.currentUser()
       .then(function(data){
-        console.log('main.currentUser fn: ', data);
+        // console.log('main.currentUser fn: ', data);
         $scope.currentUser = data.data.username;
+        console.log('Main.userObject after currentUser(): ', Main.userObject);
       })
       .catch(function(data){
         console.error('Error with login: ', data)
