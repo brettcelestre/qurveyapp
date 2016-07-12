@@ -1,2 +1,2 @@
 
-angular.module('qurvey.controllers', []);
+angular.module('qurvey.controllers', ['ngMaterial']);

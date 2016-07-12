@@ -1,14 +1,44 @@
 <div class='main' ng-controller='MainController'>
   
   <div class='nav-bar'>
+    
     <a ng-click='questions()' class='pointer'><h1>Qurvey</h1></a>
+    
     <input type='text' class='search-bar' ng-model='searchTerm'></input>
+    
     <div class='search-button pointer' ng-click='search()'>
       <img = src='./assets/img/search.png' class='img-search' />
     </div>
-    <a ng-click='profile()' class='pointer'><img src='./assets/img/profile.png' class='img-profile' /></a>
-    <img src='./assets/img/gear.png' class='img-gear pointer'/>
+    
+    <section layout='row' layout-wrap> 
+      <a ng-click='profile()' class='pointer row-inline'>
+        <p class='md-subhead user-top'>{{ currentUser }}</p>
+        <img src='./assets/img/profile.png' class='img-profile' />
+      </a>
+    </section>
+    
+    <md-menu>
+      <a ng-click="$mdOpenMenu()">
+        <img src='./assets/img/gear.png' class='img-gear pointer'/>
+      </a>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button ng-click="settings()">
+            Settings
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button ng-click="logout()">
+            Logout
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
+    <!-- <img src='./assets/img/gear.png' class='img-gear pointer'/> -->
       <!-- <a ng-click='logout()' class='pointer'></a> -->
+      
   </div>
   
   <div ui-view='content'></div>

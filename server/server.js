@@ -14,10 +14,13 @@ var app = express();
 //connection to mongodb
 mongoose.connect('mongodb://localhost/qurvey');
 
+
 // use mongo to store sessions
 app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  secret: "please don't tell"
+  secret: "please don't tell",
+  resave: true,
+  saveUninitialized: true
 }));
 
 //SET UP MIDDLEWARE + ROUTES

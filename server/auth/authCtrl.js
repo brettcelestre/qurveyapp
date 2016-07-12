@@ -3,7 +3,8 @@ var User = require('../users/usersModel.js');
 module.exports = {
 
   // check if session exists
-  checkSession: function(res, req) {
+  checkSession: function(req, res) {
+    console.log('checkSession ran | req.session: ', req.session);
     if (req.session.user) {
       res.send(req.session.user);
     } else {
@@ -27,6 +28,7 @@ module.exports = {
             if (!foundUser) {
               res.status(404).send({error: 'password does not match'});
             } else {
+              console.log('user was found: ', user);
               req.session.regenerate(function() {
                 req.session.user = user;
                 res.send(user);

@@ -35,6 +35,10 @@
     "supertest": "^1.2.0"
   },
   "devDependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.0.9",
     "angular-mocks": "^1.5.7",
     "chai": "^3.5.0",
     "mocha": "^2.5.3"
