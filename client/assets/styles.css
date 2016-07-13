@@ -274,6 +274,15 @@ body {
   text-align: center;
 }
 
+/* --- GRAPH STYLING ---- */
+
+.graph {
+  width: 560px;
+  height: 350px;
+  margin-top: -20px;
+  /*background-color: red;*/
+}
+
 /* --- QUESTION STYLING ---- */
 
 .question-div {
