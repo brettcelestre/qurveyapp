@@ -44,6 +44,7 @@ var graphCtrl = {
     var graph = new Graph();
     // list to pass to cytoscape
     var list = [];
+    var nodeObj = {};
     console.log(data);
 
     //iterate through data - should be array of objects
@@ -56,7 +57,7 @@ var graphCtrl = {
         'group': 'nodes',
         'data' : {
           'id': mainValue,
-          'foo': 20
+          'size': 20
         }
       };
 
@@ -69,7 +70,8 @@ var graphCtrl = {
         // create node
         graph.addNode(mainValue);
 
-        list.push(node);
+        nodeObj[mainValue] = node;
+        // list.push(node);
       }
       
       for (var j = 0; j < otherValue.length; j++) {
@@ -79,7 +81,8 @@ var graphCtrl = {
         var otherNode = {
           'group': 'nodes',
           'data' : {
-            'id': otherValue[j]
+            'id': otherValue[j],
+            'size': 10
           }
         };
 
@@ -87,23 +90,34 @@ var graphCtrl = {
 
         var edge = {
           'data': {
-            'id': mainValue + otherValue[j] + i,
+            'id': mainValue + otherValue[j],
             'source': mainValue,
-            'target': otherValue[j]
+            'target': otherValue[j],
+            'strength': 0
           }
         };
 
         if (!graph.contains(otherValue[j])) {
           // create node
           graph.addNode(otherValue[j]);
-          list.push(otherNode);
+          // list.push(otherNode);
+          nodeObj[otherValue[j]] = otherNode;
         }
-        // create edge
-        graph.addEdge(mainValue, otherValue[j]);
-        list.push(edge);
+
+        if (!graph.hasEdge(mainValue, otherValue[j])) {
+          // create edge
+          graph.addEdge(mainValue, otherValue[j]);
+          // list.push(edge);
+          nodeObj[edge.data.id] = edge;
+        } else {
+          nodeObj[edge.data.id].data.strength++;
+        }
       }
     }
 
+    for (var key in nodeObj) {
+      list.push(nodeObj[key]);
+    }
     return list;
   }
 };

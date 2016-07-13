@@ -5,7 +5,7 @@ angular.module('qurvey.services')
   
 
   var makeGraph = function(data, id) {
-    return cytoscape({
+    var cy = cytoscape({
 
       container: document.getElementById('graph_' + id), // container to render in
 
@@ -17,23 +17,24 @@ angular.module('qurvey.services')
         .css({
           'background-color': '#666',
           'label': 'data(id)',
+          'font-size': 18,
           // 'width': 'mapData(foo, 3, 7, 10)',
-          'width': 'mapData(foo, 0, 100, 5, 200)',
+          'width': 'mapData(size, 0, 100, 5, 200)',
 
-          'height': 'mapData(foo, 0, 100, 5, 200)'
+          'height': 'mapData(size, 0, 100, 5, 200)'
         })
       .selector('edge')
         .css({
           // 'width': 3,
-          'width': 'mapData(strength, 70, 100, 2, 6)',
-          'line-color': 'grey',
-          'target-arrow-color': '#ccc',
-          'target-arrow-shape': 'triangle',
+          'width': 'mapData(strength, 0, 40, 2, 40)',
+          'line-color': 'mapData(strength, 0, 40, grey, blue)',
+          // 'target-arrow-color': '#ccc',
+          // 'target-arrow-shape': 'triangle',
           'curve-style': 'bezier'
         })
       .selector('.big')
         .css({
-          'background-color': 'blue',
+          'background-color': 'dark blue',
           'width': 10,
           'height': 10
         })
@@ -94,12 +95,14 @@ angular.module('qurvey.services')
       pan: { x: 0, y: 0 },
 
       layout: {
-        name: 'concentric'
+        name: 'concentric',
         // rows: 1
         // circle: true
       }
 
     });
+    
+    return cy;
   };
   // Sends POST req to /api/graph question _id
   var getGraph = function(questionID) {
