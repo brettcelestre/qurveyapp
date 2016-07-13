@@ -14,6 +14,10 @@ body {
   background-color: #2196F3;
 }
 
+.nav {
+  height: 17px;
+}
+
 .nav-bar {
   margin: 0;
   padding: 0;
@@ -27,10 +31,26 @@ body {
   background-color: #d1d1d1;
 }
 
+/*.nav {
+  height: 40px;
+}*/
+
 .nav-bar h1 {
   display: block;
   margin: 0px;
   text-align: center;
+}
+
+.md-toolbar {
+  height: 40px;
+}
+
+.md-toolbar-tools {
+  background-color: #2196F3;
+}
+
+.main-title {
+  color: #fff;
 }
 
 .main-tab-title {
@@ -44,6 +64,10 @@ body {
 
 .question-filter-view {
   margin: -50px 0 0 0;
+}
+
+.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background-color: #2196F3;
 }
 
 .menu-button {
@@ -60,7 +84,7 @@ body {
 
 
 .user-top {
-  margin: 9px 0 0 10px;
+  margin: 7px 0 0 10px;
 }
 
 .row-inline {
@@ -244,16 +268,16 @@ body {
 }
 
 .img-profile {
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
   margin: 6px 0 0 7px;
 }
 
 .img-gear {
-  width: 25px;
-  height: 25px;
-  opacity: .4;
-  margin: 0px 0 0 4px;
+  width: 23px;
+  height: 23px;
+  /*opacity: .4;*/
+  margin: 7px 0 0 15px;
 }
 
 .img-search {
@@ -309,16 +333,21 @@ body {
 /* --- PROFILE STYLING ---- */
 
 .profile-header {
-  margin: 60px 0 8px 0;
+  margin: 70px 0 8px 0;
+  background-color: red;
+}
+.md-toolbar {
+  background-color: #2196F3;
 }
 .profile-bar {
   height: 53px;
 }
 .profile-stats {
-  padding-top: 5px;
+  padding-top: 7px;
 }
 .profile-user-title {
   padding-top: 3px;
+  color: #fff;
 }
 .profile-stats-spacer {
   width: 20px;
@@ -348,6 +377,10 @@ body {
 }
 .question-divider {
   margin: 13px 0 0 0;
+}
+
+.feed-div {
+  margin-top: 20px;
 }
 
 /*.question-header {
