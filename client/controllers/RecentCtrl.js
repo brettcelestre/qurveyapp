@@ -62,6 +62,17 @@ angular.module('qurvey.controllers')
                   dataVal.userAnswer = userVal.responseIndex;
                   // Applies appropriate class
                   dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
+                  Graph.getGraph(dataVal._id)
+                  .then(function(graphData) {
+                    console.log(graphData, 'gData');
+                    
+                    // Div id
+                    // 'graph_ + answerData.question'
+                    
+                  })
+                  .catch(function(data) {
+                    console.error('Error with login: ', data)
+                  });
                 }
               });
               // Push this question into recentData
