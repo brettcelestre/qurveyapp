@@ -10,9 +10,9 @@
       <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
     </div>
     
-    <!-- <div class='chart'>
+    <div class='chart' ng-show='data.userAnswered'>
       <h2>GRAPH</h2>
-    </div> -->
+    </div>
     
     <!-- ng-if='(checkUsersAnswers(data._id) === true)' -->
     <!-- ng-init='addPrimary(data.userAnswered, data._id, data.userAnswer, "a")' -->
