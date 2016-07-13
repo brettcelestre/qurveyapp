@@ -85,9 +85,23 @@ module.exports = {
               2: ['c', 'blorp']
             };
             var random = Math.floor(Math.random() * 4);
-            if (random === 3) {continue}
-            var text = answerKey[random][1];
-            var index = answerKey[random][0];
+            if (random === 3) {
+              continue;
+            }
+            if (users[i].traits.indexOf('traditional') !== -1) {
+              console.log('trad')
+              var text = answerKey[0][1];
+              var index = answerKey[0][0];
+            } else if (users[i].traits.indexOf('anxious') !== -1) {
+              var text = answerKey[1][1];
+              var index = answerKey[1][0];
+            } else if (users[i].traits.indexOf('warm') !== -1) {
+              var text = answerKey[2][1];
+              var index = answerKey[2][0];
+            } else {
+              var text = answerKey[random][1];
+              var index = answerKey[random][0];
+            }
             var answerObj = {
               user: users[i]._id,
               question: questions[j]._id,

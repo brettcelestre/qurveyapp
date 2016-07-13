@@ -124,13 +124,14 @@ angular.module('qurvey.controllers')
           // Sends POST req to /api/answers
           Recent.submitAnswer(answerData)
             .then(function(data){
-              
+              console.log(answerData.question, 'qid')
               // Sends POST req to /api/graph with the question id
               Graph.getGraph(answerData.question)
               .then(function(graphData){
+                console.log(graphData, 'gData');
                 
                 // Div id
-                graph_ + answerData.question
+                // 'graph_ + answerData.question'
                 
               })
               .catch(function(data){
