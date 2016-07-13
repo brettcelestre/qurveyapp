@@ -5,7 +5,7 @@ angular.module('qurvey.controllers')
 // .controller('LoginController', ['$scope', function($scope, $state, Login) {
 
 // Functioning Controller declaration
-.controller('RecentController', function($scope, $state, Recent, Main) {
+.controller('RecentController', function($scope, $state, Recent, Main, Graph) {
   
   // recentData stores data from loadRecent() and is displayed with ng-repeat
   $scope.recentData = [];
@@ -116,9 +116,25 @@ angular.module('qurvey.controllers')
             question: questionID,
             createdAt: new Date(),
           };
-          console.log('answerData: ', answerData);
+          console.log('answerData.question: ', answerData.question);
+          
           // Sends POST req to /api/answers
           Recent.submitAnswer(answerData)
+            .then(function(data){
+              
+              // Sends POST req to /api/graph with the question id
+              Graph.getGraph(answerData.question)
+              .then(function(graphData){
+                
+                // Div id
+                graph_ + answerData.question
+                
+              })
+              .catch(function(data){
+                console.error('Error with login: ', data)
+              });
+              
+            })
             .then(function(data){
               // Updates the counter after submitting vote
               // Iterates over recentData
@@ -127,12 +143,13 @@ angular.module('qurvey.controllers')
                 if ( val._id === questionID ) {
                   // Increments chosen response by 1
                   val.responses[z] += 1;
-                  // Marks question as answered, disabled users ability to vote twice
-                  val.userAnswered = true;
                   val.userAnswer = z;
                   // Update button to indicate user voted that option
                   val.classes[z] = 'md-raised md-primary';
+                  // Marks question as answered, disabled users ability to vote twice
+                  val.userAnswered = true;
                 }
+                
               });
               
               console.log('Inside answer function: $scope.recentData: ', $scope.recentData);
