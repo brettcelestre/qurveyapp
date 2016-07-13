@@ -6,16 +6,26 @@ angular.module('qurvey.controllers')
 
 // Functioning Controller declaration
 .controller('QuestionController', function($scope, $state) {
-
+  
+  // CSS classes for menu button
+  $scope.buttonQuestion = 'menu-button-selected menu-button';
+  $scope.buttonAsk = 'menu-button';
+  $scope.buttonTop = 'menu-button-selected menu-button';
+  $scope.buttonRecent = 'menu-button';
+  
   $scope.questions = function(){
-    // console.log('QuestionController -  questions()');
-    //
+    // Updates button color for question / ask
+    $scope.buttonQuestion = 'menu-button-selected menu-button';
+    $scope.buttonAsk = 'menu-button';
+    // Changes state to filter
     $state.go('main.questions.filter');
   };
   
   $scope.ask = function(){
-    // console.log('QuestionController -  ask()');
-    // 
+    // Updates button color for question / ask
+    $scope.buttonQuestion = 'menu-button';
+    $scope.buttonAsk = 'menu-button-selected menu-button';
+    // Changes state to ask
     $state.go('main.ask');
   };
   
@@ -26,14 +36,18 @@ angular.module('qurvey.controllers')
   };
   
   $scope.top = function(){
-    // console.log('QuestionController -  top()');
-    // 
+    // Updates button color for top / recent
+    $scope.buttonTop = 'menu-button-selected menu-button';
+    $scope.buttonRecent = 'menu-button';
+    // Updates state to top
     $state.go('main.questions.top');
   };
   
   $scope.recent = function(){
-    // console.log('QuestionController -  recent()');
-    // 
+    // Updates button color for top / recent
+    $scope.buttonRecent = 'menu-button-selected menu-button';
+    $scope.buttonTop = 'menu-button';
+    // Updates state to recent
     $state.go('main.questions.recent');
   };
 
