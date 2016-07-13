@@ -5,7 +5,7 @@ angular.module('qurvey.controllers')
 // .controller('LoginController', ['$scope', function($scope, $state, Login) {
 
 // Functioning Controller declaration
-.controller('RecentController', function($scope, $state, Recent, Main) {
+.controller('TopController', function($scope, $state, Top, Main) {
   
   // recentData stores data from loadRecent() and is displayed with ng-repeat
   $scope.recentData = [];
@@ -28,15 +28,17 @@ angular.module('qurvey.controllers')
   };
 
   // GET's all questions from /api/questions
-  $scope.loadRecent = function(){
+  $scope.loadTop = function(){
 
     // Updates the current users data
     Main.currentUser()
       .then(function(){
 
         // GET req to /api/questions
-        Recent.recent()
+        Top.top()
           .then(function(data) {
+            // Sort by answerObjs length
+            
             // Iterates over our questions data
             data.data.forEach(function(dataVal){
               // Set userAnswered to false
@@ -49,7 +51,7 @@ angular.module('qurvey.controllers')
                 e: 'md-raised'
               }
               // Hides 'already voted' warning
-              dataVal.alreadyVotedWarning = false;
+              dataVal.alreadyVotedWarning = true;
               // Iterate over this users previous answers
               Main.userObject.questionsAnswered.forEach(function(userVal) {
                 // Check if this user has answered this question
@@ -64,7 +66,12 @@ angular.module('qurvey.controllers')
               // Push this question into recentData
               $scope.recentData.push(dataVal);
             });
+            
+            
             console.log('data.data: ', data.data);
+            
+            
+            
           })
           .catch(function(data){
             console.error('Error with login: ', data)
@@ -85,18 +92,17 @@ angular.module('qurvey.controllers')
       console.log('This user has already answered this question');
       
       // Iterates over recentData
-      $scope.recentData.forEach(function(val) {
+      // $scope.recentData.forEach(function(val) {
         // Finds exact question
-        if ( val._id === questionID ) {
-          console.log('val.alreadyVotedWarning: ', val.alreadyVotedWarning);
+        // if ( val._id === questionID ) {
+          // console.log('val.alreadyVotedWarning: ', val.alreadyVotedWarning);
           // Shows 'Already voted' message
-          val.alreadyVotedWarning = true;
           // $scope.$apply(function(){
           //   val.alreadyVotedWarning = true;
           // });
-          console.log('val.alreadyVotedWarning after: ', val.alreadyVotedWarning);
-        }
-      });
+          // console.log('val.alreadyVotedWarning after: ', val.alreadyVotedWarning);
+        // }
+      // });
       
       // TODO -------------------------------------------- ***
       // Notify user they've already voted on this question
@@ -118,7 +124,7 @@ angular.module('qurvey.controllers')
           };
           console.log('answerData: ', answerData);
           // Sends POST req to /api/answers
-          Recent.submitAnswer(answerData)
+          Top.submitAnswer(answerData)
             .then(function(data){
               // Updates the counter after submitting vote
               // Iterates over recentData

@@ -1,14 +1,14 @@
 
 angular.module('qurvey.services')
 
-.service('Recent', ['$http', function($http) {
+.service('Top', ['$http', function($http) {
   
   // Sends GET req to /api/questions
-  var recent = function() {
-    console.log('Recent.recent() ran ---------------------------');
+  var top = function() {
+    console.log('Top.top() ran ---------------------------');
     return $http({
       method: 'GET',
-      url: '/api/questions',
+      url: '/api/questions/top',
       // data: data
     }).then(function(data) {
       return data;
@@ -34,7 +34,7 @@ angular.module('qurvey.services')
   // /api/answers
 
   return {
-    recent: recent,
+    top: top,
     submitAnswer: submitAnswer
   };
   

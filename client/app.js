@@ -79,6 +79,20 @@ angular.module('Qurvey', [
       }
     })
     
+    // Main Question Filters
+    .state('main.questions.graph', {
+      parent: 'main.questions',
+      // params: { 
+      //   autoActivateChild: 'main.questions.top'
+      // },
+      views: {
+        'feed': {
+          templateUrl: 'views/graph.html',
+          controller: 'GraphController'
+        }
+      }
+    })
+    
     // Main Questions
     .state('main.questions.top', {
       parent: 'main.questions.filter',

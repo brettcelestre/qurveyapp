@@ -11,9 +11,9 @@
       <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
     </div>
     
-    <!-- <div class='chart'>
+    <div class='chart'>
       <h2>GRAPH</h2>
-    </div> -->
+    </div>
     
     <!-- ng-if='(checkUsersAnswers(data._id) === true)' -->
     <!-- ng-init='addPrimary(data.userAnswered, data._id, data.userAnswer, "a")' -->
@@ -24,21 +24,21 @@
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
-            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
             <md-button id='{{data._id}}_a' class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
             <md-button id='{{data._id}}_b' class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
           </section>
         </section>
       </md-content>
       
-      <!-- <md-content>
-        <section layout='row' layout-align='center center' layout-wrap>
-          <h4 ng-if='{{data.alreadyVoted}}'>You have already voted.</h4>
+      <md-content>
+        <section ng-show='{{data.alreadyVotedWarning}}' layout='row' layout-align='center center' layout-wrap>
+          <h4 >You have already voted.</h4>
         </section>
-      </md-content> -->
+      </md-content>
       
     </div>
     
@@ -48,15 +48,15 @@
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
-            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
             <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
             <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
             <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
           </section>
         </section>
@@ -69,19 +69,19 @@
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
-            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
             <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
             <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
             <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.d }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.d }}</h1>
             <md-button class='{{data.classes.d}}' ng-click='answer(data.answers.d, "d", data._id, data.userAnswered)'>{{ data.answers.d }}</md-button>
           </section>
         </section>
@@ -94,23 +94,23 @@
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
-            <h1 class='md-display-1 answer-number'>{{ data.responses.a }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
             <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.b }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
             <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.c }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
             <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.d }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.d }}</h1>
             <md-button class='{{data.classes.d}}' ng-click='answer(data.answers.d, "d", data._id, data.userAnswered)'>{{ data.answers.d }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
-            <h1 class='md-display-1 answer-number'>{{ data.responses.e }}</h1>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.e }}</h1>
             <md-button class='{{data.classes.e}}' ng-click='answer(data.answers.e, "e", data._id, data.userAnswered)'>{{ data.answers.e }}</md-button>
           </section>
         </section>
