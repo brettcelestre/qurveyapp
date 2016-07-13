@@ -44,7 +44,7 @@ var AnswerSchema = new Schema({
 AnswerSchema.pre('save', function(next) {
 
   // update question
-  Question.update({_id: this.question}, {$inc: {["responses." + this.responseIndex]: 1}, $push: {answerObjs: this._id}})
+  Question.update({_id: this.question}, {$inc: {["responses." + this.responseIndex]: 1}, $push: {answerObjs: this._id}, $inc: {totalVotes: 1}})
   .exec(function() {
     next();
   });

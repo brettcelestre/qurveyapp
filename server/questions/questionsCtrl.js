@@ -14,6 +14,7 @@ module.exports = {
       }
     });
   },
+
   newQuestion: function(req, res) {
     var qInfo = req.body;
     qInfo.user = req.session.user._id;
@@ -24,6 +25,21 @@ module.exports = {
         res.status(500).send(err);
       } else {
         res.status(201).send(newQuestion);
+      }
+    });
+  },
+
+  topQuestions: function(req, res) {
+    Question.find({})
+    .sort({'totalVotes': -1})
+    .limit(25)
+    .populate('user', 'username')
+    .exec(function(err, Questions) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.send(Questions);
       }
     });
   }

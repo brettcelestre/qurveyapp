@@ -6,6 +6,7 @@ module.exports = function (app) {
     .get(questionsCtrl.allQuestions)
   app.route('/ask')
     .post(questionsCtrl.newQuestion)
+  app.get('/top', questionsCtrl.topQuestions)
 
 
 };
