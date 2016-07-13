@@ -1,6 +1,47 @@
 <div class='content-container center-div' ng-controller='ProfileController'>
+
+  <md-content class='profile-header'>
+    <md-toolbar class='profile-bar'>
+      <div class="md-toolbar-tools">
+        <h4 class='md-display-1 profile-user-title'>{{ user }}</h4>
+        <span class='profile-stats-spacer'></span>
+        <h4 class='md-subhead profile-stats'>{{ userQuestionTotal }} Questions</h4>
+        <span class='profile-stats-spacer'></span>
+        <h4 class='md-subhead profile-stats'>{{ userAnswerTotal }} Answers</h4>
+      </div>
+    </md-toolbar>
+  </md-content>
   
-  <h1>{{ user }}</h1>
-  <!-- <div ui-view='question-feed'></div> -->
+  <h3 class='md-headline traits-header'>Traits</h3>
+  <md-content class='traits'>
+    <md-chips ng-model='traits' readonly='true'>
+        <md-chip>{{ traits[0] }}</md-chip>
+    </md-chips>
+  </md-content>
+  
+  <md-content>
+    <md-divider ng-if="!$last" class='question-divider'></md-divider>
+  </md-content>
+  
+  <!-- <div ng-cloak>
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Users Questions" ng-click='userQuestions()'>
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Questions</h1>
+            <div ui-view='userFeed'></div>
+          </md-content>
+        </md-tab>
+        
+        <md-tab label="Users Answers" ng-click='userAnswers()'>
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Answers</h1>
+            <div ui-view='userFeed'></div>
+          </md-content>
+        </md-tab>
+        
+      </md-tabs>
+    </md-content>
+  </div> -->
 
 </div>
