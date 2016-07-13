@@ -8,6 +8,12 @@ body {
   height: 100%;
 }
 
+/* --- NAV BAR --*/
+
+.md-toolbar {
+  background-color: #2196F3;
+}
+
 .nav-bar {
   margin: 0;
   padding: 0;
@@ -26,6 +32,32 @@ body {
   margin: 0px;
   text-align: center;
 }
+
+.main-tab-title {
+  font-size: 20px;
+}
+
+.filter-view {
+  margin: -50px 0 0 0;
+}
+
+
+.question-filter-view {
+  margin: -50px 0 0 0;
+}
+
+.menu-button {
+  width: 265px;
+}
+.menu-button-selected {
+  background-color: #2196F3;
+  color: #FFF;
+}
+
+.md-buttom:not([disabled]):hover {
+  background-color: rgba(44, 65, 164, 0.96);
+}
+
 
 .user-top {
   margin: 9px 0 0 10px;
@@ -274,6 +306,32 @@ body {
   text-align: center;
 }
 
+/* --- PROFILE STYLING ---- */
+
+.profile-header {
+  margin: 60px 0 8px 0;
+}
+.profile-bar {
+  height: 53px;
+}
+.profile-stats {
+  padding-top: 5px;
+}
+.profile-user-title {
+  padding-top: 3px;
+}
+.profile-stats-spacer {
+  width: 20px;
+}
+.traits-header {
+ /*display: inline-block; */
+  margin: 0 0 0 0;
+  padding-left: 17px;
+}
+.traits {
+ padding-left: 5px; 
+}
+
 /* --- GRAPH STYLING ---- */
 
 .graph {
@@ -286,7 +344,7 @@ body {
 /* --- QUESTION STYLING ---- */
 
 .question-div {
-  padding: 10px 0 0px 0;
+  padding: -50px 0 0px 0;
 }
 .question-divider {
   margin: 13px 0 0 0;

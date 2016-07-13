@@ -1,12 +1,37 @@
 <div class='content-container center-div' ng-controller='QuestionController'>
 
-  <div class='top-tab pointer' ng-click='top()'>
+<!--   <div ng-cloak>
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab class='main-tab-title' label="Top" ng-click='top()'>
+          <md-content class="md-padding">
+            <div ng-show='showTop' ui-view='question-feed'></div>
+          </md-content>
+        </md-tab>
+        
+        <md-tab class='main-tab-title' label="Recent" ng-click='recent()'>
+          <md-content class="md-padding">
+            <div ng-show='showRecent' ui-view='question-feed'></div>
+          </md-content>
+        </md-tab>
+        
+      </md-tabs>
+    </md-content>
+  </div>
+ -->  
+ 
+  <section class='filter-view' layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+    <md-button class="{{ buttonTop }}" ng-click='top()'>Top</md-button>
+    <md-button class="{{ buttonRecent }}" ng-click='recent()'>Recent</md-button>
+  </section>
+
+  <!-- <div class='top-tab pointer' ng-click='top()'>
     <p>Top</p>
   </div>
   
   <div class='recent-tab pointer' ng-click='recent()'>
     <p>Recent</p>
-  </div>
+  </div> -->
   
   <div ui-view='question-feed'></div>
 
