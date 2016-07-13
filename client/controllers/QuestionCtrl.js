@@ -19,6 +19,12 @@ angular.module('qurvey.controllers')
     $state.go('main.ask');
   };
   
+  $scope.graph = function(){
+    // console.log('QuestionController -  questions()');
+    //
+    $state.go('main.questions.graph');
+  };
+  
   $scope.top = function(){
     // console.log('QuestionController -  top()');
     // 
