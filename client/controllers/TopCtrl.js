@@ -5,7 +5,7 @@ angular.module('qurvey.controllers')
 // .controller('LoginController', ['$scope', function($scope, $state, Login) {
 
 // Functioning Controller declaration
-.controller('TopController', function($scope, $state, Top, Main) {
+.controller('TopController', function($scope, $state, Top, Main, Graph) {
   
   // recentData stores data from loadRecent() and is displayed with ng-repeat
   $scope.recentData = [];
@@ -63,6 +63,17 @@ angular.module('qurvey.controllers')
                   // Store responseIndex in userAnswer
                   dataVal.userAnswer = userVal.responseIndex;
                   dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
+                  Graph.getGraph(dataVal._id)
+                    .then(function(graphData){
+                      console.log(graphData, 'gData');
+                
+                    // Div id
+                    // 'graph_ + answerData.question'
+                
+                    })
+                    .catch(function(data){
+                      console.error('Error with login: ', data)
+                    });
                 }
               });
               // Push this question into recentData
@@ -127,6 +138,17 @@ angular.module('qurvey.controllers')
           // Sends POST req to /api/answers
           Top.submitAnswer(answerData)
             .then(function(data){
+              Graph.getGraph(answerData.question)
+              .then(function(graphData){
+                console.log(graphData, 'gData');
+                
+                // Div id
+                // 'graph_ + answerData.question'
+                
+              })
+              .catch(function(data){
+                console.error('Error with login: ', data)
+              });
               // Updates the counter after submitting vote
               // Iterates over recentData
               $scope.recentData.forEach(function(val) {

@@ -23,64 +23,101 @@ var graphCtrl = {
     });
   },
 
-  qGraph: function(req, res){},
+  qGraph: function(req, res) {
+    console.log(req.body.question, 'req.body');
+    // var question = ;
+    Question.findOne({_id: req.body.question})
+    .populate('answerObjs')
+    .populate({path: 'answerObjs', populate: {path: 'user', select: 'traits'}})
+    .exec(function (err, qs) {
+      if (err) {
+        console.error(err);
+      } else {
+        // graphCtrl.graphMaker(qs.answerObjs, 'text', 'traits');
+        res.send(graphCtrl.graphMaker(qs.answerObjs, 'text', 'traits'));
+      }
+    });
+  },
 
   graphMaker: function(data, key1, key2) {
     // instantiate new Graph
     var graph = new Graph();
     // list to pass to cytoscape
     var list = [];
+    var nodeObj = {};
     console.log(data);
 
     //iterate through data - should be array of objects
     for (var i = 0; i < data.length; i++) {
       var mainValue = data[i][key1];
-      var otherValue = data[i][key2];
+      var otherValue = data[i]['user'][key2];
 
       //template obj for main node
       var node = {
         'group': 'nodes',
         'data' : {
-          'id': mainValue
+          'id': mainValue,
+          'size': 20
         }
       };
 
-      //other node
-      //template obj for other node
-      var otherNode = {
-        'group': 'nodes',
-        'data' : {
-          'id': otherValue
-        }
-      };
+      
 
-      //template obj for edge
-      var edge = {
-        'data': {
-          'id': mainValue + otherValue + i,
-          'source': mainValue,
-          'target': otherValue
-        }
-      };
+      
 
       //check if it does not exist
       if (!graph.contains(mainValue)) {
         // create node
         graph.addNode(mainValue);
 
-        list.push(node);
+        nodeObj[mainValue] = node;
+        // list.push(node);
       }
       
-      if (!graph.contains(otherValue)) {
-        // create node
-        graph.addNode(otherValue);
-        list.push(otherNode);
+      for (var j = 0; j < otherValue.length; j++) {
+
+        //other node
+        //template obj for other node
+        var otherNode = {
+          'group': 'nodes',
+          'data' : {
+            'id': otherValue[j],
+            'size': 10
+          }
+        };
+
+        //template obj for edge
+
+        var edge = {
+          'data': {
+            'id': mainValue + otherValue[j],
+            'source': mainValue,
+            'target': otherValue[j],
+            'strength': 0
+          }
+        };
+
+        if (!graph.contains(otherValue[j])) {
+          // create node
+          graph.addNode(otherValue[j]);
+          // list.push(otherNode);
+          nodeObj[otherValue[j]] = otherNode;
+        }
+
+        if (!graph.hasEdge(mainValue, otherValue[j])) {
+          // create edge
+          graph.addEdge(mainValue, otherValue[j]);
+          // list.push(edge);
+          nodeObj[edge.data.id] = edge;
+        } else {
+          nodeObj[edge.data.id].data.strength++;
+        }
       }
-      // create edge
-      graph.addEdge(mainValue, otherValue);
-      list.push(edge);
     }
 
+    for (var key in nodeObj) {
+      list.push(nodeObj[key]);
+    }
     return list;
   }
 };

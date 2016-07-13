@@ -62,6 +62,17 @@ angular.module('qurvey.controllers')
                   dataVal.userAnswer = userVal.responseIndex;
                   // Applies appropriate class
                   dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
+                  Graph.getGraph(dataVal._id)
+                  .then(function(graphData) {
+                    console.log(graphData, 'gData');
+                    
+                    // Div id
+                    // 'graph_ + answerData.question'
+                    
+                  })
+                  .catch(function(data) {
+                    console.error('Error with login: ', data)
+                  });
                 }
               });
               // Push this question into recentData
@@ -124,13 +135,14 @@ angular.module('qurvey.controllers')
           // Sends POST req to /api/answers
           Recent.submitAnswer(answerData)
             .then(function(data){
-              
+              console.log(answerData.question, 'qid')
               // Sends POST req to /api/graph with the question id
               Graph.getGraph(answerData.question)
               .then(function(graphData){
+                console.log(graphData, 'gData');
                 
                 // Div id
-                graph_ + answerData.question
+                // 'graph_ + answerData.question'
                 
               })
               .catch(function(data){
