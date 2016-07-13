@@ -50,6 +50,8 @@ angular.module('qurvey.controllers')
                 d: 'md-raised',
                 e: 'md-raised'
               }
+              // Cleans up createdAt string
+              dataVal.createdAt = dataVal.createdAt.substring(0,10);
               // Hides 'already voted' warning
               dataVal.alreadyVotedWarning = true;
               // Iterate over this users previous answers
@@ -70,8 +72,7 @@ angular.module('qurvey.controllers')
             
             console.log('data.data: ', data.data);
             
-            
-            
+
           })
           .catch(function(data){
             console.error('Error with login: ', data)

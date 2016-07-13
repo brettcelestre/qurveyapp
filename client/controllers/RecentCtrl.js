@@ -48,6 +48,8 @@ angular.module('qurvey.controllers')
                 d: 'md-raised',
                 e: 'md-raised'
               }
+              // Cleans up createdAt string
+              dataVal.createdAt = dataVal.createdAt.substring(0,10);
               // Hides 'already voted' warning
               dataVal.alreadyVotedWarning = false;
               // Iterate over this users previous answers
@@ -58,6 +60,7 @@ angular.module('qurvey.controllers')
                   dataVal.userAnswered = true;
                   // Store responseIndex in userAnswer
                   dataVal.userAnswer = userVal.responseIndex;
+                  // Applies appropriate class
                   dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
                 }
               });
