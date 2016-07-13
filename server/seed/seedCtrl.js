@@ -2,6 +2,7 @@ var makeUsers = require('./userFactory.js');
 var User = require('../users/usersModel.js');
 var Question = require('../questions/questionsModel.js');
 var Answer = require('../answers/answersModel.js');
+var Q = require('q');
 
 module.exports = {
 
@@ -53,36 +54,58 @@ module.exports = {
   },
 
   sproutAnswers: function(req, res) {
-    var users = [];
-    var questions = [];
-    User.find({})
-    .exec(function(err, us) {
-      if (err) {
-        console.error(err);
-      } else {
-        users = us;
-        Question.find({})
-        .exec(function(err, qs) {
-          if (err) {
-            console.error(err);
-          } else {
-            questions = qs;
-            for (var i = 1; i < users.length; i++) {
-              for (var j = 0; j < questions.length; i++) {
-                var choiceOptions = [['a', 'bleep'], ['b', 'bloop'], ['c', 'blorp']];
-                var choice = choiceOptions[Math.floor(Math.random() * 3)];
-                var aInfo = {
-                  user: users[i],
-                  question: questions[j],
-                  responseIndex: choice[0],
-                  text: choice[1]
-                };
+    
+    var userP = User.find({})
+      .exec(function(err, us) {
+        if (err) {
+          Q.reject(err);
+        } {
+          Q.resolve(us);
+        }
+      });
+    var questionP = Question.find({})
+      .limit(10)
+      .exec(function(err, qs) {
+        if (err) {
+          Q.reject(err);
+        } {
+          Q.resolve(qs);
+        }
+      });
+
+    Q.all([userP, questionP])
+      .then(function(results) {
+        var users = results[0];
+        var questions = results[1];
+        for (var i = 0; i < users.length; i++) {
+          for (var j = 0; j < questions.length; j++) {
+            answerKey = {
+              0: ['a', 'bleep'],
+              1: ['b', 'bloop'],
+              2: ['c', 'blorp']
+            };
+            var random = Math.floor(Math.random() * 4);
+            if (random === 3) {continue}
+            var text = answerKey[random][1];
+            var index = answerKey[random][0];
+            var answerObj = {
+              user: users[i]._id,
+              question: questions[j]._id,
+              text: text,
+              responseIndex: index
+            };
+            newAnswer = new Answer(answerObj);
+            newAnswer.save(function(err, a) {
+              if(err) {
+                console.error(err);
+              } else {
+
               }
-            }
+            });
           }
-        })
-      }
-    });
-    res.send('done');
+        }
+        res.send('done');
+      })
+
   }
 };
