@@ -76,6 +76,12 @@ var QuestionSchema = new Schema({
   // array of Answer._id
   answerObjs: [{type: Schema.Types.ObjectId, ref: 'Answer'}],
 
+  // total votes
+  totalVotes: {
+    type: Number,
+    default: 0
+  },
+
   // timestamp when created
   createdAt: {
     type: Date,
