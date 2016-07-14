@@ -1,3 +1,5 @@
+// routes with api/questions prefix
+
 var questionsCtrl = require('./questionsCtrl.js');
 
 module.exports = function (app) {

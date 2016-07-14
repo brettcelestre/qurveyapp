@@ -1,3 +1,5 @@
+// makes robot users with random traits
+
 var User = require('./userModel.js');
 
 // makes number of users using User model; outputs array of objects

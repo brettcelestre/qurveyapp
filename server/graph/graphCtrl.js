@@ -1,3 +1,6 @@
+// callbacks used by /api/graph routes
+
+// models imported to interact with db and graphMaker
 var Graph = require('./graphModel.js');
 var User = require('../users/usersModel.js');
 var Question = require('../questions/questionsModel.js');
@@ -23,9 +26,9 @@ var graphCtrl = {
     });
   },
 
+  // graph for single question
   qGraph: function(req, res) {
     console.log(req.body.question, 'req.body');
-    // var question = ;
     Question.findOne({_id: req.body.question})
     .populate('answerObjs')
     .populate({path: 'answerObjs', populate: {path: 'user', select: 'traits'}})
@@ -33,12 +36,12 @@ var graphCtrl = {
       if (err) {
         console.error(err);
       } else {
-        // graphCtrl.graphMaker(qs.answerObjs, 'text', 'traits');
         res.send(graphCtrl.graphMaker(qs.answerObjs, 'text', 'traits'));
       }
     });
   },
 
+  // format db data to send to graph service
   graphMaker: function(data, key1, key2) {
     // instantiate new Graph
     var graph = new Graph();
@@ -55,9 +58,10 @@ var graphCtrl = {
       //template obj for main node
       var node = {
         'group': 'nodes',
-        'data' : {
+        'data': {
           'id': mainValue,
-          'size': 20
+          'size': 20,
+          'count': 1
         }
       };
 
@@ -72,6 +76,9 @@ var graphCtrl = {
 
         nodeObj[mainValue] = node;
         // list.push(node);
+      } else {
+        // increment count
+        nodeObj[mainValue].data.count++;
       }
       
       for (var j = 0; j < otherValue.length; j++) {
@@ -80,9 +87,10 @@ var graphCtrl = {
         //template obj for other node
         var otherNode = {
           'group': 'nodes',
-          'data' : {
+          'data': {
             'id': otherValue[j],
-            'size': 10
+            'size': 10,
+            'count': 1
           }
         };
 
@@ -102,6 +110,9 @@ var graphCtrl = {
           graph.addNode(otherValue[j]);
           // list.push(otherNode);
           nodeObj[otherValue[j]] = otherNode;
+        } else {
+          // increment count
+          nodeObj[otherValue[j]].data.count++;
         }
 
         if (!graph.hasEdge(mainValue, otherValue[j])) {
@@ -110,11 +121,13 @@ var graphCtrl = {
           // list.push(edge);
           nodeObj[edge.data.id] = edge;
         } else {
+          // increment strength value of edge
           nodeObj[edge.data.id].data.strength++;
         }
       }
     }
 
+    // turn nodeObj into list array
     for (var key in nodeObj) {
       list.push(nodeObj[key]);
     }

@@ -1,7 +1,12 @@
+// callbacks used by /questions routes
+
+// models imported to interact with db
 var Question = require('./questionsModel.js');
 var User = require('../users/usersModel.js');
 
 module.exports = {
+
+  // return all questions in db
   allQuestions: function(req, res) {
     Question.find({})
     .populate('user', 'username')
@@ -15,6 +20,7 @@ module.exports = {
     });
   },
 
+  // add question to db
   newQuestion: function(req, res) {
     var qInfo = req.body;
     qInfo.user = req.session.user._id;
@@ -29,6 +35,7 @@ module.exports = {
     });
   },
 
+  // return questions sorted by most votes; limit 25
   topQuestions: function(req, res) {
     Question.find({})
     .sort({'totalVotes': -1})

@@ -1,3 +1,6 @@
+// routes with api/seed prefix
+
+
 var seedCtrl = require('./seedCtrl.js');
 
 module.exports = function(app) {
