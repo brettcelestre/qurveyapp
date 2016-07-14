@@ -2,9 +2,7 @@
 angular.module('Qurvey', [
   'qurvey.controllers',
   'qurvey.services',
-  // 'ngMaterial',
   'ui.router'
-  // // 'qurvey.directives',
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -34,11 +32,10 @@ angular.module('Qurvey', [
       }
     })
     
-    
     // Main Content Page after logging in
     .state('main', {
       url: '/main',
-      // Sets default children views
+      // Sets default children ui-views to main.questions
       params: { 
         autoActivateChild: 'main.questions'
       },
@@ -50,10 +47,11 @@ angular.module('Qurvey', [
       }
     })
     
-    // Main > Questions Section. Auto populates with Top filter selected
+    // Main > Questions Section.
     .state('main.questions', {
       parent: 'main',
       url: '/questions',
+      // Sets default children ui-views to main.questions.filter
       params: { 
         autoActivateChild: 'main.questions.filter'
       },
@@ -68,6 +66,7 @@ angular.module('Qurvey', [
     // Main Question Filters
     .state('main.questions.filter', {
       parent: 'main.questions',
+      // Sets default children ui-views to main.questions.top
       params: { 
         autoActivateChild: 'main.questions.top'
       },
@@ -82,9 +81,6 @@ angular.module('Qurvey', [
     // Main Question Filters
     .state('main.questions.graph', {
       parent: 'main.questions',
-      // params: { 
-      //   autoActivateChild: 'main.questions.top'
-      // },
       views: {
         'feed': {
           templateUrl: 'views/graph.html',
@@ -160,104 +156,13 @@ angular.module('Qurvey', [
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     
+    // Listens and invokes anonymous function each for any state change
     $rootScope.$on('$stateChangeSuccess', function(event, toState) {
       var aac;
       if(aac = toState && toState.params && toState.params.autoActivateChild) {
         $state.go(aac);
       }
-        // console.log('state just changed');
     });
-    
-    // $rootScope.$on('$stateChangeStart', 
-    //   function(event, toState, toParams, fromState, fromParams){ 
-    //     event.preventDefault(); 
-    //     // transitionTo() promise will be rejected with 
-    //     // a 'transition prevented' error
-    // });
     
 }]);
 
-
-
-
-
-
-
-
-
-// angular
-//     .module('app', []);
-
-
-// var qurvey = angular.module('Qurvey', [
-//   'qurvey.controllers',
-//   'qurvey.services',
-//   // 'qurvey.directives',
-//   'ui.router'
-// ]);
-
-// qurvey.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-//   $urlRouterProvider.when('', '/'); // Initialize home route
-//   $urlRouterProvider.otherwise('/'); // Default route
-  
-//   $stateProvider
-//     // .state('login', {
-//     //   url: '/',
-//     //   templateUrl: 'views/login.html',
-//     //   controller: 'LoginController'
-//     // })
-//     .state('login', {
-//       url: '/',
-//       views: {
-//         'main': {
-//           templateUrl: 'views/login.html',
-//           controller: 'LoginController'   
-//         }
-//       }
-//       // templateUrl: 'views/login.html',
-//       // controller: 'LoginController'
-//     })
-//     .state('signup', {
-//       url: '/signup',
-//       templateUrl: 'views/signup.html',
-//       controller: 'SignUpController'
-//     })
-//     .state('account', {
-//       url: '/account',
-//       templateUrl: 'views/account.html',
-//       controller: 'Accou1ntController'
-//     })
-//     .state('main', {
-//       parent: 'login',
-//       url: '/main',
-//       controller: 'MainController',
-//       templateUrl: 'views/main.html'
-//     })
-//     .state('main.questions', {
-//       url: '/questions',
-//       templateUrl: 'views/questions.html',
-//       controller: 'QuestionsController'
-//       // views : {
-//       //   '@' : {
-//       //     // templateUrl: "/App/WebSite/programsComplete.html"
-//       //     templateUrl: 'views/questions.html',
-//       //     controller: 'QuestionsController'
-//       //   }
-//       // }
-//     })
-//     .state('main.ask', {
-//       url: '/main/ask',
-//       templateUrl: 'views/ask.html',
-//       controller: 'AskController'
-//     });
-
-// }]);
-
-
-
-// qurvey.config.set({
-//   files: [
-//     'build/angular.js',
-//     'build/angular-mocks.js'  // Adds ngMock for unit tests
-//   ]
-// });

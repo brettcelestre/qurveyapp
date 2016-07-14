@@ -11,9 +11,10 @@ angular.module('qurvey.controllers')
   // State for disabling Create Account button
   $scope.submitCheck = true;
   
+  // Sets up a function to show password inside of input
   $scope.showPass = function(){
     console.log('show password function');
-    
+    // Change input type to 'text' instead of 'password'
   };
   
   // Checks if we should disable create account button
@@ -80,11 +81,9 @@ angular.module('qurvey.controllers')
       .catch(function(data) {
         console.error('Error with login: ', data)
       });
-    
     // Clears input models
     $scope.username = '';
     $scope.password = '';  
-    
   };
   
   // Changes state back to login

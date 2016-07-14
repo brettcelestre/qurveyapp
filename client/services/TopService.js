@@ -5,7 +5,6 @@ angular.module('qurvey.services')
   
   // Sends GET req to /api/questions
   var top = function() {
-    console.log('Top.top() ran ---------------------------');
     return $http({
       method: 'GET',
       url: '/api/questions/top',
@@ -30,9 +29,6 @@ angular.module('qurvey.services')
     });
   };
   
-  
-  // /api/answers
-
   return {
     top: top,
     submitAnswer: submitAnswer

@@ -104,16 +104,15 @@ angular.module('qurvey.services')
     
     return cy;
   };
+  
   // Sends POST req to /api/graph question _id
   var getGraph = function(questionID) {
-    console.log(questionID, 'qID');
     return $http({
       method: 'POST',
       url: '/api/graph',
       data: JSON.stringify({question: questionID})
-
     }).then(function(data) {
-      // console.log(req.body, 'getGraph req.body');
+      // Sends data and question id through makeGraph
       return makeGraph(data, questionID);
     }, function(error) {
       return error;

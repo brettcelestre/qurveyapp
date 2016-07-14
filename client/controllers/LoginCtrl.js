@@ -56,7 +56,7 @@ angular.module('qurvey.controllers')
         console.error('Error with login: ', data)
       });
       
-    // Clears input
+    // Clears inputs
     $scope.username = '';
     $scope.password = '';
   };
@@ -67,6 +67,7 @@ angular.module('qurvey.controllers')
   };
   
   $scope.main = function(){
+    // Changes state to main
     $state.go('main');
   };
 

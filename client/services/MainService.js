@@ -3,6 +3,7 @@ angular.module('qurvey.services')
 
 .service('Main', ['$http', function($http) {
   
+  // Stores users data, is used for profile view and filtering feed data
   var userObject = {
     username: '',
     userID: '',
@@ -22,19 +23,14 @@ angular.module('qurvey.services')
       userObject.userID = data.data._id;
       userObject.traits = data.data.traits;
       userObject.questionsAnswered = data.data.questionsAnswered;
-      // for ( var key in data.data.questionsAnswered ) {
-      //   userObject.questionsAnswered.push( data.data.questionsAnswered[key] );  
-      // }
       userObject.questionsAsked = data.data.questionsAsked;
-      // for ( var key in data.data.questionsAsked ) {
-      //   userObject.questionsAsked.push( data.data.questionsAsked[key] );  
-      // }
       return data;
     }, function(error) {
       return error;
     });
   };
   
+  // Sends GET req to /auth/logout/
   var logout = function() {
     return $http({
       method: 'GET',

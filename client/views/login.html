@@ -3,25 +3,28 @@
   <h1>Qurvey</h1>
   
   <form name="login" novalidate>
-    
+    <!-- User name input -->
     <div class="username-input">
       <h3>Username</h3>
         <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-change='loginButtonCheck()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
     </div>
-    
+    <!-- Password input -->
     <div class="password-input">
       <h3>Password</h3>
+      <!-- This button was intended to show your password characters -->
       <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='loginButtonCheck()' ng-pattern="/^[#a-zA-Z0-9]*$/" required><img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' />
     </div>
     <br>
+    <!-- This displays if your login is invalid -->
     <h4 id='invalid' class='invalid-hide'>Invalid username or password.</h4>
+    <!-- Login button -->
     <button type="button" class="login-button" ng-click='userLogin(username, password)' ng-disabled='submitCheck'>Login</button>
     <br>
     <br>
+    <!-- Sign up button, goes to signup view -->
     <button type='button' class='login-button create-account' ng-click='signUp()'>Sign Up</button>
     <br>
     <br>
-    <button type='button' class='login-button' ng-click='main()'>Go to main</button>
   </form>
   
 </div>

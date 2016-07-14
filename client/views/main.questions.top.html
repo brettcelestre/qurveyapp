@@ -4,26 +4,30 @@
   <!-- <md-virtual-repeat-container id="vertical-container"> -->
       <!-- <div md-virtual-repeat="data in ctrl.infiniteItems | orderBy: '-createdAt' " md-on-demand flex> -->
       
+  <!-- Repeats through $scope.recentData in TopController -->  
   <div ng-repeat='data in recentData' class='question-div'>
+  
+    <!-- Question header block -->
     <div class='question-header'>
       <h1 class='question-title'>{{ data.question }}</h1>
       <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
     </div>
     
+    <!-- Displays the graph -->
     <div id='graph_{{data._id}}' class='graph' ng-show='data.userAnswered'>
-      <!-- <h2>GRAPH</h2> -->
     </div>
     
-    <!-- ng-if='(checkUsersAnswers(data._id) === true)' -->
-    <!-- ng-init='addPrimary(data.userAnswered, data._id, data.userAnswer, "a")' -->
-    
-    <!-- If 2  -->
+    <!-- If 2 options  -->
+    <!-- Checks how many answer options there are. Sets id to question id -->
     <div ng-if='(questionCount(data.answers) === 2)' class='option-two-div center-div voting-options' id='{{data._id}}'>
-      <!-- <div class='option-two-button'> -->
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
+          <!-- Creates a section for this option -->
           <section layout='column' layout-align='center center' layout-wrap>  
+            <!-- Displays the result of this option, only shows if user has already answered via ng-show -->
             <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
+            <!-- Creates button for this option. Id is answer id + '_a' representing option 'a'.
+            ng-click passes 1. answer string 2. letter of option 3. question id 4. t/f whether user has answered already --> 
             <md-button id='{{data._id}}_a' class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
           </section>
           <section layout='column' layout-align='center center' layout-wrap>
@@ -33,6 +37,8 @@
         </section>
       </md-content>
       
+      <!-- Displays message that you've already voted
+      This is only implemented in this block, would need to be placed in option 3, 4, 5 blocks -->
       <!-- <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <h4 ng-if='{{data.alreadyVotedWarning}}'>You have already voted.</h4>
@@ -41,9 +47,8 @@
       
     </div>
     
-    <!-- If 3 -->
+    <!-- If 3 options -->
     <div ng-if='(questionCount(data.answers) === 3)' class='option-three-div voting-options' id='{{data._id}}'>
-      <!-- <div class='option-three'>   -->
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
@@ -62,9 +67,8 @@
       </md-content>
     </div>
     
-    <!-- If 4 -->
+    <!-- If 4 options -->
     <div ng-if='(questionCount(data.answers) === 4)' class='option-four-div voting-options' id='{{data._id}}'>
-      <!-- <div class='option-four'> -->
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
@@ -87,9 +91,8 @@
       </md-content>
     </div>
       
-    <!-- If 5 -->
+    <!-- If 5 options -->
     <div ng-if='(questionCount(data.answers) === 5)' class='option-five-div voting-options' id='{{data._id}}'>
-      <!-- <div class='option-five'> -->
       <md-content>
         <section layout='row' layout-align='center center' layout-wrap>
           <section layout='column' layout-align='center center' layout-wrap>  
@@ -115,12 +118,14 @@
         </section>
       </md-content>
     </div>
-
+    
+    <!-- Places a divider in between questions -->
     <md-content>
       <md-divider ng-if="!$last" class='question-divider'></md-divider>
     </md-content>
   
   </div>
+  <!-- The below tag is to close virtual repeat -->
   <!-- </md-virtual-repeat-container> -->
   <br>
   <br>
