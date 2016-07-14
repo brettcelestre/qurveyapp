@@ -1,3 +1,6 @@
+// callbacks used by /seed routes
+
+// models imported to interact with db
 var makeUsers = require('./userFactory.js');
 var User = require('../users/usersModel.js');
 var Question = require('../questions/questionsModel.js');
@@ -6,6 +9,7 @@ var Q = require('q');
 
 module.exports = {
 
+  // make 100 robot users with random traits using userFactory.js
   plantUsers: function(req, res) {
     var users = makeUsers(100);
     for (var i = 0; i < users.length; i++) {
@@ -21,6 +25,7 @@ module.exports = {
     res.send('done');
   },
 
+  // make 10 robot questions
   growQuestions: function(req, res) {
     var users = [];
     User.find({})
@@ -53,6 +58,7 @@ module.exports = {
     });
   },
 
+  // make ~800 robot answers
   sproutAnswers: function(req, res) {
     
     var userP = User.find({})
@@ -119,7 +125,7 @@ module.exports = {
           }
         }
         res.send('done');
-      })
+      });
 
   }
 };

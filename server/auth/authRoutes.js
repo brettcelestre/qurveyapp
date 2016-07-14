@@ -1,3 +1,5 @@
+// routes with /auth prefix
+
 var authCtrl = require('./authCtrl.js');
 
 module.exports = function (app) {

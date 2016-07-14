@@ -1,3 +1,6 @@
+// callbacks used by /users routes
+
+// model imported to interact with db
 var User = require('./usersModel.js');
 
 module.exports = {

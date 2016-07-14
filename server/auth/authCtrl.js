@@ -1,8 +1,12 @@
+// callbacks used by /auth routes
+
+// models imported to interact with db
 var User = require('../users/usersModel.js');
 
 module.exports = {
 
-  // check if session exists
+  // check if session exists, and updates seeion.user if it does,
+  // otherwise redirect to '/'
   checkSession: function(req, res) {
     console.log('checkSession ran | req.session: ', req.session);
     if (req.session.user) {
@@ -22,6 +26,7 @@ module.exports = {
     }
   },
 
+  // login user to app
   login: function(req, res) {
     // login info 
     var username = req.body.username;
@@ -52,6 +57,7 @@ module.exports = {
       });
   },
 
+  // create new user and login
   signup: function(req, res) {
     var newUser = new User(req.body);
     newUser.save(function(err, user) {

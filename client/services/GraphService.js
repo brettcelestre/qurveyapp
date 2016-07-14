@@ -16,93 +16,42 @@ angular.module('qurvey.services')
       .selector('node')
         .css({
           'background-color': '#666',
-          'label': 'data(id)',
-          'font-size': 18,
-          // 'width': 'mapData(foo, 3, 7, 10)',
+          'content': 'data(id)',
+          'text-valign': 'center',
+          'text-outline-width': 2,
+          'color': 'white',
+          'text-background-opacity': 1,
+          'text-background-color': 'grey',
+          'text-background-shape': 'roundrectangle',
+          'text-outline-color': '#999',
+          'font-size': '18',
           'width': 'mapData(size, 0, 100, 5, 200)',
 
           'height': 'mapData(size, 0, 100, 5, 200)'
         })
       .selector('edge')
         .css({
-          // 'width': 3,
           'width': 'mapData(strength, 0, 40, 2, 40)',
           'line-color': 'mapData(strength, 0, 40, grey, blue)',
-          // 'target-arrow-color': '#ccc',
-          // 'target-arrow-shape': 'triangle',
           'curve-style': 'bezier'
-        })
-      .selector('.big')
-        .css({
-          'background-color': 'dark blue',
-          'width': 10,
-          'height': 10
-        })
-      .selector('.med')
-        .css({
-          'width': 5,
-          'height': 5
-        })
-      .selector('.small')
-        .css({
-          'width': 3,
-          'height': 3
         }),
-    // [ // the stylesheet for the graph
-    //   {
-    //     selector: 'node',
-    //     style: {
-    //       'background-color': '#666',
-    //       'label': 'data(id)'
-    //     }
-    //   },
-
-
-    //   {
-    //     selector: 'edge',
-    //     style: {
-    //       // 'width': 3,
-    //       'line-color': 'green',
-    //       'target-arrow-color': '#ccc',
-    //       'target-arrow-shape': 'triangle',
-    //       'curve-style': 'bezier'
-    //     }
-    //   },
-    //   {
-    //     selector: '.big',
-    //     style: {
-    //       'width': 10,
-    //       'height': 10
-    //     }
-    //   },
-    //   {
-    //     selector: '.med',
-    //     style: {
-    //       'width': 5,
-    //       'height': 5
-    //     }
-    //   },
-    //   {
-    //     selector: '.small',
-    //     style: {
-    //       'width': 3,
-    //       'height': 3
-    //     }
-    //   }
-    // ],
 
       zoom: 1,
+
+      userZoomingEnabled: false,
+
       pan: { x: 0, y: 0 },
 
       layout: {
         name: 'concentric',
-        // rows: 1
-        // circle: true
       }
 
     });
-    
+    cy.on('click', 'node', function(e) {
+      console.log('this nodes count', this._private.data.count);
+    });
     return cy;
+
   };
   
   // Sends POST req to /api/graph question _id

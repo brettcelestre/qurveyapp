@@ -1,3 +1,6 @@
+// model for User documents in db
+// and any middleware used with this model
+
 var mongoose = require('mongoose');
 var Q = require('q');
 var bcrypt = require('bcrypt-nodejs');

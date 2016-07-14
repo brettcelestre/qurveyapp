@@ -1,19 +1,20 @@
-var routes = require('./routes.js');
+// configure express server with parser, static server, and routes
+
 var bodyParser = require('body-parser');
-var request = require('request');
 
 
-
+// export to be used by server.js
 module.exports = function (app, express) {
   
-  //parse json
+  // parse json
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
 
-  //serve index
+  // serve index
   app.use(express.static(__dirname + '/../../client'));
   
-  //routes for client
+  // routes for client
+
   var usersRouter = express.Router();
   var questionsRouter = express.Router();
   var answersRouter = express.Router();

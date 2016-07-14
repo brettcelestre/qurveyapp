@@ -1,3 +1,6 @@
+// model for Question documents in db
+// and any middleware used with this model
+
 var mongoose = require('mongoose');
 var User = require('../users/usersModel.js');
 

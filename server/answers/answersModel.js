@@ -1,3 +1,6 @@
+// model for Answer documents in db
+// and any middleware used with this model
+
 var mongoose = require('mongoose');
 var Question = require('../questions/questionsModel.js');
 var User = require('../users/usersModel.js');
@@ -40,7 +43,7 @@ var AnswerSchema = new Schema({
 
 });
 
-// pre save middleware to increment response total of question
+// pre save middleware to increment response total of question and totalVotes
 AnswerSchema.pre('save', function(next) {
 
   // update question
