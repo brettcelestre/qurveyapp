@@ -1,43 +1,15 @@
+
+<!-- State view 'main.questions'
+Parent state is 'main'. Url: /questions. Displays Question and Ask button -->
+
 <div class='content-container center-div' ng-controller='QuestionController'>
-
-  <!-- <div ng-cloak>
-    <md-content>
-      <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab class='main-tab-title' label="Questions" ng-click='questions()'>
-          <md-content class="md-padding">
-            <div class='question-filter-view' ui-view='feed'></div>
-          </md-content>
-        </md-tab>
-        
-        <md-tab class='main-tab-title' label="Ask" ng-click='ask()'>
-          <md-content class="md-padding">
-            <div class='question-filter-view' ui-view='feed'></div>
-          </md-content>
-        </md-tab>
-        
-      </md-tabs>
-    </md-content>
-  </div> -->
-
   
   <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
     <md-button class="{{buttonQuestion}}" ng-click='questions()'>Question</md-button>
     <md-button class="{{buttonAsk}}" ng-click='ask()'>Ask</md-button>
   </section>
   
-  
-  <!-- <div class='question-tab pointer' ng-click='questions()'>
-    <p>Questions</p>
-  </div>
-  
-  <div class='ask-tab pointer' ng-click='ask()'>
-    <p>Ask</p>
-  </div> -->
-  
-  <!-- <div class='pointer' ng-click='graph()'>
-    <p>Graph</p>
-  </div> -->
-  
+  <!-- ui-view 'feed' will either display 'main.ask' or 'main.questions.filter' -->
   <div class='feed-view' ui-view='feed'></div>
 
 </div>

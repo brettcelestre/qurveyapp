@@ -1,35 +1,34 @@
 <div class='main' ng-controller='MainController'>
 
+  <!-- Nav bar -->
   <md-content class='nav'>
     <md-toolbar class='nav-bar'>
       <div class="md-toolbar-tools">
         <section layout="row" layout-align="center center" class='center-div'>
+          
+          <!-- Main Qurvey Header -->
           <a ng-click='questions()' class='md-display-1 pointer'><h1 class='main-title'>Qurvey</h1></a>
           <span class='profile-stats-spacer'></span>
+          <!-- Input for search bar -->
           <input type='text' class='search-bar' ng-model='searchTerm'></input>
-          
+          <!-- Search button -->
           <div class='search-button pointer' ng-click='search()'>
             <img = src='./assets/img/search.png' class='img-search' />
           </div>
-          
+          <!-- Displays user name, links to their profile view -->
           <section layout='row' layout-wrap> 
             <a ng-click='profile()' class='pointer row-inline'>
               <p class='md-subhead user-top'>{{ currentUser }}</p>
               <img src='./assets/img/user.svg' class='img-profile' />
             </a>
           </section>
-          
+          <!-- Gear logo which drops down logout option -->
           <md-menu>
             <a ng-click="$mdOpenMenu()">
               <img src='./assets/img/gear.svg' class='img-gear pointer'/>
             </a>
             <md-menu-content>
-              <md-menu-item>
-                <md-button ng-click="settings()">
-                  Settings
-                </md-button>
-              </md-menu-item>
-              <md-menu-divider></md-menu-divider>
+              <!-- Add more drop downs here -->
               <md-menu-item>
                 <md-button ng-click="logout()">
                   Logout
@@ -42,48 +41,8 @@
       </div>
     </md-toolbar>
   </md-content>
-  <!-- 
-  <div class='nav-bar'>
-    
-    <a ng-click='questions()' class='pointer'><h1>Qurvey</h1></a>
-    
-    <input type='text' class='search-bar' ng-model='searchTerm'></input>
-    
-    <div class='search-button pointer' ng-click='search()'>
-      <img = src='./assets/img/search.png' class='img-search' />
-    </div>
-    
-    <section layout='row' layout-wrap> 
-      <a ng-click='profile()' class='pointer row-inline'>
-        <p class='md-subhead user-top'>{{ currentUser }}</p>
-        <img src='./assets/img/profile.png' class='img-profile' />
-      </a>
-    </section>
-    
-    <md-menu>
-      <a ng-click="$mdOpenMenu()">
-        <img src='./assets/img/gear.png' class='img-gear pointer'/>
-      </a>
-      <md-menu-content>
-        <md-menu-item>
-          <md-button ng-click="settings()">
-            Settings
-          </md-button>
-        </md-menu-item>
-        <md-menu-divider></md-menu-divider>
-        <md-menu-item>
-          <md-button ng-click="logout()">
-            Logout
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
 
-    <!-- <img src='./assets/img/gear.png' class='img-gear pointer'/> -->
-      <!-- <a ng-click='logout()' class='pointer'></a> -->
-      
-  <!-- </div> -->
-  
+  <!-- Sets up ui-view for main content -->
   <div ui-view='content'></div>
   
 </div>

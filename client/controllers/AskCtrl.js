@@ -3,6 +3,7 @@ angular.module('qurvey.controllers')
 
 .controller('AskController', function($scope, $state, Ask) {
   
+  // Stores question and options
   $scope.question = '';
   $scope.option1 = '';
   $scope.option2 = '';
@@ -10,6 +11,7 @@ angular.module('qurvey.controllers')
   $scope.option4 = '';
   $scope.option5 = '';
   
+  // Store booleans to hide/show more option inputs
   $scope.addOptionButtonThree = false;
   $scope.hideThree = true;
   $scope.addOptionButtonFour = false;
@@ -20,8 +22,8 @@ angular.module('qurvey.controllers')
   $scope.searchFormValidation = function(){
     // Turn this back to false by default
     var question = false, option1 = false, option2 = false;
-    // Check question length > 10
-    if( $scope.question.replace(/\s+/g, '').length >= 10 ) {
+    // Check question length > 5
+    if( $scope.question.replace(/\s+/g, '').length >= 5 ) {
       question = true;
     }
     // Checks option1 length >= 1
@@ -35,17 +37,15 @@ angular.module('qurvey.controllers')
     
     // Check if more options were entered, add those validations to our return
     
-    console.log('Form val: ', [ question, option1, option2 ]);
     // Returns array with boolean for all three inputs
     return [ question, option1, option2 ];
   };
   
   $scope.askQuestion = function(){
+    // Stores result of searchFormValidation fn, will be an array of booleans
     var formValidation = $scope.searchFormValidation();
-    console.log('formValidation: ', formValidation);
-    // Check to make sure everything is valid
+    // Check to make sure all booleans in array are true
     if ( formValidation[0] && formValidation[1] && formValidation[2] ) {
-      console.log('valid form');
       // Construct data object to send through ask
       var data = {
         question: $scope.question,
@@ -72,11 +72,11 @@ angular.module('qurvey.controllers')
     } else  {
       console.log('form is not valid');
       if ( !formValidation[0] ){
-        // your question is not long enough
+        // Display error on DOM that your question is not long enough
         console.log('need longer question: ');
       }
       if ( !formValidation[1] || !formValidation[2] ) {
-        // You must add more options
+        // Display error on DOM that you must add more options
         console.log('you need more options: ');
       }
     }

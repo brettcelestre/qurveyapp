@@ -5,7 +5,6 @@ angular.module('qurvey.services')
   
   // Sends GET req to /api/questions
   var recent = function() {
-    console.log('Recent.recent() ran ---------------------------');
     return $http({
       method: 'GET',
       url: '/api/questions',
@@ -29,9 +28,6 @@ angular.module('qurvey.services')
       return error;
     });
   };
-  
-  
-  // /api/answers
 
   return {
     recent: recent,
