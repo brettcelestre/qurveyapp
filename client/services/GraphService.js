@@ -48,12 +48,12 @@ angular.module('qurvey.services')
 
     });
     cy.on('click', 'node', function(e) {
-      console.log('this nodes count', this._private.data.count);
+      console.log('this nodes count', this._private.data);
     });
     return cy;
 
   };
-  
+
   // Sends POST req to /api/graph question _id
   var getGraph = function(questionID) {
     return $http({

@@ -151,8 +151,8 @@ angular.module('Qurvey', [
     
 }])
 
-.run(['$rootScope', '$state', '$stateParams',
-  function ($rootScope, $state, $stateParams) {
+.run(['$rootScope', '$state', '$stateParams', 'Main',
+  function ($rootScope, $state, $stateParams, Main) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     
@@ -161,6 +161,12 @@ angular.module('Qurvey', [
       var aac;
       if(aac = toState && toState.params && toState.params.autoActivateChild) {
         $state.go(aac);
+      }
+
+    });
+    Main.currentUser().then(function(data) {
+      if (data.data.username) {
+        $state.go('main');
       }
     });
     

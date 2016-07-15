@@ -1,29 +1,27 @@
-<div class='login center-div' ng-controller='LoginController'>
+<div class='login center-div md-inline-form' ng-cloak ng-controller='LoginController' >
 
-  <h1>Qurvey</h1>
+  <h1 class='main-title'>Qurvey</h1>
   
   <form name="login" novalidate>
     <!-- User name input -->
-    <div class="username-input">
-      <h3>Username</h3>
+    <md-input-container layout="row" class="username-input">
         <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-change='loginButtonCheck()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
-    </div>
+    </md-input-container>
     <!-- Password input -->
-    <div class="password-input">
-      <h3>Password</h3>
+    <md-input-container layout="row" class="password-input">
       <!-- This button was intended to show your password characters -->
-      <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='loginButtonCheck()' ng-pattern="/^[#a-zA-Z0-9]*$/" required><img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' />
-    </div>
+      <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='loginButtonCheck()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+    </md-input-container>
+    <!-- <Shows password text instead of bullets - not working> -->
+    <!-- <img src='./assets/img/eye-icon.png' class='eye-icon center-div' ng-click='showPass()' /> -->
     <br>
     <!-- This displays if your login is invalid -->
     <h4 id='invalid' class='invalid-hide'>Invalid username or password.</h4>
     <!-- Login button -->
-    <button type="button" class="login-button" ng-click='userLogin(username, password)' ng-disabled='submitCheck'>Login</button>
-    <br>
+    <md-button type="button" class="ripples buttonRipples main-title md-raised" ng-click='userLogin(username, password)' ng-disabled='submitCheck'>Login</md-button>
     <br>
     <!-- Sign up button, goes to signup view -->
-    <button type='button' class='login-button create-account' ng-click='signUp()'>Sign Up</button>
-    <br>
+    <md-button type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signUp()'>Sign Up</md-button>
     <br>
   </form>
   
