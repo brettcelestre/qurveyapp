@@ -1,8 +1,11 @@
 // model for User documents in db
 // and any middleware used with this model
 
+// Require mongoose for making any model
 var mongoose = require('mongoose');
+// Require Q for promises
 var Q = require('q');
+// Encrypting passwords
 var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
 

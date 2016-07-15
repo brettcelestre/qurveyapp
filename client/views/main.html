@@ -9,12 +9,22 @@
           <!-- Main Qurvey Header -->
           <a ng-click='questions()' class='md-display-1 pointer'><h1 class='main-title'>Qurvey</h1></a>
           <span class='profile-stats-spacer'></span>
+
           <!-- Input for search bar -->
-          <input type='text' class='search-bar' ng-model='searchTerm'></input>
+          <md-content class='search-bar'>
+            <md-input-container md-no-float class="md-block search-input">
+              <input type="text" ng-model="searchTerm" placeholder='Search'>
+            </md-input-container>
+          </md-content>
+          
           <!-- Search button -->
-          <div class='search-button pointer' ng-click='search()'>
+          <!-- <div class='search-button pointer' ng-click='search()'>
             <img = src='./assets/img/search.png' class='img-search' />
-          </div>
+          </div> -->
+          <md-button class='search-button'  ng-click='search()'>
+            <img src='./assets/img/search.png' class='img-search' />
+          </md-button>
+          
           <!-- Displays user name, links to their profile view -->
           <section layout='row' layout-wrap> 
             <a ng-click='profile()' class='pointer row-inline'>

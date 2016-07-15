@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 // make mongoose use q promises
 mongoose.Promise = require('q').Promise;
 var session = require('express-session');
+// Connects mongodb to sessions
 var MongoStore = require('connect-mongo')(session);
 
 
