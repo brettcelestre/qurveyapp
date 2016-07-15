@@ -1,52 +1,56 @@
-<div class='login center-div'>
+<div class='login center-div md-inline-form' layout-xs>
 
-  <h1>Qurvey</h1>
-  <h3>Sign Up</h3>
-  
   <form name="login" novalidate>
-    
-    <div class="username-input">
-      <h3>Username</h3>
+  <h1 class='main-title'>Qurvey</h1>
+  <h3 class='main-title'>Sign Up</h3>
+  
+    <md-input-container layout="row" class="username-input">
+    <!-- <di class="username-input"> -->
+      <!-- <h3>Username</h3> -->
         <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
-    </div>
+    <!-- </div> -->
+    </md-input-container>
+    <!-- <div class="password-input"> -->
+    <md-input-container layout="row" class="password-input">
+
+      <!-- <h3>Password</h3> -->
+        <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
+        <!-- <img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' /> -->
+    <!-- </div> -->
+    </md-input-container>
     
-    <div class="password-input">
-      <h3>Password</h3>
-        <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required><img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' />
-    </div>
-    
-    <h3>Personality Traits</h3>
-    <h5>Choose 4-6</h5>  
+    <h3 class='main-title'>Personality Traits</h3>
+    <h5 class='main-title'>Choose 4-6</h5>  
 
     <div id='trait-box'>
       <div class='trait-row'>
-        <button id='Weird' class='trait-item' ng-click='addTrait("Weird")'>Weird</button>
-        <button id='Crazy' class='trait-item' ng-model='trait' ng-click='addTrait("Crazy")'>Crazy</button>
-        <button id='splendid' class='trait-item' ng-model='trait' ng-click='addTrait("splendid")'>Splendid</button>
+        <md-button id='Weird' class='trait-item md-raised' ng-click='addTrait("Weird")'>Weird</md-button>
+        <md-button id='Crazy' class='trait-item md-raised' ng-model='trait' ng-click='addTrait("Crazy")'>Crazy</md-button>
+        <md-button id='splendid' class='trait-item md-raised' ng-model='trait' ng-click='addTrait("splendid")'>Splendid</md-button>
       </div>
       <div class='trait-row'>
-        <button id='Sneaky' class='trait-item' ng-click='addTrait("Sneaky")'>Sneaky</button>
-        <button id='Quiet' class='trait-item' ng-click='addTrait("Quiet")'>Quiet</button>
-        <button id='Blunt' class='trait-item' ng-click='addTrait("Blunt")'>Blunt</button>
+        <md-button id='Sneaky' class='trait-item md-raised' ng-click='addTrait("Sneaky")'>Sneaky</md-button>
+        <md-button id='Quiet' class='trait-item md-raised' ng-click='addTrait("Quiet")'>Quiet</md-button>
+        <md-button id='Blunt' class='trait-item md-raised' ng-click='addTrait("Blunt")'>Blunt</md-button>
       </div>
       <div class='trait-row'>
-        <button id='Intellectual' class='trait-item' ng-click='addTrait("Intellectual")'>Intellectual</button>
-        <button id='warm' class='trait-item' ng-click='addTrait("warm")'>Warm</button>
-        <button id='Stressed' class='trait-item' ng-click='addTrait("Stressed")'>Stressed</button>
+        <md-button id='Intellectual' class='trait-item md-raised' ng-click='addTrait("Intellectual")' style='font-size:x-small'>Intellectual</md-button>
+        <md-button id='warm' class='trait-item md-raised' ng-click='addTrait("warm")'>Warm</md-button>
+        <md-button id='Stressed' class='trait-item md-raised' ng-click='addTrait("Stressed")'>Stressed</md-button>
       </div>
       <div class='trait-row'>
-        <button id='Imaginative' class='trait-item' ng-click='addTrait("Imaginative")'>Imaginative</button>
-        <button id='sad' class='trait-item' ng-click='addTrait("sad")'>Sad</button>
-        <button id='confused' class='trait-item' ng-click='addTrait("confused")'>Confused</button>
+        <md-button id='Imaginative' class='trait-item md-raised' ng-click='addTrait("Imaginative")'>Imaginative</md-button>
+        <md-button id='sad' class='trait-item md-raised' ng-click='addTrait("sad")'>Sad</md-button>
+        <md-button id='confused' class='trait-item md-raised' ng-click='addTrait("confused")'>Confused</md-button>
       </div>
     </div>
     
     <br>
     <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
-    <button id='createAcccount' type='button' class='login-button create-account' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</button>
+    <md-button id='createAcccount' type='button' class='login-button create-account md-raised' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</md-button>
     <br>
     <br>
-    <button type="button" class="login-button link" ng-click='loginView()'>Login Page</button>
+    <md-button type="button" class="login-button link md-raised" ng-click='loginView()'>Login Page</md-button>
   </form>
   
   

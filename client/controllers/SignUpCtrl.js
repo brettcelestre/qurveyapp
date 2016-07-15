@@ -33,18 +33,24 @@ angular.module('qurvey.controllers')
   };
   
   $scope.addTrait = function(val) {
-    var btn = document.getElementById(val);
+    var btn = angular.element($('#' + val));
     // Checks if current button is already selected
-    if ( btn.classList.contains('selected' )) {
-       // Removes trait from traits list
-       btn.className = 'trait-item';
-       // Deletes trait from trait obj
-       delete $scope.traits[val];
-       // Checks if we should disable create account button
-       $scope.createAccountButton();
+    if ( btn.hasClass('selected' )) {
+      // Removes trait from traits list
+      btn.removeClass('selected');
+      btn.addClass('md-raised');
+      btn.removeClass('md-warn');
+
+      // Deletes trait from trait obj
+      delete $scope.traits[val];
+      // Checks if we should disable create account button
+      $scope.createAccountButton();
     } else {
       // Adds selected class to btn
-      btn.classList.add('selected');
+      btn.addClass('selected');
+      btn.removeClass('md-raised');
+      btn.addClass('md-warn');
+
       // Adds trait to trait obj
       $scope.traits[val] = true;
       // Checks if we should disable create account button
