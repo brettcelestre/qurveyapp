@@ -147,6 +147,18 @@ angular.module('Qurvey', [
           controller: 'ProfileController'
         }
       }
+    })
+
+    // Search Results
+    .state('search-results', {
+      parent: 'main.questions',
+      url: '/search',
+      views: {
+        'feed': {
+          templateUrl: 'views/search.html',
+          controller: 'MainController'
+        }
+      }
     });
     
 }])
@@ -169,6 +181,9 @@ angular.module('Qurvey', [
         $state.go('main');
       }
     });
+    
+    // Search
+    // console.log('RUN Search.searchTerm: ', Search.searchTerm);
     
 }]);
 

@@ -14,6 +14,12 @@ var QuestionSchema = new Schema({
     required: true,
     unique: true
   },
+  
+  // question search string
+  questionSearch: {
+    type: String,
+    default: ''
+  },
 
   // user who asked the question
   user: {
@@ -90,6 +96,14 @@ var QuestionSchema = new Schema({
     type: Date,
     default: new Date()
   }
+});
+
+QuestionSchema.pre('save', function(next) {
+  // Saves a lowercase version of the question for searching
+  var lowercase = this.question.toLowerCase();
+  // Updates questionSearch property with lowercase question
+  this.questionSearch = lowercase;
+  next();
 });
 
 // pre save middleware to add question to user's array of questions

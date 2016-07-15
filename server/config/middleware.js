@@ -15,28 +15,31 @@ module.exports = function (app, express) {
   
   // routes for client
 
+  // Instantiate routers
   var usersRouter = express.Router();
   var questionsRouter = express.Router();
   var answersRouter = express.Router();
   var authRouter = express.Router();
   var graphRouter = express.Router();
   var seedRouter = express.Router();
+  var searchRouter = express.Router();
 
+  // Set up routes for each router
   app.use('/api/users', usersRouter);
   app.use('/api/questions', questionsRouter);
   app.use('/api/answers', answersRouter);
   app.use('/auth', authRouter);
   app.use('/api/graph', graphRouter);
   app.use('/api/seed', seedRouter);
+  app.use('/api/search', searchRouter);
 
-
-  // inject routes
+  // Require and inject routes
   require('../users/usersRoutes.js')(usersRouter);
   require('../questions/questionsRoutes.js')(questionsRouter);
   require('../answers/answersRoutes.js')(answersRouter);
   require('../auth/authRoutes.js')(authRouter);
   require('../graph/graphRoutes.js')(graphRouter);
   require('../seed/seedRoutes.js')(seedRouter);
-
+  require('../search/searchRoutes.js')(searchRouter);
 
 };

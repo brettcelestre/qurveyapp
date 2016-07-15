@@ -8,7 +8,7 @@ module.exports = {
   // check if session exists, and updates seeion.user if it does,
   // otherwise redirect to '/'
   checkSession: function(req, res) {
-    console.log('checkSession ran | req.session: ', req.session);
+    // console.log('checkSession ran | req.session: ', req.session);
     if (req.session.user) {
       User.findOne({username: req.session.user.username})
         .populate('questionsAnswered')
@@ -45,7 +45,7 @@ module.exports = {
             if (!foundUser) {
               res.status(404).send({error: 'password does not match'});
             } else {
-              console.log('user was found: ', user);
+              // console.log('user was found: ', user);
               req.session.regenerate(function() {
                 req.session.user = user;
                 res.send(user);

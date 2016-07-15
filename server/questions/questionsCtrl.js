@@ -23,6 +23,7 @@ module.exports = {
   // add question to db
   newQuestion: function(req, res) {
     var qInfo = req.body;
+    // var lowerCase = req.body.
     qInfo.user = req.session.user._id;
     var newQuestion = new Question(qInfo);
     newQuestion.save(function(err, newQuestion) {

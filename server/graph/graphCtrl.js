@@ -28,7 +28,7 @@ var graphCtrl = {
 
   // graph for single question
   qGraph: function(req, res) {
-    console.log(req.body.question, 'req.body');
+    // console.log(req.body.question, 'req.body');
     Question.findOne({_id: req.body.question})
     .populate('answerObjs')
     .populate({path: 'answerObjs', populate: {path: 'user', select: 'traits'}})
@@ -48,7 +48,7 @@ var graphCtrl = {
     // list to pass to cytoscape
     var list = [];
     var nodeObj = {};
-    console.log(data);
+    // console.log(data);
 
     //iterate through data - should be array of objects
     for (var i = 0; i < data.length; i++) {
