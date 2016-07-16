@@ -42,6 +42,10 @@
     "angular-material": "^1.0.9",
     "angular-mocks": "^1.5.7",
     "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-protractor": "^0.1.1",
+    "gulp-mongodb-data": "^2.0.0",
+    "gulp-nodemon": "^2.1.0",
     "mocha": "^2.5.3"
   }
 }
