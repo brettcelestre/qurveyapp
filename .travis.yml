@@ -1,0 +1,18 @@
+# Qurvey travis.yml file
+
+language: node_js
+
+node_js:
+  - "6.1"
+
+before_script:
+  - bower install
+  - npm install
+
+install:
+  - bower install
+  - npm install
+  
+script:
+  - gulp
+  
