@@ -90,7 +90,8 @@ var graphCtrl = {
           'data': {
             'id': otherValue[j],
             'size': 10,
-            'count': 1
+            'count': 1,
+            'countid': otherValue[j] + ' ' + 1
           }
         };
 
@@ -113,6 +114,7 @@ var graphCtrl = {
         } else {
           // increment count
           nodeObj[otherValue[j]].data.count++;
+          nodeObj[otherValue[j]].data.countid = otherValue[j] + ' ' + nodeObj[otherValue[j]].data.count;
         }
 
         if (!graph.hasEdge(mainValue, otherValue[j])) {
