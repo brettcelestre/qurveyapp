@@ -14,7 +14,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/build/' //the server will listen in on this path and then proxy Webpack
   },
+  
   module: {
     loaders: []
   }
+  
 };
