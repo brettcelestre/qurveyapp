@@ -6,7 +6,6 @@
   "scripts": {
     "test": "node_modules/mocha/bin/mocha server/test/test.js",
     "postinstall": "bower install && webpack --progress --colors --watch",
-    // "build": "webpack --progress --colors --watch",
     "start": "node server/server.js"
   },
   "repository": {
