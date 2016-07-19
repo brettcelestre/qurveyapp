@@ -1,4 +1,29 @@
 
+var ctrl = require('./controllers/controller.js');
+var askctrl = require('./controllers/AskCtrl.js');
+var graphctrl = require('./controllers/GraphCtrl.js');
+var loginctrl = require('./controllers/LoginCtrl.js');
+var mainctrl = require('./controllers/MainCtrl.js');
+var profilectrl = require('./controllers/ProfileCtrl.js');
+var guestionctrl = require('./controllers/QuestionCtrl.js');
+var recentctrl = require('./controllers/RecentCtrl.js');
+var searchctrl = require('./controllers/SearchCtrl.js');
+var signupctrl = require('./controllers/SignUpCtrl.js');
+var statisticsctrl = require('./controllers/StatisticsCtrl.js');
+var topctrl = require('./controllers/TopCtrl.js');
+var service = require('./services/services.js');
+var askservice = require('./services/AskService.js');
+var graphservice = require('./services/GraphService.js');
+var loginservice = require('./services/LoginService.js');
+var mainservice = require('./services/MainService.js');
+var profileservice = require('./services/ProfileService.js');
+var questionservice = require('./services/QuestionService.js');
+var recentservice = require('./services/RecentService.js');
+var searchservice = require('./services/SearchService.js');
+var signupservice = require('./services/SignUpService.js');
+var statisticsservice = require('./services/StatisticsService.js');
+var topservice = require('./services/TopService.js');
+
 angular.module('Qurvey', [
   'qurvey.controllers',
   'qurvey.services',
