@@ -17,12 +17,12 @@ var MongoStore = require('connect-mongo')(session);
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } } };       
  
-var mongodbUri = process.env.MLAB;
+var mongodbUri = process.env.mongoDB;
 
 
  
 mongoose.connect(mongodbUri, options);
-var conn = mongoose.connection;             
+var conn = mongoose.connection;
  
 var app = express();
 
