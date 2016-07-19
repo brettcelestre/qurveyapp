@@ -3,14 +3,22 @@ var gulp = require('gulp'),
     exec = require('child_process').exec,
     gulpProtractorAngular = require('gulp-angular-protractor');
 
+gulp.task('mocha', function(cb) {
+  exec('node_modules/mocha/bin/mocha server/test/test.js', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
 gulp.task('server', ['mocha'], function () {
   nodemon({ 
-      script: 'server/server.js',
-      ext: 'html js',
-      ignore: ['.gitignore.js']})
-    .on('restart', function () {
-      console.log('restarted!');
-    });
+    script: 'server/server.js',
+    ext: 'html js',
+    ignore: ['.gitignore.js']})
+      .on('restart', function () {
+        console.log('restarted!');
+      });
 });
 
 gulp.task('protractor', ['server'], function(callback) {
@@ -27,12 +35,5 @@ gulp.task('protractor', ['server'], function(callback) {
     .on('end', callback);
 });
 
-gulp.task('mocha', function(cb) {
-  exec('node_modules/mocha/bin/mocha server/test/test.js', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-});
 
 gulp.task('default', ['mocha', 'server', 'protractor']);
