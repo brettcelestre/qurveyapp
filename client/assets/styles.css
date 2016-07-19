@@ -376,6 +376,11 @@ body {
   /*background-color: red;*/
 }
 
+.fullscreen {
+  width: 500px;
+  height: 500px;
+}
+
 /* --- QUESTION STYLING ---- */
 
 .question-div {

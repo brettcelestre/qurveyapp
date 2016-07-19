@@ -1,11 +1,11 @@
 // main server file run in node or with nodemon to start server
-
+var server;
 var express = require('express');
 var middleware = require('./config/middleware.js');
 var mongoose = require('mongoose');
-
+var Q = require('q');
 // make mongoose use q promises
-mongoose.Promise = require('q').Promise;
+mongoose.Promise = Q.Promise;
 var session = require('express-session');
 // Connects mongodb to sessions
 var MongoStore = require('connect-mongo')(session);
@@ -13,11 +13,19 @@ var MongoStore = require('connect-mongo')(session);
 
 
 
+// connection to mongodb
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } } };       
+ 
+var mongodbUri = 'mongodb://admin:qurveytime237@ds021915.mlab.com:21915/qurvey';
+
+ 
+mongoose.connect(mongodbUri, options);
+var conn = mongoose.connection;             
+ 
 var app = express();
 
-// connection to mongodb
-mongoose.connect('mongodb://localhost/qurvey');
-
+conn.on('error', console.error.bind(console, 'connection error:'));
 
 // use mongo to store sessions
 app.use(session({
@@ -32,9 +40,12 @@ middleware(app, express);
 
 var PORT = process.env.PORT || 3000;
 
-app.listen(PORT);
+server = app.listen(PORT);
 console.log('qurvey is listening on ' + PORT);
 
-
-// export for use by test
+// export for test
 module.exports = app;
+
+
+
+
