@@ -17,7 +17,8 @@ var MongoStore = require('connect-mongo')(session);
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } } };       
  
-var mongodbUri = 'mongodb://admin:qurveytime237@ds021915.mlab.com:21915/qurvey';
+var mongodbUri = process.env.MLAB;
+
 
  
 mongoose.connect(mongodbUri, options);
