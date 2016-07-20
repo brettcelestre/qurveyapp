@@ -1,7 +1,7 @@
 
 angular.module('qurvey.services')
 
-.service('Main', ['$http', function($http) {
+.service('Main', ['$http', '$mdDialog', function($http, $mdDialog) {
   
   // Stores users data, is used for profile view and filtering feed data
   var userObject = {
@@ -42,7 +42,22 @@ angular.module('qurvey.services')
     });
   };
 
+  var confirmAnswer = function(answerText) {
+    console.log($mdDialog, 'mdDialog');
+        
+    //Call the confirm() function to configure the confirmation dialog
+    var confirm = $mdDialog.confirm()
+        .title('Confirm Your Answer')
+        .content('Are you sure you want to choose ' + answerText + '?')
+        .ariaLabel('Answer')
+        .ok('Answer')
+        .cancel('Cancel');
+    return $mdDialog.show(confirm);
+  };
+
+
   return {
+    confirmAnswer: confirmAnswer,
     userObject: userObject,
     currentUser: currentUser,
     logout: logout
