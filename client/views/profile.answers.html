@@ -1,0 +1,133 @@
+<div class='center-div feed-div' ng-controller='ProfileController'>
+
+  <!-- Sets up Infinite Scrolling -->
+  <!-- <md-virtual-repeat-container id="vertical-container"> -->
+      <!-- <div md-virtual-repeat="data in ctrl.infiniteItems | orderBy: '-createdAt' " md-on-demand flex> -->
+    
+  <!-- Repeats through $scope.recentData in RecentController, filtered by createdAt -->  
+  <div ng-repeat='data in userAnswers | orderBy: "-createdAt" ' class='question-div'>
+    
+    <!-- Question header block -->
+    <div class='question-header'>
+      <h1 class='question-title'>{{ data.question }}</h1>
+      <p class='question-info md-body-2'>{{ data.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
+    </div>
+    
+    <!-- Displays the graph -->
+    <div id='graph_{{data._id}}' class='graph' ng-show='data.userAnswered'>
+    </div>
+    
+    <!-- If 2 options  -->
+    <!-- Checks how many answer options there are. Sets id to question id -->
+    <div ng-if='(questionCount(data.answers) === 2)' class='option-two-div center-div voting-options' id='{{data._id}}'>
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <!-- Creates a section for this option -->
+          <section layout='column' layout-align='center center' layout-wrap>
+            <!-- Displays the result of this option, only shows if user has already answered via ng-show -->
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
+            <!-- Creates button for this option. Id is answer id + '_a' representing option 'a'.
+            ng-click passes 1. answer string 2. letter of option 3. question id 4. t/f whether user has answered already --> 
+            <md-button id='{{data._id}}_a' class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
+            <md-button id='{{data._id}}_b' class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
+          </section>
+        </section>
+      </md-content>
+      
+      <!-- Displays message that you've already voted
+      This is only implemented in this block, would need to be placed in option 3, 4, 5 blocks -->
+      <!-- <md-content>
+        <section ng-show='{{data.alreadyVotedWarning}}' layout='row' layout-align='center center' layout-wrap>
+          <h4 >You have already voted.</h4>
+        </section>
+      </md-content> -->
+      
+    </div>
+    
+    <!-- If 3 options -->
+    <div ng-if='(questionCount(data.answers) === 3)' class='option-three-div voting-options' id='{{data._id}}'>
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
+            <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
+            <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
+            <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
+          </section>
+        </section>
+      </md-content>
+    </div>
+    
+    <!-- If 4 options -->
+    <div ng-if='(questionCount(data.answers) === 4)' class='option-four-div voting-options' id='{{data._id}}'>
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
+            <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
+            <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
+            <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.d }}</h1>
+            <md-button class='{{data.classes.d}}' ng-click='answer(data.answers.d, "d", data._id, data.userAnswered)'>{{ data.answers.d }}</md-button>
+          </section>
+        </section>
+      </md-content>
+    </div>
+      
+    <!-- If 5 options -->
+    <div ng-if='(questionCount(data.answers) === 5)' class='option-five-div voting-options' id='{{data._id}}'>
+      <md-content>
+        <section layout='row' layout-align='center center' layout-wrap>
+          <section layout='column' layout-align='center center' layout-wrap>  
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.a }}</h1>
+            <md-button class='{{data.classes.a}}' ng-click='answer(data.answers.a, "a", data._id, data.userAnswered)'>{{ data.answers.a }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.b }}</h1>
+            <md-button class='{{data.classes.b}}' ng-click='answer(data.answers.b, "b", data._id, data.userAnswered)'>{{ data.answers.b }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.c }}</h1>
+            <md-button class='{{data.classes.c}}' ng-click='answer(data.answers.c, "c", data._id, data.userAnswered)'>{{ data.answers.c }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.d }}</h1>
+            <md-button class='{{data.classes.d}}' ng-click='answer(data.answers.d, "d", data._id, data.userAnswered)'>{{ data.answers.d }}</md-button>
+          </section>
+          <section layout='column' layout-align='center center' layout-wrap>
+            <h1 class='md-display-1 answer-number' ng-show='data.userAnswered'>{{ data.responses.e }}</h1>
+            <md-button class='{{data.classes.e}}' ng-click='answer(data.answers.e, "e", data._id, data.userAnswered)'>{{ data.answers.e }}</md-button>
+          </section>
+        </section>
+      </md-content>
+    </div>
+
+    <!-- Places a divider in between questions -->
+    <md-content>
+      <md-divider ng-if="!$last" class='question-divider'></md-divider>
+    </md-content>
+  
+  </div>
+  <!-- The below tag is to close virtual repeat -->
+  <!-- </md-virtual-repeat-container> -->
+  <br>
+  <br>
+
+</div>

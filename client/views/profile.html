@@ -15,12 +15,19 @@
   <h3 class='md-headline traits-header'>Traits</h3>
   <md-content class='traits'>
     <md-chips ng-model='traits' readonly='true'>
-        <!-- <md-chip></md-chip> -->
     </md-chips>
   </md-content>
   
   <md-content>
     <md-divider ng-if="!$last" class='question-divider'></md-divider>
   </md-content>
+  
+  <h3 class='md-headline traits-header'>Activity</h3>
+  <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+    <md-button id='questionBtn' class="{{ buttonQuestions }}" ng-click='userQuestionsProfile()'>Questions</md-button>
+    <md-button id='askBtn' class="{{ buttonAnswers }}" ng-click='userAnswersProfile()'>Answers</md-button>
+  </section>
+  
+  <div class='profile-feed-view' ui-view='profile-feed'></div>
 
 </div>

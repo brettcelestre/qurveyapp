@@ -341,12 +341,14 @@ body {
 .profile-header {
   margin: 70px 0 8px 0;
   background-color: red;
+  overflow: hidden;
 }
 .md-toolbar {
   background-color: #2196F3;
 }
 .profile-bar {
   height: 53px;
+  overflow: hidden;
 }
 .profile-stats {
   padding-top: 7px;

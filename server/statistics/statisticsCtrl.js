@@ -87,6 +87,23 @@ module.exports = {
         
       }
     });
+  },
+  
+  userAnswersQuestions: function(req, res){
+    User.findOne( { _id: req.body.userid } )
+        .populate('questionsAnswered')
+        .populate({
+          path: 'questionsAnswered',
+          populate: { path: 'question'}
+        })
+        .exec(function(err, data) {
+          if (err) {
+            console.error(err);
+            res.status(500).send(err);
+          } else {
+            res.send(data);
+          }
+    });
   }
   
   
