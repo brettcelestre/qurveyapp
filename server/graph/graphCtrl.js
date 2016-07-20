@@ -60,7 +60,7 @@ var graphCtrl = {
         'group': 'nodes',
         'data': {
           'id': mainValue,
-          'size': 20,
+          'size': 50,
           'count': 1
         }
       };

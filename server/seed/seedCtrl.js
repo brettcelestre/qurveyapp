@@ -94,14 +94,13 @@ module.exports = {
             if (random === 3) {
               continue;
             }
-            if (users[i].traits.indexOf('traditional') !== -1) {
-              console.log('trad')
+            if (users[i].traits.indexOf('Blunt') !== -1) {
               var text = answerKey[0][1];
               var index = answerKey[0][0];
-            } else if (users[i].traits.indexOf('anxious') !== -1) {
+            } else if (users[i].traits.indexOf('Sneaky') !== -1) {
               var text = answerKey[1][1];
               var index = answerKey[1][0];
-            } else if (users[i].traits.indexOf('warm') !== -1) {
+            } else if (users[i].traits.indexOf('Imaginative') !== -1) {
               var text = answerKey[2][1];
               var index = answerKey[2][0];
             } else {

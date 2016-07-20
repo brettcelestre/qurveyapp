@@ -15,29 +15,24 @@ angular.module('qurvey.services')
       style: cytoscape.stylesheet()
       .selector('node')
         .css({
-          'background-color': '#666',
+          'background-color': '#2196F3',
           'content': 'data(id)',
           'text-valign': 'center',
-          'text-outline-width': 2,
           'color': 'white',
           'text-background-opacity': 1,
-          'text-background-color': 'grey',
           'text-background-shape': 'roundrectangle',
-          'text-outline-color': '#999',
-          'font-size': '18',
-          'width': 'mapData(size, 0, 100, 5, 200)',
-
-          'height': 'mapData(size, 0, 100, 5, 200)'
+          'text-background-color': '#2196F3',
+          'width': 'mapData(size, 0, 100, 5, 100)',
+          'height': 'mapData(size, 0, 100, 5, 100)'
         })
       .selector('edge')
         .css({
-          'width': 'mapData(strength, 0, 40, 2, 40)',
+          'width': 'mapData(strength, 0, 40, 2, 16)',
           'line-color': 'mapData(strength, 0, 40, grey, blue)',
           'curve-style': 'bezier'
         })
       .selector('node.countid')
         .css({
-          // 'label': 'data(id)',
           'content': 'data(countid)'
         })
       .selector('.faded')
@@ -52,17 +47,18 @@ angular.module('qurvey.services')
       pan: { x: 0, y: 0 },
 
       layout: {
-        name: 'concentric',
+        name: 'concentric'
       }
 
     });
     cy.on('select', 'node', function(e) {
       var viewport = this._private.cy.container();
       angular.element(viewport).addClass('fullscreen');
-      // cy({userZoomingEnabled: true});
+
       var node = this;
       var layoutDuration = 500;
       var layoutPadding = 0;
+
       // node position
       var npos = node.position();
 
@@ -74,10 +70,7 @@ angular.module('qurvey.services')
       var w = window.innerWidth;
       var h = window.innerHeight;
         
-      // node.position({
-      //   x: 250,
-      //   y: 250
-      // });
+      
       cy.batch(function() {
         nhood.addClass('highlighted').removeClass('faded').removeClass('countid');
         others.addClass('faded').removeClass('highlighted').removeClass('countid');
