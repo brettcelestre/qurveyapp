@@ -113,59 +113,64 @@ angular.module('qurvey.controllers')
       
     // If the user has not answered this question
     } else if ( !userAnswer ) {
-      // Gets current user
-      Main.currentUser()
-        .then(function(data){
-          // Saves username
-          var user = data.data.username;
-          // Creates answerData object for Recent.submitAnswer
-          var answerData = {
-            // Answer's text
-            text: text,
-            // responseIndex = letter a-e chosen
-            responseIndex: z,
-            // Username string
-            user: user,
-            // Question ID
-            question: questionID,
-            // Creates a new date for this answer
-            createdAt: new Date(),
-          };
-          // Sends POST req to /api/answers
-          Top.submitAnswer(answerData)
+      Main.confirmAnswer(text).then(function(result) {
+        // console.log(result, 'confirm')
+        if (result) {
+          // Gets current user
+          Main.currentUser()
             .then(function(data){
-              // Sends POST req to /api/graph with the question id
-              Graph.getGraph(answerData.question)
-                .then(function(graphData){
-                  // Graph is appended to the DOM inside of GraphService.js
-                })
-                .catch(function(data){
-                  console.error('Error with login: ', data)
-                });
-              })
-              .then(function(data){
-                // Updates the counter after submitting vote
-                // Iterates over recentData
-                $scope.recentData.forEach(function(val) {
-                  // Finds exact question
-                  if ( val._id === questionID ) {
-                    // Increments chosen response by 1
-                    val.responses[z] += 1;
-                    // Marks question as answered, disabled users ability to vote twice
-                    val.userAnswered = true;
-                    val.userAnswer = z;
-                    // Update button to indicate user voted that option
-                    val.classes[z] = 'md-raised md-primary';
-                  }
-                });
-              })
-              .catch(function(data){
-                console.error('Error with login: ', data)
-              });
-        })
-        .catch(function(data){
-          console.error('Error with login: ', data)
-        });
+              // Saves username
+              var user = data.data.username;
+              // Creates answerData object for Recent.submitAnswer
+              var answerData = {
+                // Answer's text
+                text: text,
+                // responseIndex = letter a-e chosen
+                responseIndex: z,
+                // Username string
+                user: user,
+                // Question ID
+                question: questionID,
+                // Creates a new date for this answer
+                createdAt: new Date(),
+              };
+              // Sends POST req to /api/answers
+              Top.submitAnswer(answerData)
+                .then(function(data){
+                  // Sends POST req to /api/graph with the question id
+                  Graph.getGraph(answerData.question)
+                    .then(function(graphData){
+                      // Graph is appended to the DOM inside of GraphService.js
+                    })
+                    .catch(function(data){
+                      console.error('Error with login: ', data)
+                    });
+                  })
+                  .then(function(data){
+                    // Updates the counter after submitting vote
+                    // Iterates over recentData
+                    $scope.recentData.forEach(function(val) {
+                      // Finds exact question
+                      if ( val._id === questionID ) {
+                        // Increments chosen response by 1
+                        val.responses[z] += 1;
+                        // Marks question as answered, disabled users ability to vote twice
+                        val.userAnswered = true;
+                        val.userAnswer = z;
+                        // Update button to indicate user voted that option
+                        val.classes[z] = 'md-raised md-primary';
+                      }
+                    });
+                  })
+                  .catch(function(data){
+                    console.error('Error with login: ', data)
+                  });
+            })
+            .catch(function(data){
+              console.error('Error with login: ', data)
+            }); 
+        }
+      });
     }
   };
 
