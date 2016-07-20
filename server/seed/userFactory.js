@@ -9,25 +9,25 @@ var makeUsers = function(number) {
   var users = [];
 
   // store traits in array
-  traits = ['traditional', 'unconventional', 'disciplined', 'spontaneous', 'introverted', 'extroverted', 'guarded', 'warm', 'anxious', 'relaxed', 'splendid', 'sad', 'confused'];
+  traits = ['Weird', 'Crazy', 'Splendid', 'Sneaky', 'Quiet', 'Blunt', 'Intellectual', 'Warm', 'Stressed', 'Imaginative', 'Sad', 'Confused'];
 
   // make number of users
   for (var i = 0; i <= number; i++) {
-  // create random array of traits
-  var userTraits = [];
-  while (userTraits.length !== 5) {
-    // console.log(userTraits);
-    // console.log('randtrait');
-    // chose a random number
-    var random = Math.floor(Math.random() * traits.length);
-    var randomTrait = traits[random];
-    // check if trait is in userTraits
-    if (userTraits.indexOf(randomTrait) === -1) {
-      userTraits.push(randomTrait);
+    // create random array of traits
+    var userTraits = [];
+    while (userTraits.length !== 5) {
+      // console.log(userTraits);
+      // console.log('randtrait');
+      // chose a random number
+      var random = Math.floor(Math.random() * traits.length);
+      var randomTrait = traits[random];
+      // check if trait is in userTraits
+      if (userTraits.indexOf(randomTrait) === -1) {
+        userTraits.push(randomTrait);
+      }
     }
-  }
-  users.push(new User('robot' + i + '', 'pass', userTraits));
-  // console.log('users', users)
+    users.push(new User('robot' + i + '', 'pass', userTraits));
+    // console.log('users', users)
   }
   return users;
 };

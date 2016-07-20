@@ -373,14 +373,16 @@ body {
 
 .graph {
   width: 560px;
-  height: 350px;
+  height: 200px;
   margin-top: -20px;
   /*background-color: red;*/
 }
 
 .fullscreen {
-  width: 500px;
-  height: 500px;
+  width: 560px;
+  height: 560px;
+  margin-top: -20px;
+
 }
 
 /* --- QUESTION STYLING ---- */
