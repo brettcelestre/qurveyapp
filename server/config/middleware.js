@@ -23,6 +23,7 @@ module.exports = function (app, express) {
   var graphRouter = express.Router();
   var seedRouter = express.Router();
   var searchRouter = express.Router();
+  var statisticsRouter = express.Router();
 
   // Set up routes for each router
   app.use('/api/users', usersRouter);
@@ -32,6 +33,7 @@ module.exports = function (app, express) {
   app.use('/api/graph', graphRouter);
   app.use('/api/seed', seedRouter);
   app.use('/api/search', searchRouter);
+  app.use('/api/statistics', statisticsRouter);
 
   // Require and inject routes
   require('../users/usersRoutes.js')(usersRouter);
@@ -41,5 +43,6 @@ module.exports = function (app, express) {
   require('../graph/graphRoutes.js')(graphRouter);
   require('../seed/seedRoutes.js')(seedRouter);
   require('../search/searchRoutes.js')(searchRouter);
+  require('../statistics/statisticsRoutes.js')(statisticsRouter);
 
 };
