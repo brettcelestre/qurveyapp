@@ -150,18 +150,6 @@ angular.module('Qurvey', [
       }
     })
     
-    // Profile state config
-    .state('profile', {
-      parent: 'main',
-      url: '/profile',
-      views: {
-        'content': {
-          templateUrl: 'views/profile.html',
-          controller: 'ProfileController'
-        }
-      }
-    })
-    
     // Setting state config
     .state('settings', {
       parent: 'main',
@@ -182,6 +170,45 @@ angular.module('Qurvey', [
         'feed': {
           templateUrl: 'views/search.html',
           controller: 'MainController'
+        }
+      }
+    })
+
+    // Profile state config
+    .state('profile', {
+      parent: 'main',
+      url: '/profile',
+      params: { 
+        autoActivateChild: 'profile-questions'
+      },
+      views: {
+        'content': {
+          templateUrl: 'views/profile.html',
+          controller: 'ProfileController'
+        }
+      }
+    })
+    
+    // Profile Questions Feed
+    .state('profile-questions', {
+      parent: 'profile',
+      url: '/questions',
+      views: {
+        'profile-feed': {
+          templateUrl: 'views/profile.questions.html',
+          controller: 'ProfileController'
+        }
+      }
+    })
+    
+    // Profile Answers Feed
+    .state('profile-answers', {
+      parent: 'profile',
+      url: '/answers',
+      views: {
+        'profile-feed': {
+          templateUrl: 'views/profile.answers.html',
+          controller: 'ProfileController'
         }
       }
     });
