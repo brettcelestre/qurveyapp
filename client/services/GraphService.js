@@ -15,20 +15,20 @@ angular.module('qurvey.services')
       style: cytoscape.stylesheet()
       .selector('node')
         .css({
-          'background-color': '#2196F3',
+          'background-color': '#5EB1BF',
           'content': 'data(id)',
           'text-valign': 'center',
           'color': 'white',
           'text-background-opacity': 1,
           'text-background-shape': 'roundrectangle',
-          'text-background-color': '#2196F3',
+          'text-background-color': '#5EB1BF',
           'width': 'mapData(size, 0, 100, 5, 100)',
           'height': 'mapData(size, 0, 100, 5, 100)'
         })
       .selector('edge')
         .css({
           'width': 'mapData(strength, 0, 40, 2, 16)',
-          'line-color': 'mapData(strength, 0, 40, grey, blue)',
+          'line-color': 'mapData(strength, 0, 40, #CDEDF6, #4C115F)',
           'curve-style': 'bezier'
         })
       .selector('node.countid')
@@ -47,7 +47,8 @@ angular.module('qurvey.services')
       pan: { x: 0, y: 0 },
 
       layout: {
-        name: 'concentric'
+        name: 'concentric',
+        fit: false
       }
 
     });

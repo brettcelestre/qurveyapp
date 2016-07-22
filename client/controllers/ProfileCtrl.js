@@ -54,7 +54,7 @@ angular.module('qurvey.controllers')
               // Store responseIndex in userAnswer
               dataVal.userAnswer = userVal.responseIndex;
               // Applies appropriate class
-              dataVal.classes[userVal.responseIndex] = 'md-raised md-primary';
+              dataVal.classes[userVal.responseIndex] = 'md-raised answered';
               // What is returned is a graph data set for this question id
               Graph.getGraph(dataVal._id)
               .then(function(graphData) {
@@ -100,7 +100,7 @@ angular.module('qurvey.controllers')
                   // Store responseIndex in userAnswer
                   dataVal.question.userAnswer = userVal.responseIndex;
                   // Applies appropriate class for button users voted
-                  dataVal.question.classes[userVal.responseIndex] = 'md-raised md-primary';
+                  dataVal.question.classes[userVal.responseIndex] = 'md-raised answered';
                   // What is returned is a graph data set for this question id
                   Graph.getGraph(dataVal.question._id)
                   .then(function(graphData) {
@@ -227,7 +227,7 @@ angular.module('qurvey.controllers')
                       val.responses[z] += 1;
                       val.userAnswer = z;
                       // Update button to indicate user voted that option
-                      val.classes[z] = 'md-raised md-primary';
+                      val.classes[z] = 'md-raised answered';
                       // Marks question as answered, disabled users ability to vote twice
                       val.userAnswered = true;
                     }
