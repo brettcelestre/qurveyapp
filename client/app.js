@@ -241,6 +241,7 @@ angular.module('Qurvey', [
       }
 
     });
+    
     Main.currentUser().then(function(data) {
       if (data.data.username) {
         $state.go('main');
