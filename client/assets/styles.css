@@ -1,7 +1,24 @@
 body {
-  /*background-color: #f2f2f2;*/
+  background-color: #CDEDF6;
+  height: 100%;
   margin: 0px;
 }
+
+div.ng-scope {
+  background-color: #CDEDF6;
+}
+
+/* cards */
+.question-header {
+  padding-left: 10px;
+}
+/* end cards */
+/* buttons */
+.answered {
+  background-color: #114B5F !important;
+  color: white !important;
+}
+/* end buttons */
 
 .main-view {
   width: 100%;
@@ -11,7 +28,7 @@ body {
 /* --- NAV BAR --*/
 
 .md-toolbar {
-  background-color: #2196F3;
+  background-color: #5EB1BF;
 }
 
 .nav {
@@ -28,7 +45,7 @@ body {
   top: 0;
   height: 40px;
   width: 100%;
-  background-color: #d1d1d1;
+  background-color: #5EB1BF;
 }
 
 /*.nav {
@@ -46,7 +63,7 @@ body {
 }
 
 .md-toolbar-tools {
-  background-color: #2196F3;
+  background-color: #5EB1BF;
 }
 
 .main-title {
@@ -372,16 +389,17 @@ body {
 /* --- GRAPH STYLING ---- */
 
 .graph {
-  width: 560px;
+  width: 100%;
   height: 200px;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
   /*background-color: red;*/
 }
 
 .fullscreen {
-  width: 560px;
+  width: 100%;
   height: 560px;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
+
 
 }
 
@@ -414,7 +432,7 @@ body {
 }
 
 .voting-options {
-  margin: -10px 0 0 0;
+  margin: 0px 0 0 10;
 }
 
 .answer-number {
