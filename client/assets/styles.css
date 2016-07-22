@@ -1,11 +1,16 @@
+
 body {
-  background-color: #CDEDF6;
+  /*background-color: #dcf2f8;*/
   height: 100%;
   margin: 0px;
 }
 
+.main-view-background {
+  background-color: #dcf2f8;
+}
+
 div.ng-scope {
-  background-color: #CDEDF6;
+  /*background-color: #CDEDF6;*/
 }
 
 /* cards */
@@ -27,30 +32,49 @@ div.ng-scope {
 
 /* --- NAV BAR --*/
 
-.md-toolbar {
-  background-color: #5EB1BF;
+.qurvey-title {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.qurvey-title:hover {
+  cursor: pointer;
+}
+
+.main-title {
+  margin: 0 0 0 15px;
+  color: #fff;
+}
+
+.main-tab-title {
+  font-size: 20px;
 }
 
 .nav {
-  height: 17px;
+  height: 25px;
+  /*background-color: #114b5f;*/
 }
 
 .nav-bar {
   margin: 0;
   padding: 0;
-  background-color: #333;
   position: fixed;
   display: flex;
-  justify-content: center;
   top: 0;
-  height: 40px;
-  width: 100%;
-  background-color: #5EB1BF;
+  height: 10px;
+  min-height: 64px !important;
+  height: 64px !important;
+  max-height: 64px !important;
 }
 
-/*.nav {
-  height: 40px;
-}*/
+.md-toolbar {
+  min-height: 64px !important;
+  height: 64px !important;
+  max-height: 64px !important; 
+}
 
 .nav-bar h1 {
   display: block;
@@ -58,20 +82,66 @@ div.ng-scope {
   text-align: center;
 }
 
-.md-toolbar {
-  height: 40px;
-}
 
 .md-toolbar-tools {
-  background-color: #5EB1BF;
+  /*background-color: #5EB1BF;*/
+  background-color: #114B5F;
+/*<<<<<<< Updated upstream
+=======*/
+  /*width: 100%;*/
+  /*height: 20px;*/
+/*>>>>>>> Stashed changes*/
 }
 
-.main-title {
-  color: #fff;
+.ask-qurvey-btn {
+  height: 100%;
+  font-size: 18px;
+  vertical-align: middle;
+  padding: 0 13px 0 13px;
+  margin: 7px 10px 7px 15px;
 }
 
-.main-tab-title {
-  font-size: 20px;
+.ask-qurvey-btn:hover {
+  /*background-color: #549fab;*/
+  background-color: #285d6f;
+}
+
+.ask-qurvey-text {
+  margin: 24px 0 0 0; 
+}
+
+.profile-name-nav {
+  height: 100%;
+  padding: 0 13px 0 6px;
+  margin: 7px 0 7px 0;
+}
+
+.profile-name-nav:hover {
+  /*background-color: #549fab;*/
+  background-color: #285d6f;
+}
+
+.logout-dropdown {
+  height: 100%;
+  width: 50px;
+  margin: 0;
+}
+
+.logout-dropdown:hover {
+  height:100%;
+  /*background-color: #549fab; */
+  background-color: #285d6f;
+}
+
+.logout-dots {
+  width: 24px;
+  height: 87px;
+  margin: -8px 0 0 13px;
+}
+
+.search-bar {
+  margin: 0 0 0 4px;
+  border-bottom: 0px !important;
 }
 
 .filter-view {
@@ -98,7 +168,6 @@ div.ng-scope {
 .md-buttom:not([disabled]):hover {
   background-color: rgba(44, 65, 164, 0.96);
 }
-
 
 .user-top {
   margin: 7px 0 0 10px;
@@ -197,7 +266,6 @@ div.ng-scope {
   float: right;
 }
 .ask-tab:hover {
-  /*border-top-right-radius: 2px;*/
   background-color: #e6e6e6;
 }
 
@@ -258,7 +326,7 @@ div.ng-scope {
 }
 
 .pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .trait-item:focus {
@@ -288,7 +356,7 @@ div.ng-scope {
 .img-profile {
   width: 23px;
   height: 23px;
-  margin: 6px 0 0 7px;
+  margin: 6px 0 0 9px;
 }
 
 .img-gear {
@@ -307,11 +375,10 @@ div.ng-scope {
 
 .search-bar {
   height: 40px;
-  width: 300px;
+  width: 350px;
   font-size: 16px;
   font-weight: 200;
   padding-left: 5px;
-  margin-left: 9px;
   margin-top: 4px;
 }
 
@@ -351,6 +418,17 @@ div.ng-scope {
 .header {
   padding-top: 20px;
   text-align: center;
+}
+
+/* --- ASK STYLING ---- */
+
+.ask-toolbar {
+  background-color: #114B5F;
+}
+
+.ask-close {
+  width: 17px;
+  height: 17px;
 }
 
 /* --- PROFILE STYLING ---- */
@@ -416,19 +494,11 @@ div.ng-scope {
   margin-top: 20px;
 }
 
-/*.question-header {
-  margin: 0 0 0 0;
-}*/
-
 .question-title {
   font-size: 1.5rem;
   line-height: 1.35rem;
   letter-spacing: -.06rem;
   margin: 10px 0 -16px 0;
-}
-
-.option-two-div {
-  
 }
 
 .voting-options {
@@ -438,13 +508,6 @@ div.ng-scope {
 .answer-number {
   margin: 0 0 0px 0;
 }
-
-/*.option-two-button {
-  display: inline-block;
-  width: 200px;
-  height: 30px;
-  background-color: #e6e6e6;
-}*/
 
 
 
