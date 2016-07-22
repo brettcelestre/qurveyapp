@@ -56,8 +56,9 @@ angular.module('qurvey.controllers')
           d: $scope.option4,
           e: $scope.option5
         },
+        complete: true
       }
-      console.log('data: ', data);
+      // console.log('data: ', data);
       
       // Invoke Search service
       Ask.ask(data)

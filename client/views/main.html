@@ -2,37 +2,43 @@
 
   <!-- Nav bar -->
   <md-content class='nav'>
-    <md-toolbar class='nav-bar'>
-      <div class="md-toolbar-tools">
-        <section layout="row" layout-align="center center" class='center-div'>
-          
+    <md-toolbar class="nav-bar">
+      <div class="md-toolbar-tools" layout='row'>
+                      
           <!-- Main Qurvey Header -->
-          <a ng-click='questions()' class='md-display-1 pointer'><h1 class='main-title'>Qurvey</h1></a>
-          <span class='profile-stats-spacer'></span>
+          <a ng-click='questions()' class='md-display-1 pointer main-title'>
+            <p class='qurvey-title'>Qurvey</p>
+          </a>
+          
+          <span flex></span>
 
           <!-- Input for search bar -->
           <md-content class='search-bar'>
             <md-input-container md-no-float class="md-block search-input">
-              <input type="text" ng-model="searchTerm" placeholder='Search'>
+              <form ng-submit='search()'>
+                <input class='search-bar' type="text" ng-model="searchTerm" placeholder='Search Qurveys'>
+              </form>
             </md-input-container>
           </md-content>
+          <!-- </section> -->
+          <!-- <img src='http://brettcelestre.com/qurvey/imgs/search.png' class='img-search' /> -->
           
-          <!-- Search button -->
-          <md-button class='search-button'  ng-click='search()'>
-            <img src='http://brettcelestre.com/qurvey/imgs/search.png' class='img-search' />
-          </md-button>
+          <div ng-click='ask()' class='ask-qurvey-btn pointer'>
+            <p class='ask-qurvey-text pointer'>Ask a Qurvey</p>
+          </div>
+          
+          <span flex></span>
           
           <!-- Displays user name, links to their profile view -->
-          <section layout='row' layout-wrap> 
-            <a ng-click='profile()' class='pointer row-inline'>
-              <p class='md-subhead user-top'>{{ currentUser }}</p>
-              <img src='http://brettcelestre.com/qurvey/imgs/user.svg' class='img-profile' />
-            </a>
-          </section>
+          <a ng-click='profile()' class='row-inline profile-name-nav' layout-align="center center">
+            <p class='md-subhead user-top'>{{ currentUser }}</p>
+            <img src='http://brettcelestre.com/qurvey/imgs/user.svg' class='img-profile' />
+          </a>
+          
           <!-- Gear logo which drops down logout option -->
-          <md-menu>
+          <md-menu class='logout-dropdown'>
             <a ng-click="$mdOpenMenu()">
-              <img src='http://brettcelestre.com/qurvey/imgs/gear.svg' class='img-gear pointer'/>
+              <img src='http://brettcelestre.com/qurvey/imgs/vertical-dots.svg' class='logout-dots' />
             </a>
             <md-menu-content>
               <!-- Add more drop downs here -->
@@ -44,7 +50,7 @@
             </md-menu-content>
           </md-menu>
           
-        </section>
+        <!-- </section> -->
       </div>
     </md-toolbar>
   </md-content>
