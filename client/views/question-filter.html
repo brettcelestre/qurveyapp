@@ -5,8 +5,15 @@ This view shows under 'Questions' and allows you filter top and recent -->
 <div class='content-container center-div' ng-controller='QuestionController'>  
  
   <section class='filter-view' layout="row" layout-sm="row" layout-align="center center" layout-wrap>
-    <md-button class="{{ buttonTop }}" ng-click='top()'>Top</md-button>
-    <md-button class="{{ buttonRecent }}" ng-click='recent()'>Recent</md-button>
+  
+    <div class="{{ buttonTop }}" ng-click='top()'>
+      Top
+    </div>
+    
+    <div class="{{ buttonRecent }}" ng-click='recent()'>
+      Recent
+    </div>
+    
   </section>
 
   <div ui-view='question-feed'></div>

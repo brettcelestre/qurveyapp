@@ -20,7 +20,7 @@
               </form>
             </md-input-container>
           </md-content>
-          <!-- </section> -->
+
           <!-- <img src='http://brettcelestre.com/qurvey/imgs/search.png' class='img-search' /> -->
           
           <div ng-click='ask()' class='ask-qurvey-btn pointer'>
@@ -30,14 +30,14 @@
           <span flex></span>
           
           <!-- Displays user name, links to their profile view -->
-          <a ng-click='profile()' class='row-inline profile-name-nav' layout-align="center center">
+          <a ng-click='profile()' class='row-inline profile-name-nav pointer' layout-align="center center">
             <p class='md-subhead user-top'>{{ currentUser }}</p>
             <img src='http://brettcelestre.com/qurvey/imgs/user.svg' class='img-profile' />
           </a>
           
           <!-- Gear logo which drops down logout option -->
           <md-menu class='logout-dropdown'>
-            <a ng-click="$mdOpenMenu()">
+            <a ng-click="$mdOpenMenu()" class='pointer'>
               <img src='http://brettcelestre.com/qurvey/imgs/vertical-dots.svg' class='logout-dots' />
             </a>
             <md-menu-content>

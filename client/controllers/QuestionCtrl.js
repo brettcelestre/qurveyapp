@@ -12,12 +12,12 @@ angular.module('qurvey.controllers')
   $scope.buttonAsk = 'menu-button';
   
   // CSS classes for filter options inside of main.questions.filter.html
-  $scope.buttonTop = 'menu-button-selected menu-button';
+  $scope.buttonTop = 'menu-button-selected';
   $scope.buttonRecent = 'menu-button';
   
   $scope.questions = function(){
     // Updates button color for question / ask
-    $scope.buttonQuestion = 'menu-button-selected menu-button';
+    $scope.buttonQuestion = 'menu-button-selected';
     $scope.buttonAsk = 'menu-button';
     // Changes state to filter
     $state.go('main.questions.filter');
@@ -26,14 +26,14 @@ angular.module('qurvey.controllers')
   $scope.ask = function(){
     // Updates button color for question / ask
     $scope.buttonQuestion = 'menu-button';
-    $scope.buttonAsk = 'menu-button-selected menu-button';
+    $scope.buttonAsk = 'menu-button-selected';
     // Changes state to ask
     $state.go('main.ask');
   };
   
   $scope.top = function(){
     // Updates button color for top / recent
-    $scope.buttonTop = 'menu-button-selected menu-button';
+    $scope.buttonTop = 'menu-button-selected';
     $scope.buttonRecent = 'menu-button';
     // Updates state to top
     $state.go('main.questions.top');
@@ -41,7 +41,7 @@ angular.module('qurvey.controllers')
   
   $scope.recent = function(){
     // Updates button color for top / recent
-    $scope.buttonRecent = 'menu-button-selected menu-button';
+    $scope.buttonRecent = 'menu-button-selected';
     $scope.buttonTop = 'menu-button';
     // Updates state to recent
     $state.go('main.questions.recent');
