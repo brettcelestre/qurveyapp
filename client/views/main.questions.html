@@ -4,10 +4,12 @@ Parent state is 'main'. Url: /questions. Displays Question and Ask button -->
 
 <div class='content-container center-div' ng-controller='QuestionController'>
   
-  <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+  <!-- <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
     <md-button class="{{buttonQuestion}}" ng-click='questions()'>Question</md-button>
     <md-button class="{{buttonAsk}}" ng-click='ask()'>Ask</md-button>
-  </section>
+  </section> -->
+  
+  <br>  
   
   <!-- ui-view 'feed' will either display 'main.ask' or 'main.questions.filter' -->
   <div class='feed-view' ui-view='feed'></div>
