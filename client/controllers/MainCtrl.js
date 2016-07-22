@@ -24,7 +24,7 @@ angular.module('qurvey.controllers')
     Main.logout()
       .then(function(){
         // Redirects to 'login' view
-        $state.go('login');
+        $state.go('home');
       })
       .catch(function(data){
         console.error('Error with login: ', data)

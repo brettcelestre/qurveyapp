@@ -56,6 +56,7 @@ div.ng-scope {
 .nav {
   height: 25px;
   /*background-color: #114b5f;*/
+  background-color: #114B5F;
 }
 
 .nav-bar {
@@ -68,12 +69,17 @@ div.ng-scope {
   min-height: 64px !important;
   height: 64px !important;
   max-height: 64px !important;
+  background-color: #114B5F;
 }
 
 .md-toolbar {
   min-height: 64px !important;
   height: 64px !important;
   max-height: 64px !important; 
+}
+
+.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background-color: #114B5F;
 }
 
 .nav-bar h1 {
@@ -151,10 +157,6 @@ div.ng-scope {
 
 .question-filter-view {
   margin: -50px 0 0 0;
-}
-
-.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
-  background-color: #2196F3;
 }
 
 .menu-button {

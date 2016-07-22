@@ -5,6 +5,7 @@ var graphctrl = require('./controllers/GraphCtrl.js');
 var loginctrl = require('./controllers/LoginCtrl.js');
 var mainctrl = require('./controllers/MainCtrl.js');
 var profilectrl = require('./controllers/ProfileCtrl.js');
+var homectrl = require('./controllers/HomeCtrl.js');
 var guestionctrl = require('./controllers/QuestionCtrl.js');
 var recentctrl = require('./controllers/RecentCtrl.js');
 var searchctrl = require('./controllers/SearchCtrl.js');
@@ -35,9 +36,21 @@ angular.module('Qurvey', [
   $urlRouterProvider.otherwise('/'); // Default route
   
   $stateProvider
+    
+    // Login state config
+    .state('home', {
+      url: '/',
+      views: {
+        'main': {
+          templateUrl: 'views/home.html',
+          controller: 'HomeController'   
+        }
+      }
+    })
+    
     // Login state config
     .state('login', {
-      url: '/',
+      url: '/login',
       views: {
         'main': {
           templateUrl: 'views/login.html',
