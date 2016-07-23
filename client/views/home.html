@@ -1,9 +1,33 @@
-<div class='login center-div md-inline-form' ng-cloak ng-controller='HomeController' >
-
-  <h1 class='main-title'>Qurvey</h1>
-  
-  <md-button id='signup' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signup()'>Sign Up</md-button>
-  
-  <md-button id='login' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='login()'>login</md-button>
-
+<div layout='column ' ng-cloak ng-controller='HomeController' flex>
+<div class='layer'>
+  <!-- <md-toolbar > -->
+  <!-- </md-toolbar> -->
+  <md-content class= 'home background'  >
+    <h1 class='home-title md-display-4'>Qurvey</h1>
+    <h2 class='home-title md-display-3' hide-xs >What is a Qurvey?</h2>
+    <p class='home-title md-body-2' hide-xs>
+      Qurveys are mini-surveys posted and answered by users.<br />
+      You can ask a multiple choice question and we collect all the responses.<br />
+      When you answer a Qurvey, we show you a graph of all of the answers<br />
+      and the personality traits associated with those answers<br />
+    </p>
+    <p class='home-title md-body-2' show-xs hide-gt-xs>
+      Qurveys are mini-surveys posted<br/>
+      and answered by users.<br />
+      When you answer a Qurvey, we show a graph<br/>
+      of all the answers and the personality traits<br/>
+      associated with those answers<br/>
+    </p>
+    <br/>
+    
+    <md-button id='signup' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signup()'>Sign Up</md-button>
+    
+    <md-button id='login' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='login()'>login</md-button>
+  </md-content>
+  <md-bottom-sheet class='footer md-body-2' >
+    <a>About</a>
+    <br/>
+    <a>Contact</a>
+  </md-bottom-sheet>
+</div>
 </div>
