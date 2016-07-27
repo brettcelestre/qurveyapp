@@ -1,7 +1,24 @@
-<div class='login center-div md-inline-form' ng-cloak ng-controller='LoginController' >
+<md-dialog class='login center-div md-inline-form' ng-controller='LoginController' >
+  <md-toolbar class='ask-toolbar'>
+        <div layout='row'>
+          
+          <!-- Exit Button -->
+            <img ng-click="cancel()" src="http://brettcelestre.com/qurvey/imgs/close.svg" aria-label="Close dialog" class='ask-close' />
+        
+          <span flex></span>
+          
+          <section layout='row' layout-align='center center'>
+            <p class='ask-qurvey-header'>Login to Qurvey</p>
+          </section>
+          
+          <span flex></span>
+          
+        </div>
+  </md-toolbar>
 
-  <h1 class='main-title'>Qurvey</h1>
-  
+  <div class='ask-spacer'></div>
+
+  <md-dialog-content>
   <form name="login" novalidate>
     <!-- User name input -->
     <md-input-container layout="row" class="username-input">
@@ -17,12 +34,14 @@
     <br>
     <!-- This displays if your login is invalid -->
     <h4 id='invalid' class='invalid-hide'>Invalid username or password.</h4>
+    </md-dialog-content>
+    <md-dialog-actions>
     <!-- Login button -->
-    <md-button id='login' type="button" class="ripples buttonRipples main-title md-raised" ng-click='userLogin(username, password)' ng-disabled='submitCheck'>Login</md-button>
+    <md-button id='login' type="button" class="ripples buttonRipples main-title md-raised" ng-click='userLogin(username, password); cancel()' ng-disabled='submitCheck'>Login</md-button>
     <br>
     <!-- Sign up button, goes to signup view -->
-    <md-button id='signup' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signUp()'>Sign Up</md-button>
+    <md-button id='signup' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signUp(); cancel()'>Sign Up</md-button>
+    </md-dialog-actions>
     <br>
-  </form>
-  
-</div>
+    </form>
+</md-dialog> 

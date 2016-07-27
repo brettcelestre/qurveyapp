@@ -1,8 +1,25 @@
-<div class='login center-div md-inline-form' layout-xs>
+<md-dialog class='login center-div md-inline-form' layout-xs ng-controller='SignUpController'>
+  <md-toolbar class='ask-toolbar'>
+        <div layout='row'>
+          
+          <!-- Exit Button -->
+            <img ng-click="cancel()" src="http://brettcelestre.com/qurvey/imgs/close.svg" aria-label="Close dialog" class='ask-close' />
+        
+          <span flex></span>
+          
+          <section layout='row' layout-align='center center'>
+            <p class='ask-qurvey-header'>Join Qurvey</p>
+          </section>
+          
+          <span flex></span>
+          
+        </div>
+  </md-toolbar>
 
+  <div class='ask-spacer'></div>
+
+  <md-dialog-content>
   <form name="login" novalidate>
-  <h1 class='main-title'>Qurvey</h1>
-  <h3 class='main-title'>Sign Up</h3>
   
     <md-input-container layout="row" class="username-input">
     <!-- <di class="username-input"> -->
@@ -47,11 +64,11 @@
     
     <br>
     <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
-    <md-button id='createAcccount' type='button' class='login-button create-account md-raised' ng-click='createAccount()' ng-disabled='submitCheck'>Create Account</md-button>
+    </md-dialog-content>
+    <md-button id='createAcccount' type='button' class='login-button create-account md-raised' ng-click='createAccount(); cancel()' ng-disabled='submitCheck'>Create Account</md-button>
     <br>
     <br>
-    <md-button type="button" class="login-button link md-raised" ng-click='loginView()'>Login Page</md-button>
+    <md-button type="button" class="login-button link md-raised" ng-click='loginView(); cancel()'>Login Page</md-button>
   </form>
   
-  
-</div>
+</md-dialog>

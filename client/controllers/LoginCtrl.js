@@ -61,12 +61,12 @@ angular.module('qurvey.controllers')
     $scope.password = '';
   };
 
-  $scope.signUp = function(){
+  $scope.signUp = function() {
     // Changes state to signup
-    $state.go('signup');
+    $state.go('home');
   };
   
-  $scope.main = function(){
+  $scope.main = function() {
     // Changes state to main
     $state.go('main');
   };
