@@ -1,12 +1,31 @@
 
 angular.module('qurvey.controllers')
 
-.controller('MainController', function($scope, $state, Main, Graph, Search, $mdMedia, $mdDialog) {
+.controller('MainController', function($scope, $state, Main, Graph, Search, $mdMedia, $mdDialog, $timeout, $mdSidenav, $log) {
   
   // Stores search term from nav bar search input
   $scope.searchTerm = '';
   // Stores current users name to display in nav bar
   $scope.currentUser = '';
+  
+  $scope.menuClasses = 'menu';
+  
+  // Shows drop down menu
+  $scope.showMenu = function(){
+    if ( $scope.menuClasses === 'menu' ) {
+      $scope.menuClasses = 'menu menu-show';
+    } else {
+      $scope.menuClasses = 'menu';
+    }
+  };
+  
+  // Hides menu if document is clicked
+  // $(document).click(function(e){
+  //   console.log('yo: ');
+  //   if ( $scope.menuClasses === 'menu menu-show' ) {
+  //     $scope.menuClasses = 'menu';
+  //   }
+  // });
   
   // Loads 'main.question' view in ui-view 'content'
   $scope.questions = function() {
@@ -20,6 +39,8 @@ angular.module('qurvey.controllers')
 
   // Logs user out and redirects to /login
   $scope.logout = function() {
+    // Hides drop down menu
+    $scope.menuClasses = 'menu';
     // Calls /auth/logout and removes users session
     Main.logout()
       .then(function(){
@@ -99,7 +120,66 @@ angular.module('qurvey.controllers')
       $scope.customFullscreen = (wantsFullScreen === true);
     });
   };
+  
+  // ----------------Side nav for mobile test---------------------------
+  
+  // angular
+  // .module('sidenavDemo1', ['ngMaterial'])
+  // .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+  $scope.toggleLeft = buildDelayedToggler('left');
 
+  $scope.isOpenRight = function(){
+    return $mdSidenav('right').isOpen();
+  };
+  /**
+   * Supplies a function that will continue to operate until the
+   * time is up.
+   */
+  function debounce(func, wait, context) {
+    var timer;
+    return function debounced() {
+      var context = $scope,
+          args = Array.prototype.slice.call(arguments);
+      $timeout.cancel(timer);
+      timer = $timeout(function() {
+        timer = undefined;
+        func.apply(context, args);
+      }, wait || 10);
+    };
+  }
+  /**
+   * Build handler to open/close a SideNav; when animation finishes
+   * report completion in console
+   */
+  function buildDelayedToggler(navID) {
+    return debounce(function() {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav(navID)
+        .toggle()
+        .then(function () {
+          $log.debug("toggle " + navID + " is done");
+        });
+    }, 200);
+  }
+  function buildToggler(navID) {
+    return function() {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav(navID)
+        .toggle()
+        .then(function () {
+          $log.debug("toggle " + navID + " is done");
+        });
+    }
+  }
+  
+  $scope.close = function () {
+    // Component lookup should always be available since we are not using `ng-if`
+    $mdSidenav('left').close()
+      .then(function () {
+        $log.debug("close LEFT is done");
+      });
+  };
+  
   // Redirects to 'settings' view, currently disabled
   // $scope.settings = function() {
   //   $state.go('settings');
