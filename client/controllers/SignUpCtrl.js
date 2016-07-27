@@ -85,7 +85,7 @@ angular.module('qurvey.controllers')
           
       })
       .catch(function(data) {
-        console.error('Error with login: ', data)
+        console.error('Error with login: ', data);
       });
     // Clears input models
     $scope.username = '';
@@ -94,7 +94,7 @@ angular.module('qurvey.controllers')
   
   // Changes state back to login
   $scope.loginView = function() {
-    $state.go('login');
+    $state.go('home');
   };
   
 });

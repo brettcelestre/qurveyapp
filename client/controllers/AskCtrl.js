@@ -26,12 +26,12 @@ angular.module('qurvey.controllers')
     if( $scope.question.replace(/\s+/g, '').length >= 5 ) {
       question = true;
     }
-    // Checks option1 length >= 1
-    if ( $scope.option1.length >= 1 ) {
+    // Checks option1 length >= 2
+    if ( $scope.option1.length >= 2 ) {
       option1 = true;
     }
-    // Checks option2 length >= 1
-    if ( $scope.option2.length >= 1 ) {
+    // Checks option2 length >= 2
+    if ( $scope.option2.length >= 2 ) {
       option2 = true;
     }
     
