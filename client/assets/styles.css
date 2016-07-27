@@ -50,7 +50,7 @@ div.ng-scope {
 }
 
 .main-title {
-  margin: 0 0 0 15px;
+  margin: -30px 0 0 20px;
   color: #fff;
 }
 
@@ -58,10 +58,19 @@ div.ng-scope {
   font-size: 20px;
 }
 
+.nav-menu {
+  width: 100%;
+  height: 35px;
+  z-index: 1000;
+  position: relative;
+  /*z-index: 5;*/
+  background-color: #114B5F;
+}
+
 .nav {
-  height: 25px;
   /*background-color: #114b5f;*/
   background-color: #114B5F;
+  /*z-index: 5;*/
 }
 
 .nav-bar {
@@ -70,11 +79,11 @@ div.ng-scope {
   position: fixed;
   display: flex;
   top: 0;
-  height: 10px;
-  min-height: 64px !important;
-  height: 64px !important;
-  max-height: 64px !important;
+  min-height: 57px !important;
+  height: 57px !important;
+  max-height: 57px !important;
   background-color: #114B5F;
+  /*z-index: 5;*/
 }
 
 .md-toolbar {
@@ -89,70 +98,117 @@ div.ng-scope {
 
 .nav-bar h1 {
   display: block;
+  position: relative;
   margin: 0px;
   text-align: center;
 }
 
-
-.md-toolbar-tools {
-  /*background-color: #5EB1BF;*/
+.nav-inner {
   background-color: #114B5F;
-/*<<<<<<< Updated upstream
-=======*/
-  /*width: 100%;*/
-  /*height: 20px;*/
-/*>>>>>>> Stashed changes*/
 }
 
 .ask-qurvey-btn {
   height: 100%;
   font-size: 18px;
   vertical-align: middle;
-  padding: 0 13px 0 13px;
-  margin: 7px 10px 7px 15px;
+  padding: 0px 13px 0px 13px;
+  margin: 0px 0px 0px 15px;
+  color: white;
 }
 
 .ask-qurvey-btn:hover {
-  /*background-color: #549fab;*/
   background-color: #285d6f;
 }
 
 .ask-qurvey-text {
-  margin: 24px 0 0 0; 
+  margin: 19px 0 0 0; 
 }
 
 .profile-name-nav {
   height: 100%;
-  padding: 0 13px 0 6px;
-  margin: 7px 0 7px 0;
+  padding: 0 13px 0 13px;
+  margin: 0px 0 0px 0;
+  /*z-index: 10;*/
+  background-color: #114B5F;
 }
 
 .profile-name-nav:hover {
-  /*background-color: #549fab;*/
   background-color: #285d6f;
 }
 
+.md-menu {
+  height: 20px !important;
+}
+
 .logout-dropdown {
+  position: relative;
+  /*height: 35px;*/
   height: 100%;
   width: 50px;
   margin: 0;
+  /*z-index: 10;*/
+  background-color: #114B5F;
+  /*background-color: green;*/
 }
 
 .logout-dropdown:hover {
   height:100%;
-  /*background-color: #549fab; */
+  /*height: 35px;*/
   background-color: #285d6f;
+  /*z-index: 10;*/
 }
 
 .logout-dots {
-  width: 24px;
-  height: 87px;
-  margin: -8px 0 0 13px;
+  width: 6px;
+  height: 32px;
+  padding: 13px 0 0 18px;
+  margin: 0px 0 0 0;
+  z-index: 10;
+}
+
+.menu {
+  width: 120px;
+  height: 38px;
+  /*top: 5px;*/
+  top: -35px;
+  left: -70px;
+  padding-top: 13px;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  z-index: -2;
+  /*background-color: red;*/
+  background-color: #114B5F;
+  position: absolute;
+}
+
+.menu:hover {
+  background-color: #285d6f;
+}
+
+.menu-show {
+  top: 57px;
+  left: -70px;
 }
 
 .search-bar {
-  margin: 0 0 0 4px;
+  height: 40px;
+  width: 350px;
+  font-size: 16px;
+  font-weight: 200;
+  padding-left: 5px;
+  margin: 9px 0 0 4px;
   border-bottom: 0px !important;
+}
+
+.search-input {
+  margin-top: 3px;
+  padding-right: 5px;
+}
+
+.search-bar:focus {
+  outline: none;
 }
 
 /* VVV Ask View --- */
@@ -244,7 +300,7 @@ div.ng-scope {
 /* ^^^ ASK STYLING ---- */
 
 .filter-view {
-  margin: -50px 0 0 0;
+  margin: -35px 0 0 0;
 }
 
 .question-filter-view {
@@ -286,7 +342,9 @@ div.ng-scope {
 }
 
 .user-top {
-  margin: 7px 0 0 10px;
+  margin: 2px 9px 0 10px;
+  font-size: 18px;
+  color: white;
 }
 
 .row-inline {
@@ -434,6 +492,10 @@ div.ng-scope {
   cursor: pointer !important;
 }
 
+.pointer:focus {
+  outline: none;
+}
+
 .trait-item:focus {
   outline: none;
 }
@@ -461,7 +523,7 @@ div.ng-scope {
 .img-profile {
   width: 23px;
   height: 23px;
-  margin: 6px 0 0 9px;
+  margin: 0px 0 0 0px;
 }
 
 .img-gear {
@@ -476,37 +538,6 @@ div.ng-scope {
   height: 18px;
   opacity: .4;
   margin: 9px 0 0 0px;
-}
-
-.search-bar {
-  height: 40px;
-  width: 350px;
-  font-size: 16px;
-  font-weight: 200;
-  padding-left: 5px;
-  margin-top: 4px;
-}
-
-.search-input {
-  margin-top: 3px;
-  padding-right: 5px;
-}
-
-.search-bar:focus {
-  outline: none;
-}
-
-.search-button {
-  width: 15px;
-  height: 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  margin-top: 5px;
-  margin-left: 3px;
-}
-
-.search-button:hover {
-  /*background-color: #e6e6e6;*/
 }
 
 .center-div {
