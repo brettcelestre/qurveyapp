@@ -14,11 +14,7 @@ div.ng-scope {
 }
 
 
-/* cards */
-/*.card {
-  background-color: #D3F8E2;
-  
-}*/
+
 .question-header {
   padding-left: 10px;
 }
@@ -61,7 +57,7 @@ div.ng-scope {
 .nav-menu {
   width: 100%;
   height: 35px;
-  z-index: 1000;
+  z-index: 12;
   position: relative;
   /*z-index: 5;*/
   background-color: #114B5F;
@@ -337,6 +333,10 @@ div.ng-scope {
   color: #FFF;
 }
 
+.profile-filter-button {
+  width: 260px;
+}
+
 .md-buttom:not([disabled]):hover {
   background-color: rgba(44, 65, 164, 0.96);
 }
@@ -559,7 +559,9 @@ div.ng-scope {
 /* --- PROFILE STYLING ---- */
 
 .profile-header {
-  margin: 70px 0 8px 0;
+  width: 553px;
+  left: 8px;
+  margin: 70px 6px 8px 0;
   background-color: red;
   overflow: hidden;
 }
@@ -579,6 +581,9 @@ div.ng-scope {
 }
 .profile-stats-spacer {
   width: 20px;
+}
+.profile-card {
+  padding: 10px 0 0 0;
 }
 .traits-header {
  /*display: inline-block; */

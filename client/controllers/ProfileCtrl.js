@@ -136,13 +136,13 @@ angular.module('qurvey.controllers')
   $scope.userAnswers = [];
   $scope.userAnswerTotal = Object.keys(Main.userObject.questionsAnswered).length;
 
-  $scope.buttonQuestions = 'menu-button-selected menu-button';
+  $scope.buttonQuestions = 'menu-button-selected';
   $scope.buttonAnswers = 'menu-button';
 
   // Sets up userQuestion function to display this users questions
   $scope.userQuestionsProfile = function(){
     // Updates button styles
-    $scope.buttonQuestions = 'menu-button-selected menu-button';
+    $scope.buttonQuestions = 'menu-button-selected';
     $scope.buttonAnswers = 'menu-button';
     $state.go('profile-questions');
   };
@@ -151,7 +151,7 @@ angular.module('qurvey.controllers')
   $scope.userAnswersProfile = function(){
     // Updates button styles
     $scope.buttonQuestions = 'menu-button';
-    $scope.buttonAnswers = 'menu-button-selected menu-button';
+    $scope.buttonAnswers = 'menu-button-selected';
     $state.go('profile-answers');
   };
   
