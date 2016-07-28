@@ -9,6 +9,9 @@ angular.module('qurvey.controllers')
   $scope.currentUser = '';
   
   $scope.menuClasses = 'menu';
+  $scope.menuSearchClasses = 'menu-search';
+  
+  $scope.mainView = 'main-view';
   
   // Shows drop down menu
   $scope.showMenu = function(){
@@ -16,6 +19,17 @@ angular.module('qurvey.controllers')
       $scope.menuClasses = 'menu menu-show';
     } else {
       $scope.menuClasses = 'menu';
+    }
+  };
+  
+  // Shows drop down menu
+  $scope.showSearch = function(){
+    if ( $scope.menuSearchClasses === 'menu-search' ) {
+      $scope.menuSearchClasses = 'menu-search menu-search-show';
+      $scope.mainView = 'main-view-down';
+    } else {
+      $scope.menuSearchClasses = 'menu-search';
+      $scope.mainView = 'main-view';
     }
   };
   
