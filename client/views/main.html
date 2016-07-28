@@ -1,7 +1,7 @@
 <div class='main' ng-controller='MainController'>
 
   <!-- Nav bar -->
-  <md-content class='nav'>
+  <md-content class='nav' show-xs show-gt-xs>
 
     <div class="nav-bar nav-menu" layout='row'>
                       
@@ -21,7 +21,17 @@
               </md-input-container>
             </md-content>
 
-            <!-- <img src='http://brettcelestre.com/qurvey/imgs/search.png' class='img-search' /> -->
+            <!-- Search Icon -->
+            <div class='search-icon pointer' ng-click='showSearch()' hide-gt-xs show-xs>
+              <img src='http://brettcelestre.com/qurvey/imgs/search.svg' class='img-search' />
+            </div>
+            
+            <!-- Search Bar Mobile -->
+            <div class=' {{ menuSearchClasses }}' hide-gt-xs show-xs>
+              <form ng-submit='search()' class='menu-search-bar'>
+                <input class='menu-search-input' type="text" ng-model="searchTerm" placeholder='Search Qurveys'>
+              </form>
+            </div>
             
             <div ng-click='ask()' class='ask-qurvey-btn pointer'>
               <p class='ask-qurvey-text pointer'>Ask <span hide-xs hide-sm>a Qurvey</span></p>
@@ -48,6 +58,8 @@
     </div>
 
   </md-content>
+  
+  <div class='{{ mainView }}' hide-gt-xs show-xs></div>
 
   <div ui-view='content'></div>
 
