@@ -12,21 +12,26 @@
     </md-toolbar>
   </md-content>
   
-  <h3 class='md-headline traits-header'>Traits</h3>
-  <md-content class='traits'>
-    <md-chips ng-model='traits' readonly='true'>
-    </md-chips>
-  </md-content>
+  <md-card layout-margin class='card profile-card'>
   
-  <md-content>
-    <md-divider ng-if="!$last" class='question-divider'></md-divider>
-  </md-content>
+    <h3 class='md-headline traits-header'>Traits</h3>
+    <md-content class='traits'>
+      <md-chips ng-model='traits' readonly='true'>
+      </md-chips>
+    </md-content>
+    
+    <md-content>
+      <md-divider ng-if="!$last" class='question-divider'></md-divider>
+    </md-content>
+    
+    <h3 class='md-headline traits-header'>Activity</h3>
+    
+    <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+      <div id='questionBtn' class="{{ buttonQuestions }} profile-filter-button pointer" ng-click='userQuestionsProfile()'>Questions</div>
+      <div id='askBtn' class="{{ buttonAnswers }} profile-filter-button pointer" ng-click='userAnswersProfile()'>Answers</div>
+    </section>
   
-  <h3 class='md-headline traits-header'>Activity</h3>
-  <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
-    <md-button id='questionBtn' class="{{ buttonQuestions }}" ng-click='userQuestionsProfile()'>Questions</md-button>
-    <md-button id='askBtn' class="{{ buttonAnswers }}" ng-click='userAnswersProfile()'>Answers</md-button>
-  </section>
+  </md-card>
   
   <div class='profile-feed-view' ui-view='profile-feed'></div>
 
