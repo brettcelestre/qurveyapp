@@ -13,6 +13,12 @@ div.ng-scope {
   /*background-color: #CDEDF6;*/
 }
 
+/* home links */
+a {
+  text-decoration: inherit;
+  font-style: inherit;
+  color: inherit;
+}
 
 
 .question-header {
