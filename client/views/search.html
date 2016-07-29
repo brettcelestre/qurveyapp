@@ -10,14 +10,21 @@
   <div ng-repeat='data in searchData ' class='question-div'>
     
     <!-- Question header block -->
-    <div class='question-header'>
-      <h1 class='question-title'>{{ data.question }}</h1>
-      <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
-    </div>
+    <md-card layout-margin class='card' flex>
+      <md-title>
+        <md-title-text>
+          <div class='question-header'>
+            <h1 class='question-title'>{{ data.question }}</h1>
+            <p class='question-info md-body-2'>{{ data.user.username }}<span class='question-info md-caption'> | {{ data.createdAt }}</span></p>
+          </div>
+        </md-title-text>
+      </md-title>
     
     <!-- Displays the graph -->
-    <div id='graph_{{data._id}}' class='graph' ng-show='data.userAnswered'>
-    </div>
+    <md-content>
+      <div id='graph_{{data._id}}' class='graph' ng-show='data.userAnswered'>
+      </div>
+    </md-content>
     
     <!-- If 2 options  -->
     <!-- Checks how many answer options there are. Sets id to question id -->
@@ -127,6 +134,7 @@
     </md-content>
   
   </div>
+  </md-card>
   <!-- The below tag is to close virtual repeat -->
   <!-- </md-virtual-repeat-container> -->
   <br>
