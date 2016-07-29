@@ -57,6 +57,11 @@ a {
   background-color: #114B5F;
 }
 
+.signin-title {
+  margin: 10px 0 10px 0;
+  color: black;
+}
+
 .main-tab-title {
   font-size: 20px;
 }
@@ -395,7 +400,13 @@ a {
 }
 
 .ask-spacer {
-  margin: 30px;
+  /*margin-top: 30px;*/
+  height: 15px;
+}
+
+.ask-spacer-title {
+  /*margin-top: 30px;*/
+  height: 30px;
 }
 
 /* ^^^ ASK STYLING ---- */
