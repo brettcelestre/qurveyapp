@@ -215,6 +215,7 @@ a {
   border-bottom: 0px !important;
   /*background-color: #114B5F;*/
   background-color: white;
+  overflow: hidden;
 }
 
 .search-icon {
@@ -302,10 +303,13 @@ a {
   /*max-width: 560px;*/
   border: none;
   border-bottom: 0px !important;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 .menu-search-input:focus {
   outline: none;
   border: none;
+  overflow: hidden;
 }
 
 .search-input {
