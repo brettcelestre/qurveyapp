@@ -215,7 +215,7 @@ a {
   border-bottom: 0px !important;
   /*background-color: #114B5F;*/
   background-color: white;
-  overflow: hidden;
+  
 }
 
 .search-icon {
@@ -518,23 +518,26 @@ a {
 }
 
 .home-title {
-  color: #CDEDF6;
-
+  /*color: #CDEDF6;*/
+  color: #fff;
 }
 
 .background {
-    background: url('http://brettcelestre.com/qurvey/imgs/library.jpg') no-repeat center center fixed;
-    position: relative;
-    opacity: 0.4;
+  background: url('http://brettcelestre.com/qurvey/imgs/library.jpg') no-repeat center center fixed;
+  position: relative;
+  opacity: 0.6;
 }
 
 .layer {
-    background-color: #5EB1BF;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+  /*background-color: #5EB1BF;*/
+  background-color: red;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: .5;
 }
 
 .footer {
