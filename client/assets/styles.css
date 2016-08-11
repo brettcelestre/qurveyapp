@@ -104,7 +104,7 @@ a {
 
 .md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
   /*background-color: #114B5F;*/
-  background-color: #333333;
+  background-color: #263238;
 }
 
 .nav-bar h1 {
@@ -510,31 +510,92 @@ a {
   font-family: 'Hind Siliguri', sans-serif;
   font-weight: 700;
   text-align: center;
-  /*background-color: #5EB1BF;*/
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  /*height: 100vh;*/
+  /*background-color: #5EB1BF;*/
   /*border-radius: 2px;*/
   /*padding: 5px 5px 10px 5px;*/
   /*margin: 5px;*/
   /*margin-top: 0px;*/
 }
 
+main {
+  min-height: calc(100vh - 128px);
+  position: relative;
+}
+
 .home-title {
-  /*color: #CDEDF6;*/
   color: #fff;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  letter-spacing: -.1rem;
+  line-height: 0px;
+  text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 600px) {
+ .home-title {
+   font-size: 75px;
+   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+ }
+}
+
+.home-title-subtitle {
+   color: #fff;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  letter-spacing: -.1rem;
+  line-height: 0px;
+}
+@media (max-width: 600px) {
+ .home-title-subtitle {
+   font-size: 27px;
+   letter-spacing: -.05rem;
+   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+ }
+}
+
+.home-copy {
+    color: #fff;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: -.04rem;
+    line-height: 1.5rem;
+  }
+@media (max-width: 600px) {
+  .home-copy {
+    font-size: 1.05rem;
+    letter-spacing: -.04rem;
+    line-height: 1.3rem;
+    padding-top: 5px;
+  }
+}
+
+.landing {
+  margin: 0 auto;
+  position: absolute;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+@media (max-width: 600px) {
+ .landing {
+   width: 355px;
+   top: 45%;
+ }
 }
 
 .background {
   background: url('http://brettcelestre.com/qurvey/imgs/library.jpg') no-repeat center center fixed;
-  position: relative;
-  opacity: 0.6;
 }
 
 .layer {
-  /*background-color: #5EB1BF;*/
   background-color: red;
-  
   position: absolute;
   top: 0;
   left: 0;
@@ -544,12 +605,7 @@ a {
 }
 
 .footer {
-  text-align: left;
   padding-left: 20px;
-  /*background-color: #333333;*/
-  /*background-color: red;*/
-  /*color: #CDEDF6;*/
-
 }
 
 .content-container {
@@ -686,10 +742,10 @@ a {
   background-color: red;
   overflow: hidden;
 }
-.md-toolbar {
-  /*background-color: #2196F3;*/
+/*.md-toolbar {
+  background-color: #2196F3;
   background-color: #333333;
-}
+}*/
 .profile-bar {
   height: 53px;
   overflow: hidden;
