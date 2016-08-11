@@ -103,7 +103,8 @@ a {
 }
 
 .md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
-  background-color: #114B5F;
+  /*background-color: #114B5F;*/
+  background-color: #333333;
 }
 
 .nav-bar h1 {
@@ -215,6 +216,7 @@ a {
   border-bottom: 0px !important;
   /*background-color: #114B5F;*/
   background-color: white;
+  overflow: hidden;
   
 }
 
@@ -315,6 +317,7 @@ a {
 .search-input {
   margin-top: 3px;
   padding-right: 5px;
+  margin-left: -10px;
 }
 
 .search-bar:focus {
@@ -542,8 +545,10 @@ a {
 
 .footer {
   text-align: left;
-  background-color: #114B5F;
-  color: #CDEDF6;
+  padding-left: 20px;
+  /*background-color: #333333;*/
+  /*background-color: red;*/
+  /*color: #CDEDF6;*/
 
 }
 
@@ -682,7 +687,8 @@ a {
   overflow: hidden;
 }
 .md-toolbar {
-  background-color: #2196F3;
+  /*background-color: #2196F3;*/
+  background-color: #333333;
 }
 .profile-bar {
   height: 53px;
