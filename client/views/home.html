@@ -1,9 +1,7 @@
 <div layout='column' ng-cloak ng-controller='HomeController'>
 
-  <!-- <md-content class='home background' flex layout-padding> -->
-  <main class='md-padding background' layout="row" >
+  <main class=' background' layout="row" >
     <div class='landing'>
-      <!-- <div flex></div> -->
     
       <h3 class='home-title'>Qurvey</h3>
       
@@ -15,17 +13,21 @@
       
       <br/>
       
-      <md-button id='signup' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='signup()'>Sign Up</md-button>
-      <md-button id='login' type='button' class='create-account ripples buttonRipples main-title md-raised' ng-click='login()'>login</md-button>
+      <section class='landingBtns' layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+        <div class="landing-button-selected landing-button pointer" ng-click='signup()'>
+          Sign Up
+        </div>
+        
+        <div class="landing-button pointer" ng-click='login()'>
+          Login
+        </div>
+      </section>
 
-      <!-- <div flex></div> -->
     </div>
-  <!-- </md-content> -->
   </main>
 
   <md-toolbar class="md-tall">
     <div layout='row' layout-align="left center" class='footer'>
-    <!-- <div class="md-toolbar-tools"> -->
       <h5 class='md-subhead'>
         <a ng-href="https://github.com/FinishingTouchEmpire/qurvey">GitHub</a>
         <br/>
