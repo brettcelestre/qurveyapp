@@ -5,7 +5,7 @@ angular.module('qurvey.controllers')
 // .controller('LoginController', ['$scope', function($scope, $state, Login) {
 
 // Functioning Controller declaration
-.controller('LoginController', function($scope, $state, Login) {
+.controller('LoginController', function($scope, $state, Login, $mdMedia, $mdDialog) {
   
   // Stores username and password
   $scope.username = '';
@@ -30,11 +30,13 @@ angular.module('qurvey.controllers')
   
   // Sends username and password to /auth/login
   $scope.userLogin = function(){
+    console.log('yo: ');
     // Creates login info object to send to API
     var userInfo = { 
       username: $scope.username,
       password: $scope.password
     };
+    console.log('login test: ', userInfo);
     // Calls /auth/login POST with userInfo
     Login.login(userInfo)
       .then(function(data){
@@ -61,9 +63,48 @@ angular.module('qurvey.controllers')
     $scope.password = '';
   };
 
-  $scope.signUp = function() {
-    // Changes state to signup
-    $state.go('home');
+  // $scope.signUp = function() {
+  //   // Changes state to signup
+  //   $state.go('home');
+  // };
+  
+  // open signup dialog
+  $scope.signup = function(ev){
+    function DialogController($scope, $mdDialog) {
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
+    }
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: './views/signup.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen
+    })
+    .then(function(answer) {
+      console.log('answer: ', answer);
+      if ( answer.complete ) {
+        console.log('answer with hide: ', answer.complete);
+        $mdDialog.hide();
+      }
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+    $scope.$watch(function() {
+      return $mdMedia('xs') || $mdMedia('sm');
+    }, function(wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true);
+    });
   };
   
   $scope.main = function() {

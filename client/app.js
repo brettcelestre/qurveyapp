@@ -65,9 +65,10 @@ angular.module('Qurvey', [
     
     // Login state config
     .state('login', {
+      parent: 'home',
       url: '/login',
       views: {
-        'main': {
+        'entry': {
           templateUrl: 'views/login.html',
           controller: 'LoginController'   
         }

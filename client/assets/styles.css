@@ -217,7 +217,6 @@ a {
   /*background-color: #114B5F;*/
   background-color: white;
   overflow: hidden;
-  
 }
 
 .search-icon {
@@ -476,12 +475,12 @@ a {
 
 .invalid-hide {
   display: none;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .invalid-show {
   display: show;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .container {
@@ -504,6 +503,35 @@ a {
   border-radius: 2px;
   /*padding: 5px 5px 10px 5px;*/
   /*margin: 5px;*/
+}
+
+.login-form {
+  margin: 0 auto;
+  width: 350px;
+}
+
+.login-input {
+  height: 38px;
+  width: 350px;
+  font-size: 16px;
+  font-weight: 200;
+  padding-left: 8px;
+  margin: 0 0 1px 0;
+  border: none;
+  border-bottom: 0px !important;
+  /*background-color: #114B5F;*/
+  background-color: white;
+  overflow: hidden;
+}
+.login-input:focus {
+  outline: none;
+}
+.login-spacer {
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
 }
 
 .home {
