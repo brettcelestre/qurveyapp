@@ -5,6 +5,8 @@ angular.module('qurvey.controllers')
 
   // open login dialog
   $scope.login = function(ev) {
+    $state.go('login');
+    /*
     function DialogController($scope, $mdDialog) {
       $scope.hide = function() {
         $mdDialog.hide();
@@ -40,6 +42,7 @@ angular.module('qurvey.controllers')
     }, function(wantsFullScreen) {
       $scope.customFullscreen = (wantsFullScreen === true);
     });
+    */
   };
   
   // open signup dialog

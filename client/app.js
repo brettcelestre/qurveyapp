@@ -40,9 +40,24 @@ angular.module('Qurvey', [
     // Login state config
     .state('home', {
       url: '/',
+      params: { 
+        autoActivateChild: 'home.entry'
+      },
       views: {
         'main': {
           templateUrl: 'views/home.html',
+          controller: 'HomeController'   
+        }
+      }
+    })
+    
+    // Entry Form state config
+    .state('home.entry', {
+      parent: 'home',
+      url: '/entry',
+      views: {
+        'entry': {
+          templateUrl: 'views/entry.html',
           controller: 'HomeController'   
         }
       }
