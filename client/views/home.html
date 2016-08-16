@@ -13,7 +13,27 @@
       
       <!-- <br/> -->
       
-      <div ui-view='entry'></div>
+      <!-- <div ui-view='entry'></div> -->
+      
+      <!-- User name input -->
+    <form ng-submit='userLogin()' name='login' class='login-form'>
+      <input class='login-input' type="text" ng-model="username" placeholder='Username'>
+      <input class='login-input' type="password" ng-model="password" placeholder='Password'>
+      <br>
+      <!-- This displays if your login is invalid -->
+      <p id='invalid' class='invalid-hide home-copy'>Invalid username or password.</p>
+      <!-- <br> -->
+      <section class='landingBtns login-spacer' layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+        <div type="submit" class="landing-button pointer" ng-click='userLogin(username, password);'>
+          Login
+        </div>
+        
+        <div class="landing-button-selected landing-button pointer" ng-click='signup(); cancel()'>
+          Sign Up
+        </div>
+      </section>
+      <input type="submit" class='hidden'>
+    </form>
       
       <!-- <section class='landingBtns' layout="row" layout-sm="row" layout-align="center center" layout-wrap>
         <div class="landing-button-selected landing-button pointer" ng-click='signup()'>
