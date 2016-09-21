@@ -3,11 +3,6 @@ angular.module('qurvey.controllers')
 
 .controller('HomeController', function($scope, $state, Main, Graph, Search, $mdMedia, $mdDialog, Login) {
 
-  // open login dialog
-  // $scope.login = function(ev) {
-  //   $state.go('login');
-  // };
-  
   // Stores username and password
   $scope.username = '';
   $scope.password = '';
@@ -31,7 +26,7 @@ angular.module('qurvey.controllers')
 
   // Sends username and password to /auth/login
   $scope.userLogin = function(){
-    // Creates login info object to send to API
+	 // Creates login info object to send to API
     var userInfo = { 
       username: $scope.username,
       password: $scope.password
@@ -62,6 +57,7 @@ angular.module('qurvey.controllers')
   
   // Open signup dialog
   $scope.signup = function(ev){
+    
     function DialogController($scope, $mdDialog) {
       $scope.hide = function() {
         $mdDialog.hide();
@@ -73,6 +69,16 @@ angular.module('qurvey.controllers')
         $mdDialog.hide(answer);
       };
     }
+    
+    // Checks width of browser window
+    if ( document.body.clientWidth <= 600 ) {
+      // If true, sets modal to full screen
+      $scope.customFullscreen = true;
+    } else if ( document.body.clientWidth >= 601 ){
+      // If width is >= 601 sets fullscreen to false
+      $scope.customFullscreen = false;
+    }
+    
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
@@ -92,11 +98,7 @@ angular.module('qurvey.controllers')
     }, function() {
       $scope.status = 'You cancelled the dialog.';
     });
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
-    });
+
   };
   
 });

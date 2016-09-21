@@ -1,74 +1,55 @@
-<md-dialog class='login center-div md-inline-form' layout-xs ng-controller='SignUpController'>
-  <md-toolbar class='ask-toolbar'>
-        <div layout='row'>
-          
-          <!-- Exit Button -->
-            <img ng-click="cancel()" src="http://brettcelestre.com/qurvey/imgs/close.svg" aria-label="Close dialog" class='ask-close' />
-        
-          <span flex></span>
-          
-          <section layout='row' layout-align='center center'>
-            <p class='ask-qurvey-header'>Join Qurvey</p>
-          </section>
-          
-          <span flex></span>
-          
-        </div>
+<md-dialog class='signup-modal center-div md-inline-form' layout-xs ng-controller='SignUpController'>
+
+  <md-toolbar class='toolbar-top'>
+    <div layout='row'>
+      
+      <!-- Exit Button -->
+      <img ng-click="cancel()" src="http://brettcelestre.com/qurvey/imgs/close.svg" aria-label="Close dialog" class='ask-close' />
+    
+      <span flex></span>
+      
+      <section layout='row' layout-align='center center'>
+        <p class='toolbar-header'>Join Qurvey</p>
+      </section>
+      
+      <span flex></span>
+      
+    </div>
   </md-toolbar>
 
   <div class='ask-spacer'></div>
 
   <md-dialog-content>
-  <form name="login" novalidate>
-  
-    <md-input-container layout="row" class="username-input">
-    <!-- <di class="username-input"> -->
-      <!-- <h3>Username</h3> -->
-        <input type="text" class="login-input" name="login" placeholder="Username" ng-model="username" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
-    <!-- </div> -->
-    </md-input-container>
-    <!-- <div class="password-input"> -->
-    <md-input-container layout="row" class="password-input">
+  <form name="login" novalidate class='signup-form'>
 
-      <!-- <h3>Password</h3> -->
-        <input type="password" class="login-input" name="login" placeholder="Password" ng-model="password" ng-change='createAccountButton()' ng-pattern="/^[#a-zA-Z0-9]*$/" required>
-        <!-- <img src='./assets/img/eye-icon.png' class='eye-icon' ng-click='showPass()' /> -->
-    <!-- </div> -->
+    <md-input-container class="md-block">
+      <label>Username</label>
+      <input required name="username" class='signup-input' ng-model="username" ng-change='createAccountButton()'>
+    </md-input-container>
+    
+    <md-input-container class="md-block">
+      <label>Password</label>
+      <input required name="password" type='password' class='signup-input' ng-model="password" ng-change='createAccountButton()'>
     </md-input-container>
     
     <h3 class='signin-title'>Personality Traits</h3>
-    <h5 class='signin-title'>Choose 4-6</h5>
 
-    <div id='trait-box'>
-      <div class='trait-row'>
-        <md-button id='Weird' class='trait-item md-raised' ng-click='addTrait("Weird")'>Weird</md-button>
-        <md-button id='Crazy' class='trait-item md-raised' ng-model='trait' ng-click='addTrait("Crazy")'>Crazy</md-button>
-        <md-button id='Splendid' class='trait-item md-raised' ng-model='trait' ng-click='addTrait("Splendid")'>Splendid</md-button>
+    <fieldset class="standard" >
+      <legend>Choose 4 - 6 Traits</legend>
+      <div layout="row" class='trait-box' layout-wrap flex>
+        <div flex="50" class='trait-list' ng-repeat="trait in traitOptions">
+          <md-checkbox ng-checked="exists(trait, traits)" ng-click="toggle(trait, traits)" class="md-warn">
+            {{ trait }}
+          </md-checkbox>
+        </div>
       </div>
-      <div class='trait-row'>
-        <md-button id='Sneaky' class='trait-item md-raised' ng-click='addTrait("Sneaky")'>Sneaky</md-button>
-        <md-button id='Quiet' class='trait-item md-raised' ng-click='addTrait("Quiet")'>Quiet</md-button>
-        <md-button id='Blunt' class='trait-item md-raised' ng-click='addTrait("Blunt")'>Blunt</md-button>
-      </div>
-      <div class='trait-row'>
-        <md-button id='Intellectual' class='trait-item md-raised' ng-click='addTrait("Intellectual")' style='font-size:x-small'>Intellectual</md-button>
-        <md-button id='Warm' class='trait-item md-raised' ng-click='addTrait("Warm")'>Warm</md-button>
-        <md-button id='Stressed' class='trait-item md-raised' ng-click='addTrait("Stressed")'>Stressed</md-button>
-      </div>
-      <div class='trait-row'>
-        <md-button id='Imaginative' class='trait-item md-raised' ng-click='addTrait("Imaginative")'>Imaginative</md-button>
-        <md-button id='Sad' class='trait-item md-raised' ng-click='addTrait("Sad")'>Sad</md-button>
-        <md-button id='Confused' class='trait-item md-raised' ng-click='addTrait("Confused")'>Confused</md-button>
-      </div>
-    </div>
+    </fieldset>
     
     <br>
     <h5 ng-if='tooManyTraits'>Too Many Traits</h5>
     </md-dialog-content>
     <md-button id='createAcccount' type='button' class='login-button create-account md-raised' ng-click='createAccount(); cancel()' ng-disabled='submitCheck'>Create Account</md-button>
     <br>
-    <br>
-    <md-button type="button" class="login-button link md-raised" ng-click='loginView(); cancel()'>Login Page</md-button>
   </form>
   
 </md-dialog>
