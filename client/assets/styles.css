@@ -108,7 +108,7 @@ a {
   margin: -30px 0 0 20px;
   color: #fff;
   background-color: #114B5F;
-}
+st.indexOf(item)}
 
 .main-tab-title {
   font-size: 20px;
@@ -795,10 +795,45 @@ main {
 }
 
 .content-container {
-  width: 570px;
+  width: 700px;
   margin-top: 45px;
   margin-left: auto;
   margin-right: auto;
+}
+@media (max-width: 780px) and (orientation: landscape){
+	.content-container {
+		width: 750px;
+	}
+}
+@media (max-width: 900px) {
+	.content-container {
+		width: 600px;	
+	}
+}
+@media (max-width: 700px) {
+	.content-container {
+		width: 500px;
+	}
+}
+@media (max-width: 600px) {
+	.content-container {
+		width: 400px;
+	}
+}
+@media (max-width: 500px ) {
+	.content-container {
+		width: 350px;
+	}
+}
+@media (max-width: 400px) {
+	.content-container {
+		width: 300px;
+	}
+}
+@media (max-width: 350px ) {
+	.content-container {
+		width: 275px;
+	}
 }
 
 .tab-seleceted {
@@ -918,9 +953,8 @@ main {
 /* --- PROFILE STYLING ---- */
 
 .profile-header {
-  width: 553px;
   left: 8px;
-  margin: 70px 6px 8px 0;
+  margin-top: 70px;
   background-color: red;
   overflow: hidden;
 }
@@ -972,6 +1006,10 @@ main {
 }
 
 /* --- QUESTION STYLING ---- */
+
+.card {
+	width: 100%;
+}
 
 .question-div {
   padding: -50px 0 0px 0;
