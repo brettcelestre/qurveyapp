@@ -64,7 +64,12 @@ a {
 .signup-form {
   margin: 10px 10px 10px 10px;
 }
-
+.signup-username-label {
+	text-align: right;
+}
+.signup-password-label {
+	text-align: left;
+}
 .signup-input {
   margin-bottom: -20px;
 }
